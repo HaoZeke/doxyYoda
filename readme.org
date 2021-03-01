@@ -1,5 +1,14 @@
 * doxyYoda
 A theme for [[http://doxygen.nl/][Doxygen]].
+** Usage
+Clone the project into the directory with your ~Doxyfile~.
+Inside your ~Doxyfile~:
+#+begin_src conf
+HTML_HEADER            = "doxyYoda/src/html/header.html"
+HTML_FOOTER            = "doxyYoda/src/html/footer.html"
+HTML_EXTRA_STYLESHEET  = "doxyYoda/src/styles/style.css"
+LAYOUT_FILE            = "doxyYoda/src/xml/layout.xml"
+#+end_src
 ** Why?
 Have you seen doxygen HTML?
 ** Users
