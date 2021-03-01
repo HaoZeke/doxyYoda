@@ -1,0 +1,66 @@
+@charset "UTF-8";
+
+// Syntax Highlighting
+// Kanged from rgoswami.me
+$code-border: #c4cfe5;
+$code-background: #242424;
+$code-font-color: #8a8a8a;
+$code-sidebar: #0f0;
+$code-keyword: #0087ff;
+$code-keywordtype: #ea215a;
+$code-keywordflow: #008000;
+$code-comment: #4e4e4e;
+
+/* Common Colors */
+$logo-cursor-color: #002f46;
+// $link-color: #ea215a;
+$link-color: #0380ff;
+
+/* light theme color */
+$light-background: #fff;
+$light-background-secondary: #eaeaea;
+$light-color: #222;
+$light-color-secondary: #999;
+$light-border-color: #dcdcdc;
+
+/* dark theme colors */
+$dark-background: #292a2d;
+$dark-background-secondary: #3b3d42;
+$dark-color: #a9a9b3;
+$dark-color-secondary: #73747b;
+$dark-border-color: #4a4b50;
+
+/* Layout */
+$media-size-phone: "(max-width: 684px)";
+$media-size-tablet: "(max-width: 900px)";
+$sidebar-width: "1fr";
+
+/* Typography */
+$serif: Bookerly, Palatino, Book Antiqua, serif;
+$sans-serif: "geomanist", "Inter UI", -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI",
+  Helvetica, Arial, sans-serif;
+$mono: Cascadia, Hack, Consolas, Monaco, "Ubuntu Mono", Menlo, Consolas, monospace;
+$browser-context: 18px;
+
+// Responsive Types
+// Weights
+$regular: 400;
+$bold: 800;
+
+// Sizes
+$base-text-xs: em(18); // required
+$base-text-sm: em(19);
+$base-text-md: em(20);
+$base-text-lg: em(21);
+$base-text-xl: em(22);
+
+// Color
+$default-color: rgb(40, 40, 40);
+
+// Headings
+$heading-base-size: 1.05em;
+$heading-scale-ratio: 1.333;
+
+// Line Heights
+$heading-line-height: 1;
+$body-line-height: 1.566;
