@@ -1,3 +1,5 @@
+@use "sass:color";
+
 pre {
   font-family: $mono;
 }
@@ -59,7 +61,7 @@ span {
     text-align: right;
     border-right: 2px solid $code-sidebar;
     background-color: $code-background;
-    color: color.scale($code-font-color, $whitneness: +10%);
+    color: color.scale($code-font-color, $lightness: +10%);
     white-space: pre;
     &.a {
       background-color: #d8d8d8;
@@ -125,4 +127,9 @@ div {
 
 .lineno {
   user-select: none;
+}
+
+// Not really code
+pre.fragment {
+  background-color: white;
 }

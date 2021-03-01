@@ -1,1 +1,9 @@
-@import "doxygen/baseDoxygen";
+// @import "default/baseDoxygen";
+@import "lib/responsive_type/vars";
+@import "mixins/mix";
+
+@import "myvars";
+@import "fonts";
+@import "tooltip";
+@import "code";
+@import "typography";

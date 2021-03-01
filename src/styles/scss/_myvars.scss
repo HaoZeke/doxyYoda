@@ -39,10 +39,10 @@ $media-size-tablet: "(max-width: 900px)";
 $sidebar-width: "1fr";
 
 /* Typography */
-$serif: Bookerly, Palatino, Book Antiqua, serif;
-$sans-serif: "geomanist", "Inter UI", -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI",
+$serif: Vollkorn, Palatino, Book Antiqua, serif;
+$sans-serif: "Product Sans", -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI",
   Helvetica, Arial, sans-serif;
-$mono: Cascadia, Hack, Consolas, Monaco, "Ubuntu Mono", Menlo, Consolas, monospace;
+$mono: "Cascadia Code", Hack, Consolas, Monaco, "Ubuntu Mono", Menlo, Consolas, monospace;
 $browser-context: 18px;
 
 // Responsive Types
