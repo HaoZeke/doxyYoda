@@ -1,0 +1,150 @@
+@use "sass:math";
+html {
+  font-size: $base-text-xs;
+
+  @if (variable-exists($name: base-text-sm)) {
+    @include mq($sm) {
+      font-size: $base-text-sm;
+    }
+  }
+
+  @if (variable-exists($name: base-text-md)) {
+    @include mq($md) {
+      font-size: $base-text-md;
+    }
+  }
+
+  @if (variable-exists($name: base-text-lg)) {
+    @include mq($lg) {
+      font-size: $base-text-lg;
+    }
+  }
+
+  @if (variable-exists($name: base-text-xl)) {
+    @include mq($xl) {
+      font-size: $base-text-xl;
+    }
+  }
+}
+
+body,
+input,
+textarea,
+option,
+select {
+  line-height: $body-line-height;
+  text-rendering: optimizeLegibility !important;
+  font-family: $sans-serif;
+  font-feature-settings: "liga", "tnum", "case", "calt", "zero", "ss01", "locl";
+}
+
+p,
+input,
+textarea,
+select,
+option {
+  font-size: inherit;
+}
+
+i,
+.i,
+em {
+  font-style: italic;
+}
+
+b,
+.b,
+strong {
+  font-weight: $bold;
+}
+
+a {
+  color: inherit;
+  font-size: inherit;
+  text-decoration: none;
+  border-bottom: none;
+}
+
+@for $index from 1 through 6 {
+  h#{$index} {
+    font-family: $serif;
+    line-height: $heading-line-height;
+    font-weight: $bold;
+    font-size: $heading-base-size * math.pow($heading-scale-ratio, 7/2 - $index);
+  }
+}
+
+// @for $index from 1 through 4 {
+//   h#{$index} {
+//     font-weight: $bold;
+//     font-size: $heading-base-size * pow($heading-scale-ratio, 5/2 - $index);
+//   }
+// }
+
+code {
+  font-family: $mono;
+}
+
+// Modified from: https://css-tricks.com/snippets/css/simple-and-nice-blockquote-styling/
+blockquote {
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+  quotes: "\201C""\201D""\2018""\2019";
+
+  @media #{$media-size-phone} {
+    margin: 10px;
+    padding: 10px;
+  }
+
+  &:before {
+    color: #ccc;
+    content: open-quote;
+    font-size: 4em;
+    line-height: 0.1em;
+    margin-right: 0.25em;
+    vertical-align: -0.4em;
+  }
+  p {
+    display: inline;
+
+    &:first-of-type {
+      margin-top: 0;
+    }
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+
+  .dark-theme & {
+    background: $dark-border-color;
+  }
+}
+
+// .post-title {
+//   font-size: xxx-large !important;
+// }
+
+.post-content {
+  .button {
+    a {
+      text-decoration: none;
+      border-bottom: none !important;
+    }
+  }
+  a {
+    border-bottom: $link-color 0.125em solid;
+    .dark-theme & {
+      border-bottom: darken($link-color, 15) 0.125em solid;
+    }
+  }
+}
+
+#search-query {
+  color: $link-color !important;
+  .dark-theme & {
+    border-bottom: darken($link-color, 15);
+  }
+}
