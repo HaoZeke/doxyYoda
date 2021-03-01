@@ -26,17 +26,18 @@ span {
   }
 
   &.preprocessor {
-    color: #5f8700;
+    color: $code-preprocessor;
   }
 
   &.stringliteral {
-    color: #002080;
+    color: $code-stringliteral;
   }
 
   &.charliteral {
-    color: #008080;
+    color: $code-charliteral;
   }
 
+  // Unused
   &.vhdldigit {
     color: #ff00ff;
   }
