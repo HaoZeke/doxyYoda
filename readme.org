@@ -1,0 +1,10 @@
+* doxyYoda
+A theme for [[http://doxygen.nl/][Doxygen]].
+** Why?
+Have you seen doxygen HTML?
+** Users
+- SymEngine
+* Acknowledgments
+This project was conceived as part of SymEngine's Google Season of Docs 2020
+* License
+[[https://www.apache.org/licenses/LICENSE-2.0.html][Apache version 2]]
