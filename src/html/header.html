@@ -13,7 +13,24 @@
 <script type="text/javascript" src="$relpath^dynsections.js"></script>
 $treeview
 $search
-$mathjax
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  },
+  svg: {
+    fontCache: 'global'
+  }
+  loader: { load: ["[tex]/unicode", "[tex]/ams"] },
+  tex: {
+    packages: { "[+]": ["unicode", "ams"] },
+    tags: "ams",
+  },
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+</script>
 <!-- <link href="$relpath^$stylesheet" rel="stylesheet" type="text/css" /> -->
 $extrastylesheet
 <script type="text/javascript" >
