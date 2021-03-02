@@ -32,36 +32,16 @@ $blue:      #268bd2;
 $cyan:      #2aa198;
 $green:     #859900;
 
-/* Common Colors */
-$logo-cursor-color: #002f46;
-// $link-color: #ea215a;
-$link-color: #0380ff;
-
-/* light theme color */
-$light-background: #fff;
-$light-background-secondary: #eaeaea;
-$light-color: #222;
-$light-color-secondary: #999;
-$light-border-color: #dcdcdc;
-
-/* dark theme colors */
-$dark-background: #292a2d;
-$dark-background-secondary: #3b3d42;
-$dark-color: #a9a9b3;
-$dark-color-secondary: #73747b;
-$dark-border-color: #4a4b50;
-
 /* Layout */
 $media-size-phone: "(max-width: 684px)";
 $media-size-tablet: "(max-width: 900px)";
-$sidebar-width: "1fr";
 
 /* Typography */
 $serif: Vollkorn, Palatino, Book Antiqua, serif;
-$sans-serif: "Product Sans", -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI",
+$sans-serif: "PT Sans", -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI",
   Helvetica, Arial, sans-serif;
-$mono: "Cascadia Code", Hack, Consolas, Monaco, "Ubuntu Mono", Menlo, Consolas, monospace;
-$browser-context: 18px;
+$mono: "Cascadia Code", "Fira Code", Hack, Consolas, Monaco, "Ubuntu Mono", Menlo, Consolas, monospace;
+$browser-context: 20px;
 
 // Responsive Types
 // Weights
@@ -75,11 +55,8 @@ $base-text-md: em(20);
 $base-text-lg: em(21);
 $base-text-xl: em(22);
 
-// Color
-$default-color: rgb(40, 40, 40);
-
 // Headings
-$heading-base-size: 1.05em;
+$heading-base-size: 1.35em;
 $heading-scale-ratio: 1.333;
 
 // Line Heights

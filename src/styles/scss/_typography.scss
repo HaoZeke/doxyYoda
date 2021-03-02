@@ -1,4 +1,6 @@
 @use "sass:math";
+@use "sass:color";
+
 html {
   font-size: $base-text-xs;
 
@@ -70,7 +72,8 @@ a {
     font-family: $serif;
     line-height: $heading-line-height;
     font-weight: $bold;
-    font-size: $heading-base-size * math.pow($heading-scale-ratio, 7/2 - $index);
+    font-size: $heading-base-size *
+      math.pow($heading-scale-ratio, 7/2 - $index);
   }
 }
 
@@ -117,34 +120,474 @@ blockquote {
       margin-bottom: 0;
     }
   }
-
-  .dark-theme & {
-    background: $dark-border-color;
-  }
 }
 
-// .post-title {
-//   font-size: xxx-large !important;
-// }
+// Doxygen stuff
 
-.post-content {
-  .button {
-    a {
-      text-decoration: none;
-      border-bottom: none !important;
-    }
-  }
-  a {
-    border-bottom: $link-color 0.125em solid;
-    .dark-theme & {
-      border-bottom: darken($link-color, 15) 0.125em solid;
-    }
-  }
+.title_area {
+  font-size: xxx-large !important;
+  font-weight: bold;
 }
 
-#search-query {
-  color: $link-color !important;
-  .dark-theme & {
-    border-bottom: darken($link-color, 15);
-  }
+.title {
+  @extend h2;
+  line-height: $body-line-height;
 }
+
+.groupheader {
+  @extend h3;
+}
+
+/* @group Link Styling */
+
+a {
+  color: $base03;
+  font-weight: normal;
+  text-decoration: none;
+}
+
+.contents a:visited {
+  color: $cyan;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.contents a.qindexHL:visited {
+  color: #ffffff;
+}
+
+a.el {
+  font-weight: bold;
+}
+
+a.elRef {
+  text-decoration: underline;
+}
+
+a.code,
+a.code:visited,
+a.line,
+a.line:visited {
+  color: $cyan;
+}
+
+a.codeRef,
+a.codeRef:visited,
+a.lineRef,
+a.lineRef:visited {
+  color: $cyan;
+}
+
+.memItemLeft {
+  color: $orange;
+}
+
+/* @group Member Descriptions */
+
+table.memberdecls {
+  border-spacing: 0px;
+  padding: 0px;
+}
+
+.memberdecls td,
+.fieldtable tr {
+  transition-property: background-color, box-shadow;
+  transition-duration: 0.5s;
+}
+
+.memberdecls td.glow,
+.fieldtable tr.glow {
+  background-color: $base00;
+  box-shadow: 0 0 15px $base00;
+}
+
+.mdescLeft,
+.mdescRight,
+.memItemLeft,
+.memItemRight,
+.memTemplItemLeft,
+.memTemplItemRight,
+.memTemplParams {
+  background-color: $base2;
+  border: none;
+  margin: 4px;
+  padding: 1px 0 0 8px;
+}
+
+.mdescLeft,
+.mdescRight {
+  padding: 0px 8px 4px 8px;
+  color: $base00;
+}
+
+.memSeparator {
+  border-bottom: 1px solid $yellow;
+  line-height: 1px;
+  margin: 0px;
+  padding: 0px;
+}
+
+.memItemLeft,
+.memTemplItemLeft {
+  white-space: nowrap;
+}
+
+.memItemRight,
+.memTemplItemRight {
+  width: 100%;
+}
+
+.memTemplParams {
+  color: $cyan;
+  white-space: nowrap;
+  font-size: 80%;
+}
+
+/* @end */
+
+/* @group Member Details */
+
+/* Styles for detailed member documentation */
+
+.memtitle {
+  padding: 8px;
+  border-top: 1px solid $yellow;
+  border-left: 1px solid $yellow;
+  border-right: 1px solid $yellow;
+  border-top-right-radius: 4px;
+  border-top-left-radius: 4px;
+  margin-bottom: -1px;
+  background-image: none;
+  background-repeat: repeat-x;
+  background-color: $base2;
+  color: $base03;
+  line-height: 1.25;
+  font-weight: 300;
+  float: left;
+}
+
+.permalink {
+  font-size: 65%;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.memtemplate {
+  font-size: 80%;
+  color: $violet;
+  font-weight: bold;
+  margin-left: 9px;
+}
+
+.memnav {
+  background-color: $violet;
+  border: 1px solid $yellow;
+  text-align: center;
+  margin: 2px;
+  margin-right: 15px;
+  padding: 2px;
+}
+
+.mempage {
+  width: 100%;
+}
+
+.memitem {
+  padding: 0;
+  margin-bottom: 10px;
+  margin-right: 5px;
+  transition: box-shadow 0.5s linear;
+  display: table !important;
+  width: 100%;
+}
+
+.memitem.glow {
+  box-shadow: 0 0 15px $magenta;
+}
+
+.memname {
+  font-weight: 400;
+  margin-left: 6px;
+}
+
+.memname td {
+  vertical-align: bottom;
+}
+
+.memproto,
+dl.reflist dt {
+  border-top: 1px solid $yellow;
+  border-left: 1px solid $yellow;
+  border-right: 1px solid $yellow;
+  padding: 6px 0px 6px 0px;
+  color: $base02;
+  font-weight: bold;
+  text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.9);
+  background-color: $base2;
+  /* opera specific markup */
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.15);
+  border-top-right-radius: 4px;
+}
+
+.overload {
+  font-family: "courier new", courier, monospace;
+  font-size: 65%;
+}
+
+.memdoc,
+dl.reflist dd {
+  border-bottom: 1px solid $yellow;
+  border-left: 1px solid $yellow;
+  border-right: 1px solid $yellow;
+  padding: 6px 10px 2px 10px;
+  background-color: color.scale($base3, $lightness: +10%);
+  border-top-width: 0;
+  background-image: url("nav_g.png");
+  background-repeat: repeat-x;
+  background-color: color.scale($base3, $lightness: +10%);
+  /* opera specific markup */
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.15);
+  /* firefox specific markup */
+  -moz-border-radius-bottomleft: 4px;
+  -moz-border-radius-bottomright: 4px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.15) 5px 5px 5px;
+  /* webkit specific markup */
+  -webkit-border-bottom-left-radius: 4px;
+  -webkit-border-bottom-right-radius: 4px;
+  -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.15);
+}
+
+dl.reflist dt {
+  padding: 5px;
+}
+
+dl.reflist dd {
+  margin: 0px 0px 10px 0px;
+  padding: 5px;
+}
+
+.paramkey {
+  text-align: right;
+}
+
+.paramtype {
+  white-space: nowrap;
+}
+
+.paramname {
+  color: $green;
+  white-space: nowrap;
+}
+.paramname em {
+  font-style: normal;
+}
+.paramname code {
+  line-height: 14px;
+}
+
+.params,
+.retval,
+.exception,
+.tparams {
+  margin-left: 0px;
+  padding-left: 0px;
+}
+
+.params .paramname,
+.retval .paramname,
+.tparams .paramname,
+.exception .paramname {
+  font-weight: bold;
+  vertical-align: top;
+}
+
+.params .paramtype,
+.tparams .paramtype {
+  font-style: italic;
+  vertical-align: top;
+}
+
+.params .paramdir,
+.tparams .paramdir {
+  font-family: monospace;
+  vertical-align: top;
+}
+
+table.mlabels {
+  border-spacing: 0px;
+}
+
+td.mlabels-left {
+  width: 100%;
+  padding: 0px;
+}
+
+td.mlabels-right {
+  vertical-align: bottom;
+  padding: 0px;
+  white-space: nowrap;
+}
+
+span.mlabels {
+  margin-left: 8px;
+}
+
+span.mlabel {
+  background-color: $red;
+  border-top: 1px solid $orange;
+  border-left: 1px solid $orange;
+  border-right: 1px solid $orange;
+  border-bottom: 1px solid $orange;
+  text-shadow: none;
+  color: $base3;
+  margin-right: 4px;
+  padding: 2px 3px;
+  border-radius: 3px;
+  font-size: 7pt;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+/* @end */
+
+.outlink {
+  color: $orange;
+}
+
+/* these are for tree view inside a (index) page */
+
+div.directory {
+  margin: 10px 0px;
+  border-top: 1px solid $base2;
+  border-bottom: 1px solid $base2;
+  width: 100%;
+}
+
+.directory table {
+  border-collapse: collapse;
+}
+
+.directory td {
+  margin: 0px;
+  padding: 0px;
+  vertical-align: top;
+}
+
+.directory td.entry {
+  white-space: nowrap;
+  padding-right: 6px;
+  padding-top: 3px;
+}
+
+.directory td.entry a {
+  outline: none;
+}
+
+.directory td.entry a img {
+  border: none;
+}
+
+.directory td.desc {
+  width: 100%;
+  padding-left: 6px;
+  padding-right: 6px;
+  padding-top: 3px;
+  border-left: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.directory tr.even {
+  padding-left: 6px;
+  background-color: $base2;
+}
+
+.directory img {
+  vertical-align: -30%;
+}
+
+.directory .levels {
+  white-space: nowrap;
+  width: 100%;
+  text-align: right;
+  font-size: 9pt;
+}
+
+.directory .levels span {
+  cursor: pointer;
+  padding-left: 2px;
+  padding-right: 2px;
+  color: $violet;
+}
+
+.arrow {
+  color: $violet;
+  user-select: none;
+  cursor: pointer;
+  font-size: 80%;
+  display: inline-block;
+  width: 16px;
+  height: 22px;
+}
+
+.icon {
+  font-family: Arial, Helvetica;
+  font-weight: bold;
+  font-size: 12px;
+  height: 14px;
+  width: 16px;
+  display: inline-block;
+  background-color: #728dc1;
+  color: white;
+  text-align: center;
+  border-radius: 4px;
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
+.icona {
+  width: 24px;
+  height: 22px;
+  display: inline-block;
+}
+
+.iconfopen {
+  width: 24px;
+  height: 18px;
+  margin-bottom: 4px;
+  background-image: url("folderopen.png");
+  background-position: 0px -4px;
+  background-repeat: repeat-y;
+  vertical-align: top;
+  display: inline-block;
+}
+
+.iconfclosed {
+  width: 24px;
+  height: 18px;
+  margin-bottom: 4px;
+  background-image: url("folderclosed.png");
+  background-position: 0px -4px;
+  background-repeat: repeat-y;
+  vertical-align: top;
+  display: inline-block;
+}
+
+.icondoc {
+  width: 24px;
+  height: 18px;
+  margin-bottom: 4px;
+  background-image: url("doc.png");
+  background-position: 0px -4px;
+  background-repeat: repeat-y;
+  vertical-align: top;
+  display: inline-block;
+}
+
+table.directory {
+  font: 400 14px Roboto, sans-serif;
+}
+
+/* @end */

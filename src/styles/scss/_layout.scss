@@ -1,0 +1,38 @@
+.grid-contents {
+  display: grid;
+  grid-template-rows: 20fr auto auto auto;
+  grid-template-columns: 20fr 60fr 20fr;
+  grid-template-areas:
+    "project project project "
+    "header header header"
+    ". main ."
+    "footer footer footer";
+}
+
+#top {
+  grid-area: project;
+}
+
+.header {
+  grid-area: header;
+}
+
+.contents {
+  grid-area: main;
+}
+
+.footer {
+  grid-area: footer;
+}
+
+.summary {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: flex-end;
+  margin: 0 -10px;
+  a {
+    display: flex;
+    white-space: nowrap;
+    margin: 0 10px;
+  }
+}

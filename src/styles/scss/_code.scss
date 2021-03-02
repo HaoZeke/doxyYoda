@@ -133,3 +133,11 @@ div {
 pre.fragment {
   background-color: white;
 }
+
+a.code, a.code:visited, a.line, a.line:visited {
+	color: #4665A2;
+}
+
+a.codeRef, a.codeRef:visited, a.lineRef, a.lineRef:visited {
+	color: #4665A2;
+}

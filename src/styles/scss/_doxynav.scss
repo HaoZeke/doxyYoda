@@ -1,0 +1,72 @@
+// The main menu
+.sm-dox {
+  reset: all;
+}
+
+// Side nav
+
+#side-nav {
+  overflow: visible; /* reset ul rule for scroll bar in GENERATE_TREEVIEW window */
+  #nav-tree {
+    background-image: none;
+    background-color: inherit;
+    font-size: inherit;
+    .item {
+      line-height: $body-line-height;
+      text-rendering: optimizeLegibility !important;
+      font-family: $sans-serif;
+      font-size: $base-text-md;
+      font-feature-settings: "liga", "tnum", "case", "calt", "zero", "ss01",
+        "locl";
+    }
+  }
+}
+
+.navpath ul {
+  background-image: none;
+  height: 30px;
+  line-height: 30px;
+  color: $base2;
+  border: solid 1px $base3;
+  overflow: hidden;
+  margin: 0px;
+  padding: 0px;
+}
+
+.navpath li {
+  list-style-type: none;
+  float: left;
+  padding-left: 10px;
+  padding-right: 15px;
+  background-image: url("bc_s.png");
+  background-repeat: no-repeat;
+  background-position: right;
+  color: $green;
+}
+
+.navpath li.navelem a {
+  height: 32px;
+  display: block;
+  text-decoration: none;
+  outline: none;
+  color: $base2;
+  font-family: $sans-serif;
+  text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+}
+
+.navpath li.navelem a:hover {
+  color: $base03;
+}
+
+.navpath li.footer {
+  list-style-type: none;
+  float: right;
+  padding-left: 10px;
+  padding-right: 15px;
+  background-image: none;
+  background-repeat: no-repeat;
+  background-position: right;
+  color: $violet;
+  font-size: 8pt;
+}
