@@ -12,10 +12,10 @@ LAYOUT_FILE            = "doxyYoda/src/xml/layout.xml"
 ** Why?
 Have you seen ~doxygen~ HTML? To go from:
 #+DOWNLOADED: screenshot @ 2021-03-02 00:51:00
-[[file:images/Why?/2021-03-02_00-51-00_screenshot.png]]
+[[file:images/why/2021-03-02_00-51-00_screenshot.png]]
 To:
 #+DOWNLOADED: screenshot @ 2021-03-02 00:51:40
-[[file:images/Why?/2021-03-02_00-51-40_screenshot.png]]
+[[file:images/why/2021-03-02_00-51-40_screenshot.png]]
 *** But... [x] does this
 - Doxyrest :: Does not allow embedding source inline (see above), ~doxyrest~ just doesn't capture the same level of information
 - Exhale / Breathe :: Can't even display source code, inline or otherwise
