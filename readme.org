@@ -21,8 +21,15 @@ Inside your ~Doxyfile~:
 #+begin_src conf
 HTML_HEADER            = "doxyYoda/src/html/header.html"
 HTML_FOOTER            = "doxyYoda/src/html/footer.html"
-HTML_EXTRA_STYLESHEET  = "doxyYoda/src/styles/style.css"
+HTML_EXTRA_STYLESHEET  = "doxyYoda/src/styles/doxyYoda.css"
 LAYOUT_FILE            = "doxyYoda/src/xml/layout.xml"
+#+end_src
+Or with the release, simply download the ~.tar.gz~ into the directory with the ~Doxyfile~ and:
+#+begin_src conf
+HTML_HEADER            = "doxyYoda/html/header.html"
+HTML_FOOTER            = "doxyYoda/html/footer.html"
+HTML_EXTRA_STYLESHEET  = "doxyYoda/css/doxyYoda.min.css"
+LAYOUT_FILE            = "doxyYoda/xml/layout.xml"
 #+end_src
 ** How?
 - [[https://sass-lang.com/documentation/cli/dart-sass][Dart sass]] is needed to compile the CSS
