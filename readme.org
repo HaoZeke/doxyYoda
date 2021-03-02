@@ -1,5 +1,5 @@
 * doxyYoda
-A theme for [[http://doxygen.nl/][Doxygen]].
+A theme for [[http://doxygen.nl/][Doxygen]]. The **only** theme to use [[https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout][CSS Grid]] and [[https://sass-lang.com/guide][Sass]]. Also uses MathJax 3.
 ** Usage
 Clone the project into the directory with your ~Doxyfile~.
 Inside your ~Doxyfile~:
@@ -10,10 +10,44 @@ HTML_EXTRA_STYLESHEET  = "doxyYoda/src/styles/style.css"
 LAYOUT_FILE            = "doxyYoda/src/xml/layout.xml"
 #+end_src
 ** Why?
-Have you seen doxygen HTML?
+Have you seen ~doxygen~ HTML? To go from:
+#+DOWNLOADED: screenshot @ 2021-03-02 00:51:00
+[[file:images/Why?/2021-03-02_00-51-00_screenshot.png]]
+To:
+#+DOWNLOADED: screenshot @ 2021-03-02 00:51:40
+[[file:images/Why?/2021-03-02_00-51-40_screenshot.png]]
+*** But... [x] does this
+- Doxyrest :: Does not allow embedding source inline (see above), ~doxyrest~ just doesn't capture the same level of information
+- Exhale / Breathe :: Can't even display source code, inline or otherwise
+Honestly, nothing captures C++ like Doxygen. Nothing. So inspite of the weird JS cruft its best not to fight it (*cough* [[https://foonathan.net/2019/11/standardese-post-mortem/][Standardese]]). This is it.
+- m.css :: is actually very good; used it for [[https://dseams.info][d-SEAMS]]; but this is better for me, and will migrate the rest of my projects later
+** How?
+- [[https://sass-lang.com/documentation/cli/dart-sass][Dart sass]] is needed to compile the CSS
+- The colors are taken from [[https://ethanschoonover.com/solarized/][Solarized Light]] and the [[https://github.com/HaoZeke/hugo-theme-hello-friend-ng-hz/branches][hello-friend-ng-hz]] Hugo theme
+- Fonts used are from Google Fonts (and Microsoft)
+  - [[https://github.com/microsoft/cascadia-code/][Cascadia]] / [[https://fonts.google.com/specimen/Fira+Code?category=Monospace&preview.text_type=custom#standard-styles][Fira Code]]
+  - [[http://vollkorn-typeface.com/][Vollkorn]]
+  - [[https://fonts.google.com/specimen/PT+Sans?category=Sans+Serif&preview.text_type=custom][Product Sans]]
+*** Development Workflow?
+Thanks for thinking of contributing! The workflow I use for making and tracking changes involves [[https://github.com/filewatcher/filewatcher-cli][filewatcher-cli]] and [[https://wiki.alpinelinux.org/wiki/Darkhttpd][darkhttpd]] along with an example project.
+#+begin_src bash
+# One
+filewatcher -s  '**/*.scss' "sass src/styles/scss/main.scss:src/styles/doxyYoda.css"
+# Two
+filewatcher -s  '../../symengine/* ./* ../../../../doxyYoda/**/*.{css,html,xml}' "doxygen Doxyfile-prj.cfg"
+#+end_src
+** Tree View?
+Unfortunately, as long as Doxygen keeps shipping silly ~jQuery~ based javascript scripts which write weird resizing logic into the HTML on the fly, tree view isn't very feasible.
+*** I really want it!
+There are some commented out sections relating to an attempt to work around the jQuery rubbish but it amounts to just rewriting the HTML in place (see commit 07cdb06). Might consider this later.
 ** Users
 - SymEngine
+* TODO Tasks
+** Add an example in-place
+** Better documentation
+** Minification / Autoprefixer / Other Goodies
+** Over-engineer with Webpack
 * Acknowledgments
-This project was conceived as part of SymEngine's Google Season of Docs 2020
+This project was conceived as part of SymEngine's Google Season of Docs 2020.
 * License
 [[https://www.apache.org/licenses/LICENSE-2.0.html][Apache version 2]]
