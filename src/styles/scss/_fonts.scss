@@ -1,13 +1,6 @@
 // Cascadia
 
-@font-face {
-    font-family: 'Cascadia Code';
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: local('Cascadia Code'), local('Cascadia Mono'),
-        url('https://cdn.jsdelivr.net/gh/amzrk2/web-font-archive@2.0.0/cascadia-code/cascadia.woff2') format('woff2'),
-}
+@import url("https://cdn.jsdelivr.net/npm/@xz/fonts@1/serve/cascadia-code.min.css");
 
-// Vollkorn / PT Sans / Fira Code
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Vollkorn:ital,wght@0,400;0,700;1,700&display=swap');
+// Vollkorn / PT Sans
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Vollkorn:ital,wght@0,400;0,700;1,700&display=swap');

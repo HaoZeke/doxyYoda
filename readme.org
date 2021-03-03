@@ -35,7 +35,7 @@ LAYOUT_FILE            = "doxyYoda/xml/layout.xml"
 - [[https://sass-lang.com/documentation/cli/dart-sass][Dart sass]] is needed to compile the CSS
 - The colors are taken from [[https://ethanschoonover.com/solarized/][Solarized Light]] and the [[https://github.com/HaoZeke/hugo-theme-hello-friend-ng-hz/branches][hello-friend-ng-hz]] Hugo theme
 - Fonts used are from Google Fonts (and Microsoft)
-  - [[https://github.com/microsoft/cascadia-code/][Cascadia]] / [[https://fonts.google.com/specimen/Fira+Code?category=Monospace&preview.text_type=custom#standard-styles][Fira Code]]
+  - [[https://github.com/microsoft/cascadia-code/][Cascadia]]
   - [[http://vollkorn-typeface.com/][Vollkorn]]
   - [[https://fonts.google.com/specimen/PT+Sans?category=Sans+Serif&preview.text_type=custom][Product Sans]]
 *** Development Workflow?
