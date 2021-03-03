@@ -106,6 +106,7 @@ div {
     color: $code-font-color;
     font-weight: 600;
     line-height: 1;
+    white-space: pre-wrap;
     text-wrap: unrestricted;
     text-indent: -53px;
     padding-left: 53px;
