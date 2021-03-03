@@ -43,6 +43,7 @@ LAYOUT_FILE            = "doxyYoda/xml/layout.xml"
   - [[https://github.com/microsoft/cascadia-code/][Cascadia]]
   - [[http://vollkorn-typeface.com/][Vollkorn]]
   - [[https://fonts.google.com/specimen/PT+Sans?category=Sans+Serif&preview.text_type=custom][Product Sans]]
+- Everything is minfied with [[https://github.com/tdewolff/minify][minify]]
 *** Development Workflow?
 Thanks for thinking of contributing! The workflow I use for making and tracking changes involves [[https://github.com/filewatcher/filewatcher-cli][filewatcher-cli]] and [[https://wiki.alpinelinux.org/wiki/Darkhttpd][darkhttpd]] along with an example project.
 #+begin_src bash
