@@ -46,6 +46,13 @@ MathJax = {
 </script>
 <!-- <link href="$relpath^$stylesheet" rel="stylesheet" type="text/css" /> -->
 $extrastylesheet
+<script type="text/javascript" >
+$(document).ready(function() {
+     $(".fragment").wrap("<details class='code-details'></details>");
+     $(".code-details").append("<summary>Code</summary>");
+ }
+)
+</script>
 </head>
 <body>
 <div class="grid-contents">
