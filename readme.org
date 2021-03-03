@@ -15,6 +15,11 @@ To:
 - Exhale / Breathe :: Can't even display source code, inline or otherwise
 Honestly, nothing captures C++ like Doxygen. Nothing. So inspite of the weird JS cruft its best not to fight it (*cough* [[https://foonathan.net/2019/11/standardese-post-mortem/][Standardese]]). This is it.
 - m.css :: is actually very good; used it for [[https://dseams.info][d-SEAMS]]; but this is better for me, and will migrate the rest of my projects later
+*** Features
+- CSS Grid layout
+  - With Sass
+- MathJax 3
+- Foldable inline code
 ** Usage
 Clone the project into the directory with your ~Doxyfile~.
 Inside your ~Doxyfile~:
