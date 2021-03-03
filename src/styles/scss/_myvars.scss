@@ -1,19 +1,5 @@
 @charset "UTF-8";
 
-// Syntax Highlighting
-// Kanged from rgoswami.me
-$code-border: #c4cfe5;
-$code-background: #242424;
-$code-font-color: #8a8a8a;
-$code-sidebar: #0f0;
-$code-keyword: #0087ff;
-$code-keywordtype: #ea215a;
-$code-keywordflow: #008000;
-$code-comment: #4e4e4e;
-$code-preprocessor:#5f8700;
-$code-stringliteral: #002080;
-$code-charliteral: #008080;
-
 // Solarized Light
 $base03:    #002b36;
 $base02:    #073642;
@@ -31,6 +17,20 @@ $violet:    #6c71c4;
 $blue:      #268bd2;
 $cyan:      #2aa198;
 $green:     #859900;
+
+// Syntax Highlighting
+// Kanged from rgoswami.me
+$code-border: #c4cfe5;
+$code-background: #242424;
+$code-font-color: #8a8a8a;
+$code-sidebar: #0f0;
+$code-keyword: #0087ff;
+$code-keywordtype: #ea215a;
+$code-keywordflow: #008000;
+$code-comment: #4e4e4e;
+$code-preprocessor:#5f8700;
+$code-stringliteral: $violet;
+$code-charliteral: #008080;
 
 /* Layout */
 $media-size-phone: "(max-width: 684px)";
