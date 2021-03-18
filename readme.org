@@ -58,6 +58,7 @@ Unfortunately, as long as Doxygen keeps shipping silly ~jQuery~ based javascript
 There are some commented out sections relating to an attempt to work around the jQuery rubbish but it amounts to just rewriting the HTML in place (see commit 07cdb06). Might consider this later.
 ** Users
 - [[https://symengine.org/symengine][SymEngine]]
+- [[https://dseams.info][d-SEAMS]]
 * TODO Tasks
 ** Add an example in-place
 ** Better documentation
