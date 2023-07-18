@@ -57,8 +57,10 @@ Unfortunately, as long as Doxygen keeps shipping silly ~jQuery~ based javascript
 *** I really want it!
 There are some commented out sections relating to an attempt to work around the jQuery rubbish but it amounts to just rewriting the HTML in place (see commit 07cdb06). Might consider this later.
 ** Users
-- [[https://symengine.org/symengine][SymEngine]]
-- [[https://dseams.info][d-SEAMS]]
+- [[https://symengine.org/symengine][SymEngine C++ API documentaion]]
+- [[https://docs.dseams.info][d-SEAMS API Documentation]]
+- [[https://haozeke.github.io/eigen/][Eigen v3.4.0 (git) Unofficial API Documentation]]
+- [[https://atomic-solvers.github.io/featom/][featom API Documentation]]
 * TODO Tasks
 ** Add an example in-place
 ** Better documentation
