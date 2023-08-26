@@ -61,6 +61,7 @@ There are some commented out sections relating to an attempt to work around the 
 - [[https://docs.dseams.info][d-SEAMS API Documentation]]
 - [[https://haozeke.github.io/eigen/][Eigen v3.4.0 (git) Unofficial API Documentation]]
 - [[https://atomic-solvers.github.io/featom/][featom API Documentation]]
+- [[https://haozeke.github.io/GaussJacobiQuad/][GaussJacobiQuad API Documentation]]
 * TODO Tasks
 ** Add an example in-place
 ** Better documentation
