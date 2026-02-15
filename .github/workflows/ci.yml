@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install dart-sass
+        run: |
+          SASS_VERSION="1.86.3"
+          curl -sL "https://github.com/sass/dart-sass/releases/download/${SASS_VERSION}/dart-sass-${SASS_VERSION}-linux-x64.tar.gz" | tar xz
+          echo "$PWD/dart-sass" >> "$GITHUB_PATH"
+
+      - name: Compile SCSS
+        run: sass src/styles/scss/main.scss src/styles/doxyYoda.css
+
+      - name: Compile minified CSS
+        run: sass --style=compressed --no-source-map src/styles/scss/main.scss src/styles/doxyYoda.min.css
+
+      - name: Install Doxygen and Graphviz
+        run: sudo apt-get update && sudo apt-get install -y doxygen graphviz
+
+      - name: Build demo
+        run: doxygen demo/Doxyfile
+
+      - name: Verify HTML is balanced
+        run: |
+          python3 -c "
+          import re, sys
+          with open('demo/build/html/index.html') as f:
+              html = f.read()
+          opens = len(re.findall(r'<div\b', html))
+          closes = len(re.findall(r'</div>', html))
+          if opens != closes:
+              print(f'Unbalanced divs: {opens} opens, {closes} closes')
+              sys.exit(1)
+          print(f'HTML balanced: {opens} div pairs')
+          "
