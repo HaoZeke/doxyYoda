@@ -1,0 +1,59 @@
+// =============================================================================
+// Modern Reset & Base Styles
+// =============================================================================
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  text-size-adjust: 100%;
+}
+
+img,
+svg,
+video,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+
+// Selection styling
+::selection {
+  background: var(--accent-blue-light);
+  color: var(--text-primary);
+}
+
+// Custom scrollbar (webkit)
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-primary);
+  border-radius: var(--radius-sm);
+
+  &:hover {
+    background: var(--text-muted);
+  }
+}
+
+// Firefox scrollbar
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-primary) var(--bg-secondary);
+}
+
+// Smooth transitions for dark mode switching
+body {
+  transition: background-color var(--transition-normal),
+    color var(--transition-normal);
+}

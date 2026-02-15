@@ -40,12 +40,16 @@ $mathjax
 $darkmode
 <!-- <link href="$relpath^$stylesheet" rel="stylesheet" type="text/css" /> -->
 $extrastylesheet
-<script type="text/javascript" >
-$(document).ready(function() {
-     $(".fragment").wrap("<details class='code-details'></details>");
-     $(".code-details").append("<summary>Code</summary>");
- }
-)
+<script type="text/javascript">
+// Dark mode: restore preference from localStorage
+(function() {
+  var stored = localStorage.getItem('doxyYoda-theme');
+  if (stored === 'dark') {
+    document.documentElement.classList.add('dark');
+  } else if (stored === 'light') {
+    document.documentElement.classList.add('light');
+  }
+})();
 </script>
 </head>
 <body>
@@ -63,5 +67,53 @@ $(document).ready(function() {
 </a>
 <!--END PROJECT_LOGO-->
 <span class="project_info">$projectname $projectnumber</span>
+<button class="dark-mode-toggle" id="darkModeToggle" title="Toggle dark mode" aria-label="Toggle dark mode">&#9790;</button>
 </nav>
 <!-- end header part -->
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', function() {
+  // Code folding: wrap .fragment elements in <details>
+  var fragments = document.querySelectorAll('.fragment');
+  fragments.forEach(function(frag) {
+    var details = document.createElement('details');
+    details.className = 'code-details';
+    var summary = document.createElement('summary');
+    summary.textContent = 'Code';
+    frag.parentNode.insertBefore(details, frag);
+    details.appendChild(summary);
+    details.appendChild(frag);
+  });
+
+  // Copy-to-clipboard: add copy button to div.fragment elements
+  document.querySelectorAll('div.fragment').forEach(function(frag) {
+    var btn = document.createElement('button');
+    btn.className = 'copy-btn';
+    btn.textContent = 'Copy';
+    btn.addEventListener('click', function() {
+      var lines = frag.querySelectorAll('.line');
+      var text = Array.from(lines).map(function(l) { return l.textContent; }).join('\n');
+      if (!text) text = frag.textContent;
+      navigator.clipboard.writeText(text).then(function() {
+        btn.textContent = 'Copied!';
+        setTimeout(function() { btn.textContent = 'Copy'; }, 2000);
+      });
+    });
+    frag.appendChild(btn);
+  });
+
+  // Dark mode toggle
+  var toggle = document.getElementById('darkModeToggle');
+  if (toggle) {
+    function updateIcon() {
+      toggle.innerHTML = document.documentElement.classList.contains('dark') ? '&#9788;' : '&#9790;';
+    }
+    updateIcon();
+    toggle.addEventListener('click', function() {
+      var isDark = document.documentElement.classList.toggle('dark');
+      document.documentElement.classList.remove('light');
+      localStorage.setItem('doxyYoda-theme', isDark ? 'dark' : 'light');
+      updateIcon();
+    });
+  }
+});
+</script>

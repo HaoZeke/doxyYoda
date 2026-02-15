@@ -1,51 +1,52 @@
-@use "sass:color";
+// =============================================================================
+// Code Blocks & Syntax Highlighting
+// =============================================================================
 
 pre {
-  font-family: $mono;
+  font-family: var(--font-mono);
 }
 
 .code {
-  font-family: $mono;
-  color: #00afaf;
+  font-family: var(--font-mono);
+  color: var(--accent-cyan);
 }
 
-/* @group Code Colorization */
+// Syntax highlighting
 span {
   &.keyword {
-    color: $code-keyword;
+    color: var(--code-keyword);
   }
 
   &.keywordtype {
-    color: $code-keywordtype;
+    color: var(--code-keywordtype);
   }
 
   &.keywordflow {
-    color: $code-keywordflow;
+    color: var(--code-keywordflow);
   }
 
   &.comment {
-    color: $code-comment;
+    color: var(--code-comment);
   }
 
   &.preprocessor {
-    color: $code-preprocessor;
+    color: var(--code-preprocessor);
   }
 
   &.stringliteral {
-    color: $code-stringliteral;
+    color: var(--code-stringliteral);
   }
 
   &.charliteral {
-    color: $code-charliteral;
+    color: var(--code-charliteral);
   }
 
-  // Unused
   &.vhdldigit {
     color: #ff00ff;
   }
 
   &.vhdlchar {
-    color: #000000;
+    color: var(--text-primary);
   }
 
   &.vhdlkeyword {
@@ -53,20 +54,20 @@ span {
   }
 
   &.vhdllogic {
-    color: #ff0000;
+    color: var(--accent-red);
   }
 
   &.lineno {
     padding-right: 4px;
     text-align: right;
-    border-right: 2px solid $code-sidebar;
-    background-color: $code-background;
-    color: color.scale($code-font-color, $lightness: +10%);
+    border-right: 1px solid var(--border-primary);
+    background-color: var(--code-bg);
+    color: var(--text-muted);
     white-space: pre;
     &.a {
-      background-color: #d8d8d8;
+      background-color: var(--bg-secondary);
       &:hover {
-        background-color: #c8c8c8;
+        background-color: var(--border-primary);
       }
     }
   }
@@ -75,53 +76,56 @@ span {
 .fragment {
   text-align: left;
   direction: ltr;
-  overflow-x: auto; /*Fixed: fragment lines overlap floating elements*/
+  overflow-x: auto;
   overflow-y: hidden;
 }
 
 pre.fragment {
-  border: 1px solid $code-border;
-  background-color: $code-background;
-  padding: 4px 6px;
-  margin: 4px 8px 4px 2px;
+  border: 1px solid var(--code-border);
+  background-color: var(--code-bg);
+  padding: 1rem;
+  margin: 0.5rem 0;
   overflow: auto;
   word-wrap: break-word;
-  font-size: 9pt;
-  line-height: 125%;
-  font-family: monospace, fixed;
-  font-size: 105%;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  font-family: var(--font-mono);
+  border-radius: var(--radius-md);
+  color: var(--code-text);
 }
 
 div {
   &.fragment {
-    padding: 0 0 1px 0; /*Fixed: last line underline overlap border*/
-    margin: 4px 8px 4px 2px;
-    background-color: $code-background;
-    border: 1px solid $code-border;
+    padding: 1rem;
+    margin: 0.5rem 0;
+    background-color: var(--code-bg);
+    border: 1px solid var(--code-border);
+    border-radius: var(--radius-md);
   }
 
   &.line {
-    font-family: $mono;
-    font-size: 1em;
-    color: $code-font-color;
-    font-weight: 600;
-    line-height: 1;
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    color: var(--code-text);
+    font-weight: 500;
+    line-height: 1.5;
     white-space: pre-wrap;
     text-wrap: unrestricted;
     text-indent: -53px;
     padding-left: 53px;
-    padding-bottom: 0px;
-    margin: 0px;
-    transition-property: background-color, box-shadow;
-    transition-duration: 0.5s;
+    padding-bottom: 0;
+    margin: 0;
+    transition: background-color var(--transition-normal),
+      box-shadow var(--transition-normal);
+
     &:after {
       content: "\000A";
       white-space: pre;
     }
 
     &.glow {
-      background-color: cyan;
-      box-shadow: 0 0 10px cyan;
+      background-color: var(--accent-cyan);
+      box-shadow: 0 0 10px var(--accent-cyan);
     }
   }
 }
@@ -130,15 +134,113 @@ div {
   user-select: none;
 }
 
-// Not really code
-pre.fragment {
-  background-color: white;
+// Code details (folded code) with smooth open/close
+.code-details {
+  margin: 0.5rem 0;
+
+  summary {
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--code-border);
+    border-radius: var(--radius-md);
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    transition: background-color var(--transition-fast), border-radius var(--transition-fast);
+    user-select: none;
+
+    &:hover {
+      background-color: var(--bg-surface);
+    }
+
+    // Custom disclosure triangle
+    &::marker,
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    &::before {
+      content: "▸ ";
+      display: inline;
+      font-size: 0.75em;
+      transition: transform var(--transition-fast);
+    }
+  }
+
+  &[open] summary {
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
+    border-bottom: none;
+
+    &::before {
+      content: "▾ ";
+    }
+  }
+
+  // Animate the content appearance
+  .fragment {
+    animation: details-open var(--transition-normal) ease;
+  }
+
+  &[open] .fragment {
+    margin-top: 0;
+    border-top: none;
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
+  }
 }
 
-a.code, a.code:visited, a.line, a.line:visited {
-	color: #4665A2;
+@keyframes details-open {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-a.codeRef, a.codeRef:visited, a.lineRef, a.lineRef:visited {
-	color: #4665A2;
+// Copy button for code blocks
+.copy-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--code-border);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity var(--transition-fast), background-color var(--transition-fast);
+
+  &:hover {
+    background: var(--bg-surface);
+    color: var(--text-primary);
+  }
+}
+
+div.fragment {
+  position: relative;
+
+  &:hover .copy-btn {
+    opacity: 1;
+  }
+}
+
+// Code links
+a.code,
+a.code:visited,
+a.line,
+a.line:visited {
+  color: var(--code-link);
+}
+
+a.codeRef,
+a.codeRef:visited,
+a.lineRef,
+a.lineRef:visited {
+  color: var(--code-link);
 }

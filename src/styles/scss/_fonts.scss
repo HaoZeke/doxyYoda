@@ -1,6 +1,5 @@
-// Cascadia
+// Crimson Text (body) + Maiden Orange (headings) + Hack (mono) + Vollkorn (serif, optional)
+@import url("https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Maiden+Orange&family=Vollkorn:ital,wght@0,400;0,700;1,700&display=swap");
 
-@import url("https://cdn.jsdelivr.net/npm/@xz/fonts@1/serve/cascadia-code.min.css");
-
-// Vollkorn / PT Sans
-@import url('https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Vollkorn:ital,wght@0,400;0,700;1,700&display=swap');
+// Hack font via CDN
+@import url("https://cdn.jsdelivr.net/npm/hack-font@3/build/web/hack.min.css");

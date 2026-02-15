@@ -1,8 +1,5 @@
-// Solarized
-/* light is default mode, so pair with general html definition */
-html, .light { @include rebase($base3,$base2,$base1,$base0,$base00,$base01,$base02,$base03)}
-.dark  { @include rebase($base03,$base02,$base01,$base00,$base0,$base1,$base2,$base3)}
-html * {
-    color-profile: sRGB;
-    rendering-intent: auto;
+// Color application — dark mode handled entirely by CSS custom properties in _variables.scss
+html {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
 }

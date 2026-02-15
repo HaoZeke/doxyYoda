@@ -1,42 +1,71 @@
+// =============================================================================
+// Layout — rgoswami.me-style adaptive sidebar with CSS Grid
+// =============================================================================
+//
+// Actual HTML structure (direct children of .grid-contents):
+//   #top          — title area + menus (header.html opens, Doxygen closes)
+//   #doc-content  — .header, .contents/.PageDoc (Doxygen opens, footer.html closes)
+//   .footer       — footer (from footer.html, now a direct grid child)
+//
+// With GENERATE_TREEVIEW = YES, Doxygen also creates:
+//   #side-nav     — tree view sidebar (direct child of .grid-contents)
+
+html {
+  min-height: 100vh;
+}
+
+body {
+  min-height: 100vh;
+}
+
+// --- Grid container (rgoswami.me pattern) ---
 .grid-contents {
   display: grid;
-  grid-template-rows: 20fr auto auto auto;
-  grid-template-columns: 20fr 60fr 20fr;
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: auto 20fr 20fr 20fr var(--sidebar-width);
   grid-template-areas:
-    "project project project "
-    "header header header"
-    ". main ."
-    "footer footer footer";
+    "top    top    top    top    top"
+    ".      main   main   main   sidebar"
+    "foot   foot   foot   foot   foot";
 }
+
+// --- Grid area assignments (direct children only) ---
 
 #top {
-  grid-area: project;
+  grid-area: top;
 }
 
-.header {
-  grid-area: header;
-}
-
-.contents {
+#doc-content {
   grid-area: main;
+  min-width: 0;
+  padding: var(--space-4) var(--space-5);
 }
 
+#side-nav {
+  grid-area: sidebar;
+}
+
+.footer,
+#nav-path {
+  grid-area: foot;
+}
+
+// --- Content inside #doc-content (normal flow, not grid items) ---
+
+.contents,
 .PageDoc {
-  grid-area: main;
+  max-width: 75rem;
 }
 
-.footer {
-  grid-area: footer;
-}
-
+// --- Summary (flex row of quick-links) ---
 .summary {
   display: flex;
   flex-direction: row-reverse;
   align-items: flex-end;
-  margin: 0 -10px;
+  gap: var(--space-4);
+
   a {
     display: flex;
     white-space: nowrap;
-    margin: 0 10px;
   }
 }

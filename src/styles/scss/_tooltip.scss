@@ -1,170 +1,211 @@
-/* tooltip related style info */
+// =============================================================================
+// Tooltips (PowerTip)
+// =============================================================================
 
 .ttc {
-        position: absolute;
-        display: none;
+  position: absolute;
+  display: none;
 }
 
 #powerTip {
-	cursor: default;
-	white-space: nowrap;
-	background-color: white;
-	border: 1px solid gray;
-	border-radius: 4px 4px 4px 4px;
-	box-shadow: 1px 1px 7px gray;
-	display: none;
-	font-size: smaller;
-	max-width: 80%;
-	opacity: 0.9;
-	padding: 1ex 1em 1em;
-	position: absolute;
-	z-index: 2147483647;
+  cursor: default;
+  white-space: nowrap;
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  display: none;
+  font-size: 0.84rem;
+  max-width: 80%;
+  opacity: 0.95;
+  padding: 0.75rem 1rem;
+  position: absolute;
+  z-index: 2147483647;
 }
 
 #powerTip div.ttdoc {
-        color: grey;
-	font-style: italic;
+  color: var(--text-muted);
+  font-style: italic;
 }
 
 #powerTip div.ttname a {
-        font-weight: bold;
+  font-weight: bold;
 }
 
 #powerTip div.ttname {
-        font-weight: bold;
+  font-weight: bold;
 }
 
 #powerTip div.ttdeci {
-        color: #006318;
+  color: var(--accent-green);
 }
 
 #powerTip div {
-        margin: 0px;
-        padding: 0px;
-        font: 12px/16px Roboto,sans-serif;
+  margin: 0;
+  padding: 0;
+  font: 0.84rem / 1.33 var(--font-sans);
 }
 
-#powerTip:before, #powerTip:after {
-	content: "";
-	position: absolute;
-	margin: 0px;
+// Arrow positioning (kept from original — functional, no changes needed)
+
+#powerTip:before,
+#powerTip:after {
+  content: "";
+  position: absolute;
+  margin: 0;
 }
 
-#powerTip.n:after,  #powerTip.n:before,
-#powerTip.s:after,  #powerTip.s:before,
-#powerTip.w:after,  #powerTip.w:before,
-#powerTip.e:after,  #powerTip.e:before,
-#powerTip.ne:after, #powerTip.ne:before,
-#powerTip.se:after, #powerTip.se:before,
-#powerTip.nw:after, #powerTip.nw:before,
-#powerTip.sw:after, #powerTip.sw:before {
-	border: solid transparent;
-	content: " ";
-	height: 0;
-	width: 0;
-	position: absolute;
+#powerTip.n:after,
+#powerTip.n:before,
+#powerTip.s:after,
+#powerTip.s:before,
+#powerTip.w:after,
+#powerTip.w:before,
+#powerTip.e:after,
+#powerTip.e:before,
+#powerTip.ne:after,
+#powerTip.ne:before,
+#powerTip.se:after,
+#powerTip.se:before,
+#powerTip.nw:after,
+#powerTip.nw:before,
+#powerTip.sw:after,
+#powerTip.sw:before {
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
 }
 
-#powerTip.n:after,  #powerTip.s:after,
-#powerTip.w:after,  #powerTip.e:after,
-#powerTip.nw:after, #powerTip.ne:after,
-#powerTip.sw:after, #powerTip.se:after {
-	border-color: rgba(255, 255, 255, 0);
+#powerTip.n:after,
+#powerTip.s:after,
+#powerTip.w:after,
+#powerTip.e:after,
+#powerTip.nw:after,
+#powerTip.ne:after,
+#powerTip.sw:after,
+#powerTip.se:after {
+  border-color: rgba(255, 255, 255, 0);
 }
 
-#powerTip.n:before,  #powerTip.s:before,
-#powerTip.w:before,  #powerTip.e:before,
-#powerTip.nw:before, #powerTip.ne:before,
-#powerTip.sw:before, #powerTip.se:before {
-	border-color: rgba(128, 128, 128, 0);
+#powerTip.n:before,
+#powerTip.s:before,
+#powerTip.w:before,
+#powerTip.e:before,
+#powerTip.nw:before,
+#powerTip.ne:before,
+#powerTip.sw:before,
+#powerTip.se:before {
+  border-color: rgba(128, 128, 128, 0);
 }
 
-#powerTip.n:after,  #powerTip.n:before,
-#powerTip.ne:after, #powerTip.ne:before,
-#powerTip.nw:after, #powerTip.nw:before {
-	top: 100%;
+#powerTip.n:after,
+#powerTip.n:before,
+#powerTip.ne:after,
+#powerTip.ne:before,
+#powerTip.nw:after,
+#powerTip.nw:before {
+  top: 100%;
 }
 
-#powerTip.n:after, #powerTip.ne:after, #powerTip.nw:after {
-	border-top-color: #FFFFFF;
-	border-width: 10px;
-	margin: 0px -10px;
+#powerTip.n:after,
+#powerTip.ne:after,
+#powerTip.nw:after {
+  border-top-color: var(--bg-primary);
+  border-width: 10px;
+  margin: 0 -10px;
 }
 #powerTip.n:before {
-	border-top-color: #808080;
-	border-width: 11px;
-	margin: 0px -11px;
+  border-top-color: var(--border-primary);
+  border-width: 11px;
+  margin: 0 -11px;
 }
-#powerTip.n:after, #powerTip.n:before {
-	left: 50%;
-}
-
-#powerTip.nw:after, #powerTip.nw:before {
-	right: 14px;
+#powerTip.n:after,
+#powerTip.n:before {
+  left: 50%;
 }
 
-#powerTip.ne:after, #powerTip.ne:before {
-	left: 14px;
+#powerTip.nw:after,
+#powerTip.nw:before {
+  right: 14px;
 }
 
-#powerTip.s:after,  #powerTip.s:before,
-#powerTip.se:after, #powerTip.se:before,
-#powerTip.sw:after, #powerTip.sw:before {
-	bottom: 100%;
+#powerTip.ne:after,
+#powerTip.ne:before {
+  left: 14px;
 }
 
-#powerTip.s:after, #powerTip.se:after, #powerTip.sw:after {
-	border-bottom-color: #FFFFFF;
-	border-width: 10px;
-	margin: 0px -10px;
+#powerTip.s:after,
+#powerTip.s:before,
+#powerTip.se:after,
+#powerTip.se:before,
+#powerTip.sw:after,
+#powerTip.sw:before {
+  bottom: 100%;
 }
 
-#powerTip.s:before, #powerTip.se:before, #powerTip.sw:before {
-	border-bottom-color: #808080;
-	border-width: 11px;
-	margin: 0px -11px;
+#powerTip.s:after,
+#powerTip.se:after,
+#powerTip.sw:after {
+  border-bottom-color: var(--bg-primary);
+  border-width: 10px;
+  margin: 0 -10px;
 }
 
-#powerTip.s:after, #powerTip.s:before {
-	left: 50%;
+#powerTip.s:before,
+#powerTip.se:before,
+#powerTip.sw:before {
+  border-bottom-color: var(--border-primary);
+  border-width: 11px;
+  margin: 0 -11px;
 }
 
-#powerTip.sw:after, #powerTip.sw:before {
-	right: 14px;
+#powerTip.s:after,
+#powerTip.s:before {
+  left: 50%;
 }
 
-#powerTip.se:after, #powerTip.se:before {
-	left: 14px;
+#powerTip.sw:after,
+#powerTip.sw:before {
+  right: 14px;
 }
 
-#powerTip.e:after, #powerTip.e:before {
-	left: 100%;
+#powerTip.se:after,
+#powerTip.se:before {
+  left: 14px;
+}
+
+#powerTip.e:after,
+#powerTip.e:before {
+  left: 100%;
 }
 #powerTip.e:after {
-	border-left-color: #FFFFFF;
-	border-width: 10px;
-	top: 50%;
-	margin-top: -10px;
+  border-left-color: var(--bg-primary);
+  border-width: 10px;
+  top: 50%;
+  margin-top: -10px;
 }
 #powerTip.e:before {
-	border-left-color: #808080;
-	border-width: 11px;
-	top: 50%;
-	margin-top: -11px;
+  border-left-color: var(--border-primary);
+  border-width: 11px;
+  top: 50%;
+  margin-top: -11px;
 }
 
-#powerTip.w:after, #powerTip.w:before {
-	right: 100%;
+#powerTip.w:after,
+#powerTip.w:before {
+  right: 100%;
 }
 #powerTip.w:after {
-	border-right-color: #FFFFFF;
-	border-width: 10px;
-	top: 50%;
-	margin-top: -10px;
+  border-right-color: var(--bg-primary);
+  border-width: 10px;
+  top: 50%;
+  margin-top: -10px;
 }
 #powerTip.w:before {
-	border-right-color: #808080;
-	border-width: 11px;
-	top: 50%;
-	margin-top: -11px;
+  border-right-color: var(--border-primary);
+  border-width: 11px;
+  top: 50%;
+  margin-top: -11px;
 }

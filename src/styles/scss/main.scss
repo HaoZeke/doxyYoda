@@ -12,16 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// @import "default/baseDoxygen";
-@import "lib/responsive_type/vars";
-@import "mixins/mix";
-
-@import "myvars";
-@import "fonts";
-@import "tooltip";
-@import "code";
-@import "typography";
-@import "colors";
-@import "layout";
-@import "doxynav";
-@import "directives";
+@use "fonts";
+@use "variables";
+@use "base";
+@use "tooltip";
+@use "code";
+@use "typography";
+@use "colors";
+@use "layout";
+@use "doxynav";
+@use "directives";
