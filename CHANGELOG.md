@@ -19,14 +19,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - pixi-based task runner (`pixi run build`, `pixi run demo`, etc.)
 - GitHub Actions CI and Pages deployment
 - Release tarball task (`pixi run release`)
+- Reusable GitHub Action (`uses: HaoZeke/doxyYoda@v0.1.0`) with optional cppreference tag download
+- Version management via tbump (`pixi run bump`)
+- CHANGELOG.md
+- GitHub Actions release workflow (auto-creates GitHub Release on `v*` tags)
 
 ### Changed
 - Complete SCSS rewrite: variables, colors, typography, layout, navigation
 - Updated for Doxygen >= 1.12 compatibility
 - Switched from jQuery inline-style hacks to proper CSS overrides
+- CI and Pages workflows now use pixi for reproducible doxygen/sass versions
+
+### Fixed
+- Dark mode toggle not working for users with OS-level dark mode preference
 
 ### Removed
 - jQuery-based header manipulation
+- `mkRel.sh` (superseded by `pixi run release`)
 
 ## [0.0.2] - 2021-03-07
 

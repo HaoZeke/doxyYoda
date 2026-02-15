@@ -67,6 +67,49 @@ HTML_EXTRA_STYLESHEET  = "doxyYoda/css/doxyYoda.min.css"
 LAYOUT_FILE            = "doxyYoda/xml/doxyYoda.xml"
 #+end_src
 
+*** GitHub Action
+The easiest way to use doxyYoda in CI is with the bundled action:
+#+begin_src yaml
+- uses: HaoZeke/doxyYoda@v0.1.0
+  with:
+    cppreference-tag: true   # optional: download cppreference tag file
+#+end_src
+This downloads the release tarball into =doxyYoda/= and (optionally) fetches the [[https://en.cppreference.com/w/][cppreference]] Doxygen tag file into =tags/=.
+
+**** Inputs
+| Input              | Default   | Description                              |
+|--------------------+-----------+------------------------------------------|
+| =version=          | =0.1.0=   | doxyYoda version (without =v= prefix)    |
+| =path=             | =doxyYoda= | Directory to extract into               |
+| =cppreference-tag= | =false=   | Download cppreference Doxygen tag file    |
+| =tags-path=        | =tags=    | Directory for tag files                  |
+
+**** Outputs
+| Output                 | Description                   |
+|------------------------+-------------------------------|
+| =path=                 | Path to doxyYoda directory    |
+| =header=               | Path to =header.html=         |
+| =footer=               | Path to =footer.html=         |
+| =stylesheet=           | Path to =doxyYoda.min.css=    |
+| =layout=               | Path to =doxyYoda.xml=        |
+| =cppreference-tag-file= | Path to cppreference tag file |
+
+**** Full example
+#+begin_src yaml
+name: Build API Docs
+on: [push, pull_request]
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: HaoZeke/doxyYoda@v0.1.0
+        with:
+          cppreference-tag: true
+      - run: sudo apt-get install -y doxygen graphviz
+      - run: doxygen Doxyfile
+#+end_src
+
 ** Pixi Tasks
 All build and development tasks are managed via [[https://pixi.sh][pixi]]:
 
@@ -78,6 +121,7 @@ All build and development tasks are managed via [[https://pixi.sh][pixi]]:
 | Serve demo     | =pixi run serve=     | Serve demo on localhost:8000     |
 | Minify CSS     | =pixi run minify=    | Minify compiled CSS              |
 | Build release  | =pixi run release=   | Build release tarball            |
+| Bump version   | =pixi run bump=      | Bump version via tbump           |
 | Clean          | =pixi run clean=     | Remove build artifacts           |
 
 ** SCSS Architecture

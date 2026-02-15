@@ -1,0 +1,78 @@
+name: "Setup doxyYoda"
+description: "Download the doxyYoda Doxygen theme and optionally cppreference tag files"
+branding:
+  icon: "book-open"
+  color: "yellow"
+
+inputs:
+  version:
+    description: "doxyYoda version to download (without 'v' prefix)"
+    required: false
+    default: "0.1.0"
+  path:
+    description: "Directory to extract doxyYoda into"
+    required: false
+    default: "doxyYoda"
+  cppreference-tag:
+    description: "Download cppreference Doxygen tag file"
+    required: false
+    default: "false"
+  tags-path:
+    description: "Directory for downloaded tag files"
+    required: false
+    default: "tags"
+
+outputs:
+  path:
+    description: "Path to the extracted doxyYoda directory"
+    value: ${{ steps.setup.outputs.path }}
+  header:
+    description: "Path to header.html"
+    value: ${{ steps.setup.outputs.header }}
+  footer:
+    description: "Path to footer.html"
+    value: ${{ steps.setup.outputs.footer }}
+  stylesheet:
+    description: "Path to doxyYoda.min.css"
+    value: ${{ steps.setup.outputs.stylesheet }}
+  layout:
+    description: "Path to doxyYoda.xml layout file"
+    value: ${{ steps.setup.outputs.layout }}
+  cppreference-tag-file:
+    description: "Path to cppreference tag file (if downloaded)"
+    value: ${{ steps.cppreference.outputs.tag-file }}
+
+runs:
+  using: "composite"
+  steps:
+    - name: Download and extract doxyYoda
+      id: setup
+      shell: bash
+      run: |
+        version="${{ inputs.version }}"
+        dest="${{ inputs.path }}"
+        url="https://github.com/HaoZeke/doxyYoda/releases/download/v${version}/doxyYoda_${version}.tar.gz"
+        echo "Downloading doxyYoda v${version} from ${url}"
+        curl -sL "${url}" -o doxyYoda.tar.gz
+        tar xf doxyYoda.tar.gz
+        if [ "$dest" != "doxyYoda" ]; then
+          mv doxyYoda "$dest"
+        fi
+        rm doxyYoda.tar.gz
+        echo "path=${dest}" >> "$GITHUB_OUTPUT"
+        echo "header=${dest}/html/header.html" >> "$GITHUB_OUTPUT"
+        echo "footer=${dest}/html/footer.html" >> "$GITHUB_OUTPUT"
+        echo "stylesheet=${dest}/css/doxyYoda.min.css" >> "$GITHUB_OUTPUT"
+        echo "layout=${dest}/xml/doxyYoda.xml" >> "$GITHUB_OUTPUT"
+
+    - name: Download cppreference tag file
+      id: cppreference
+      if: inputs.cppreference-tag == 'true'
+      shell: bash
+      run: |
+        dest="${{ inputs.tags-path }}"
+        mkdir -p "$dest"
+        echo "Downloading cppreference Doxygen tag file"
+        curl -sL https://upload.cppreference.com/mwiki/images/f/f8/cppreference-doxygen-web.tag.xml \
+          -o "${dest}/cppreference-doxygen-web.tag.xml"
+        echo "tag-file=${dest}/cppreference-doxygen-web.tag.xml" >> "$GITHUB_OUTPUT"
