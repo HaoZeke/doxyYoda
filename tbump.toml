@@ -1,0 +1,21 @@
+[version]
+current = "0.1.0"
+regex = '''(?P<major>\d+)\.(?P<minor>\d+)\.(?P<patch>\d+)'''
+
+[git]
+push = false
+tag_template = "v{new_version}"
+
+[[file]]
+src = "version.txt"
+
+[[file]]
+src = "pixi.toml"
+
+[[file]]
+src = "demo/Doxyfile"
+search = 'PROJECT_NUMBER         = "{current_version}"'
+
+[[file]]
+src = "demo/src/yoda.hpp"
+search = '@version {current_version}'

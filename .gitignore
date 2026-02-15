@@ -1,9 +1,24 @@
-### https://raw.github.com/github/gitignore/cb0c6ef7ac68f2300409ee85501d9ad432cb4c7e/Sass.gitignore
-
+### Sass
 .sass-cache/
 *.css.map
 *.sass.map
 *.scss.map
 
-# Generated
+# Generated CSS (committed for distribution, but ignored by default)
 *.css
+
+### Pixi
+.pixi/
+pixi.lock
+
+### Demo build output
+demo/build/
+
+### Release artifacts
+doxyYoda_*.tar.gz
+doxyYoda/
+
+### Editor
+*~
+.vscode/
+.idea/
