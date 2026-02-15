@@ -20,20 +20,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install dart-sass
-        run: |
-          SASS_VERSION="1.86.3"
-          curl -sL "https://github.com/sass/dart-sass/releases/download/${SASS_VERSION}/dart-sass-${SASS_VERSION}-linux-x64.tar.gz" | tar xz
-          echo "$PWD/dart-sass" >> "$GITHUB_PATH"
+      - uses: prefix-dev/setup-pixi@v0.8.8
+        with:
+          cache: true
 
       - name: Compile SCSS
-        run: sass src/styles/scss/main.scss src/styles/doxyYoda.css
-
-      - name: Install Doxygen and Graphviz
-        run: sudo apt-get update && sudo apt-get install -y doxygen graphviz
+        run: pixi run compile
 
       - name: Build demo
-        run: doxygen demo/Doxyfile
+        run: pixi run demo
 
       - name: Setup Pages
         uses: actions/configure-pages@v5

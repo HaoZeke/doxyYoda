@@ -13,31 +13,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install dart-sass
-        run: |
-          SASS_VERSION="1.86.3"
-          curl -sL "https://github.com/sass/dart-sass/releases/download/${SASS_VERSION}/dart-sass-${SASS_VERSION}-linux-x64.tar.gz" | tar xz
-          echo "$PWD/dart-sass" >> "$GITHUB_PATH"
+      - uses: prefix-dev/setup-pixi@v0.8.8
+        with:
+          cache: true
 
       - name: Get version from tag
         id: version
         run: echo "version=${GITHUB_REF_NAME#v}" >> "$GITHUB_OUTPUT"
 
-      - name: Compile CSS
-        run: sass src/styles/scss/main.scss src/styles/doxyYoda.css
-
       - name: Build release tarball
-        run: |
-          version="${{ steps.version.outputs.version }}"
-          mkdir -p doxyYoda/css
-          cp version.txt doxyYoda
-          cp -r src/html doxyYoda
-          cp -r src/xml doxyYoda
-          sass --style=compressed --no-source-map src/styles/scss/main.scss doxyYoda/css/doxyYoda.min.css
-          echo "Apache 2 licensed Doxygen theme by Rohit Goswami <https://rgoswami.me>." > doxyYoda/README
-          echo "See: https://github.com/HaoZeke/doxyYoda for details" >> doxyYoda/README
-          tar -czf "doxyYoda_${version}.tar.gz" doxyYoda
-          rm -rf doxyYoda
+        run: pixi run release
 
       - name: Extract changelog entry
         id: changelog
