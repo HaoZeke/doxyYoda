@@ -30,6 +30,13 @@ jobs:
       - name: Build demo
         run: pixi run demo
 
+      - name: Add CNAME
+        run: echo 'doxyyoda.rgoswami.me' > demo/build/html/CNAME
+
+      - name: Inject analytics script
+        run: |
+          find demo/build/html -name '*.html' -exec sed -i 's|</head>|<script defer data-domain="doxyyoda.rgoswami.me" src="https://analytics.turtletech.us/js/script.outbound-links.js"></script>\n</head>|' {} +
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 

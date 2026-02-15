@@ -1,0 +1,104 @@
+* Migrating to doxyYoda
+
+This guide covers migrating your Doxygen project to use the doxyYoda theme.
+
+** From Default Doxygen Theme
+
+*** Step 1: Obtain doxyYoda
+
+**** Via GitHub Action (recommended for CI)
+#+begin_src yaml
+- uses: HaoZeke/doxyYoda@v0.1.0
+  with:
+    cppreference-tag: true   # optional
+#+end_src
+
+**** Via release tarball
+Download the latest release from [[https://github.com/HaoZeke/doxyYoda/releases][GitHub Releases]] and extract it alongside your =Doxyfile=:
+#+begin_src bash
+curl -LO https://github.com/HaoZeke/doxyYoda/releases/download/v0.1.0/doxyYoda_0.1.0.tar.gz
+tar xf doxyYoda_0.1.0.tar.gz
+#+end_src
+
+**** Via git clone (for development)
+#+begin_src bash
+git clone https://github.com/HaoZeke/doxyYoda
+cd doxyYoda
+pixi run compile   # or: sass src/styles/scss/main.scss src/styles/doxyYoda.css
+#+end_src
+
+*** Step 2: Update your Doxyfile
+
+Add or update these settings:
+
+#+begin_src conf
+# -- doxyYoda theme settings --
+HTML_HEADER            = doxyYoda/html/header.html
+HTML_FOOTER            = doxyYoda/html/footer.html
+HTML_EXTRA_STYLESHEET  = doxyYoda/css/doxyYoda.min.css
+LAYOUT_FILE            = doxyYoda/xml/doxyYoda.xml
+#+end_src
+
+If using the git clone (not the release tarball), the paths differ:
+#+begin_src conf
+HTML_HEADER            = doxyYoda/src/html/header.html
+HTML_FOOTER            = doxyYoda/src/html/footer.html
+HTML_EXTRA_STYLESHEET  = doxyYoda/src/styles/doxyYoda.css
+LAYOUT_FILE            = doxyYoda/src/xml/doxyYoda.xml
+#+end_src
+
+*** Step 3: Remove conflicting settings
+
+If your =Doxyfile= has any of these custom settings, remove or comment them out as doxyYoda provides its own:
+
+#+begin_src conf
+# Remove these if present -- doxyYoda handles them
+# HTML_STYLESHEET        = ...          # doxyYoda uses HTML_EXTRA_STYLESHEET instead
+# HTML_COLORSTYLE_HUE    = ...          # Solarized palette via CSS custom properties
+# HTML_COLORSTYLE_SAT    = ...
+# HTML_COLORSTYLE_GAMMA  = ...
+#+end_src
+
+*** Step 4: Recommended Doxyfile settings
+
+These settings work well with doxyYoda but are not strictly required:
+
+#+begin_src conf
+GENERATE_TREEVIEW      = NO            # Tree view has limited support (see readme)
+DISABLE_INDEX          = NO
+SEARCHENGINE           = YES
+HTML_DYNAMIC_SECTIONS  = YES
+SOURCE_BROWSER         = YES
+INLINE_SOURCES         = YES
+#+end_src
+
+If you use MathJax, doxyYoda ships with MathJax 3 support:
+#+begin_src conf
+USE_MATHJAX            = YES
+MATHJAX_VERSION        = MathJax_3
+#+end_src
+
+** From m.css
+
+If you are migrating from [[https://mcss.mosra.cz/][m.css]]:
+
+1. *Remove m.css configuration*: delete the =Doxyfile-mcss= or any =conf.py= / =m.css= specific files
+2. *Switch back to standard Doxygen*: m.css uses its own Python-based build pipeline; doxyYoda works directly with =doxygen Doxyfile=
+3. *Update your Doxyfile*: follow the steps above for default Doxygen migration
+4. *Note on markup*: m.css uses custom =@m_class= and =@m_div= commands that Doxygen will ignore. These can be left in place (they'll be silently skipped) or removed at your convenience
+
+** From Doxygen Awesome
+
+If you are migrating from [[https://github.com/jothepro/doxygen-awesome-css][doxygen-awesome-css]]:
+
+1. *Replace stylesheets*: swap =doxygen-awesome.css= (and any sidebar/darkmode extensions) for the doxyYoda files
+2. *Replace header/footer*: if you had custom =HTML_HEADER= / =HTML_FOOTER= for doxygen-awesome, replace them with doxyYoda's
+3. *Remove extra JS*: doxyYoda bundles its own dark mode toggle and code-copy functionality, so remove any =doxygen-awesome-darkmode-toggle.js=, =doxygen-awesome-fragment-copy-button.js=, etc.
+4. *Update Doxyfile*: follow the steps in the default migration section above
+
+** Common Pitfalls
+
+- *=HTML_STYLESHEET= vs =HTML_EXTRA_STYLESHEET=*: doxyYoda uses =HTML_EXTRA_STYLESHEET=. Setting =HTML_STYLESHEET= will replace Doxygen's default CSS entirely, which doxyYoda builds upon. Make sure you use =HTML_EXTRA_STYLESHEET=.
+- *Doxygen version*: doxyYoda requires Doxygen >= 1.12. Check with =doxygen --version=.
+- *Tree view*: =GENERATE_TREEVIEW = YES= has limited support due to Doxygen's jQuery-based resize logic. See the [[file:readme.org][readme]] for details.
+- *Font loading*: doxyYoda loads fonts from Google Fonts and Hack via CDN. If your documentation is served in an environment without internet access, fonts will fall back to system defaults.
