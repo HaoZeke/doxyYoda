@@ -1,0 +1,204 @@
+/**
+@page customization_page Customization Guide
+
+@tableofcontents
+
+This page explains how to customize doxyYoda for your project.
+
+@section cust_doxyfile Doxyfile Integration
+
+The minimum Doxyfile additions to use doxyYoda:
+
+@code{.conf}
+# Point to doxyYoda's HTML templates and CSS
+HTML_HEADER            = path/to/doxyYoda/src/html/header.html
+HTML_FOOTER            = path/to/doxyYoda/src/html/footer.html
+HTML_EXTRA_STYLESHEET  = path/to/doxyYoda/src/styles/doxyYoda.css
+LAYOUT_FILE            = path/to/doxyYoda/src/xml/doxyYoda.xml
+
+# Recommended: enable MathJax for math rendering
+USE_MATHJAX            = YES
+MATHJAX_VERSION        = MathJax_3
+
+# Recommended: enable Graphviz for diagrams
+HAVE_DOT               = YES
+DOT_IMAGE_FORMAT       = svg
+INTERACTIVE_SVG        = YES
+
+# Optional: enable inline source browsing
+INLINE_SOURCES         = YES
+SOURCE_BROWSER         = YES
+@endcode
+
+@section cust_colors Custom Colors
+
+doxyYoda's entire color system uses CSS custom properties defined on `:root`.
+You can override any variable by adding a custom stylesheet.
+
+@subsection cust_colors_override Override via Extra Stylesheet
+
+Create a file `my-overrides.css`:
+
+@code{.css}
+:root {
+    /* Change the accent blue to a different shade */
+    --accent-blue: #1a73e8;
+
+    /* Change the background to pure white */
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8f9fa;
+}
+@endcode
+
+Then add it to your Doxyfile (after doxyYoda's stylesheet):
+
+@code{.conf}
+HTML_EXTRA_STYLESHEET  = path/to/doxyYoda/src/styles/doxyYoda.css \
+                         path/to/my-overrides.css
+@endcode
+
+@subsection cust_colors_variables Available Color Variables
+
+<b>Backgrounds:</b>
+| Variable | Light Default | Description |
+|----------|---------------|-------------|
+| `--bg-primary` | `#fdf6e3` | Page background |
+| `--bg-secondary` | `#eee8d5` | Cards, menus, table headers |
+| `--bg-surface` | `#f5f0e1` | Blockquotes, TOC |
+| `--bg-primary-translucent` | `rgba(253,246,227,0.85)` | Frosted navbar |
+
+<b>Text:</b>
+| Variable | Light Default | Description |
+|----------|---------------|-------------|
+| `--text-primary` | `#002b36` | Main body text |
+| `--text-secondary` | `#586e75` | Secondary text |
+| `--text-muted` | `#657b83` | Muted/disabled text |
+
+<b>Accents (Solarized):</b>
+| Variable | Value | Usage |
+|----------|-------|-------|
+| `--accent-yellow` | `#b58900` | Glow effects |
+| `--accent-orange` | `#cb4b16` | Preprocessor, outlinks |
+| `--accent-red` | `#dc322f` | Warnings, labels |
+| `--accent-magenta` | `#d33682` | Bugs |
+| `--accent-violet` | `#6c71c4` | Templates, blockquotes |
+| `--accent-blue` | `#268bd2` | Links, active items |
+| `--accent-cyan` | `#2aa198` | Code links |
+| `--accent-green` | `#859900` | Parameter names |
+
+@section cust_fonts Custom Fonts
+
+Fonts are loaded via CDN in `_fonts.scss`. To change them:
+
+@subsection cust_fonts_css CSS Override (Easiest)
+
+Add to your override stylesheet:
+
+@code{.css}
+:root {
+    --font-sans: "Your Body Font", sans-serif;
+    --font-heading: "Your Heading Font", sans-serif;
+    --font-mono: "Your Mono Font", monospace;
+}
+@endcode
+
+@subsection cust_fonts_scss SCSS Modification
+
+Edit `src/styles/scss/_fonts.scss` to change the Google Fonts import URL,
+then update the font stack variables in `_variables.scss`:
+
+@code{.scss}
+// _fonts.scss
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+// _variables.scss
+:root {
+    --font-sans: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+@endcode
+
+@section cust_spacing Spacing & Layout
+
+@subsection cust_spacing_scale Spacing Scale
+
+| Variable | Value | Usage |
+|----------|-------|-------|
+| `--space-1` | `0.25rem` | Tight gaps |
+| `--space-2` | `0.5rem` | Small gaps |
+| `--space-3` | `0.75rem` | Medium gaps |
+| `--space-4` | `1rem` | Standard gaps |
+| `--space-5` | `1.5rem` | Section gaps |
+| `--space-6` | `2rem` | Large gaps |
+| `--space-7` | `3rem` | Extra large |
+| `--space-8` | `4rem` | Page-level spacing |
+
+@subsection cust_spacing_radius Border Radius
+
+| Variable | Value | Usage |
+|----------|-------|-------|
+| `--radius-sm` | `4px` | Buttons, badges |
+| `--radius-md` | `6px` | Cards, code blocks |
+| `--radius-lg` | `8px` | Modals |
+| `--radius-xl` | `12px` | Large cards, labels |
+
+@subsection cust_spacing_shadows Shadows
+
+| Variable | Value |
+|----------|-------|
+| `--shadow-sm` | `0 1px 2px rgba(0,0,0,0.05)` |
+| `--shadow-md` | `0 2px 8px rgba(0,0,0,0.08)` |
+| `--shadow-lg` | `0 4px 16px rgba(0,0,0,0.12)` |
+
+@section cust_features Enable/Disable Features
+
+@subsection cust_features_darkmode Dark Mode
+
+Dark mode is handled in the header template (`header.html`). To disable:
+
+1. Remove the `<button class="dark-mode-toggle">` from `header.html`
+2. Remove the localStorage script block
+3. The theme will follow `prefers-color-scheme` only
+
+To force light mode always, add to your override CSS:
+
+@code{.css}
+html.dark {
+    /* Reset all dark mode variables to light values */
+    --bg-primary: #fdf6e3;
+    --text-primary: #002b36;
+    /* ... etc. */
+}
+@endcode
+
+@subsection cust_features_codefolding Code Folding
+
+Code folding wraps `div.fragment` elements in `<details>`. To disable it,
+remove the "Code folding" block from the `<script>` in `header.html`.
+
+@subsection cust_features_copybutton Copy Button
+
+The copy-to-clipboard button is added via JavaScript in `header.html`.
+Remove the "Copy-to-clipboard" block to disable it.
+
+@section cust_build Building from Source
+
+If you want to modify the SCSS directly:
+
+@code{.sh}
+# Install pixi (https://pixi.sh)
+curl -fsSL https://pixi.sh/install.sh | bash
+
+# Clone and build
+git clone https://github.com/HaoZeke/doxyYoda
+cd doxyYoda
+pixi install
+pixi run compile    # SCSS -> CSS
+pixi run demo       # Build this demo site
+pixi run serve      # Preview on localhost:8000
+@endcode
+
+The SCSS entry point is `src/styles/scss/main.scss`. Each partial handles
+a specific concern — see the @ref architecture "SCSS Architecture" section
+on the main page.
+
+*/

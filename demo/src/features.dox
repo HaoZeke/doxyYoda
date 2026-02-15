@@ -1,0 +1,292 @@
+/**
+@page features_page Feature Tour
+
+@tableofcontents
+
+This page showcases every visual element that doxyYoda styles.
+Use it as a reference when evaluating the theme or as a test page
+when making modifications.
+
+@section ft_darkmode Dark Mode
+
+Click the <b>&#9790;</b> button in the top-right of the navbar to toggle
+dark mode. The theme supports two mechanisms:
+
+1. <b>OS preference</b>: `prefers-color-scheme: dark` is respected automatically.
+2. <b>Manual toggle</b>: stored in `localStorage` so it persists across page loads.
+
+All colors use CSS custom properties. The switch is instant — no page reload,
+no flash of unstyled content.
+
+@section ft_admonitions Admonitions
+
+doxyYoda styles all 10 Doxygen admonition types. Each has a distinct left
+border color and subtle background tint from the Solarized palette.
+
+@note <b>Note</b> — use `\\note` to add helpful context or tips.
+Supports <b>bold</b>, <em>italic</em>, and `code` formatting within the block.
+
+@warning <b>Warning</b> — use `\\warning` for things that can go wrong.
+Pay special attention to these in API documentation.
+
+@attention <b>Attention</b> — use `\\attention` for critical information
+that users must not overlook.
+
+@todo <b>Todo</b> — use `\\todo` for work items. These appear in the
+global <a href="todo.html">Todo List</a>.
+
+@bug <b>Bug</b> — use `\\bug` for known issues. These appear in the
+global <a href="bug.html">Bug List</a>.
+
+@deprecated <b>Deprecated</b> — use `\\deprecated` to mark obsolete APIs.
+These appear in the global <a href="deprecated.html">Deprecated List</a>.
+
+@pre <b>Precondition</b> — use `\\pre` to document required state.
+Example: \f$ x > 0 \f$ and the container must not be empty.
+
+@post <b>Postcondition</b> — use `\\post` to document guaranteed state
+after the function returns.
+
+@invariant <b>Invariant</b> — use `\\invariant` to document properties
+that always hold: \f$ 0 \le \text{size} \le \text{capacity} \f$.
+
+@test <b>Test</b> — use `\\test` to describe testing requirements.
+Verify that edge cases are handled and outputs match expectations.
+
+@section ft_math Mathematics
+
+doxyYoda uses MathJax 3 for rendering mathematical notation.
+
+@subsection ft_math_inline Inline Math
+
+The quadratic formula: \f$ x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} \f$
+
+Euler's identity: \f$ e^{i\pi} + 1 = 0 \f$
+
+A probability: \f$ P(A \mid B) = \frac{P(B \mid A)\,P(A)}{P(B)} \f$
+
+@subsection ft_math_display Display Math
+
+The Gaussian integral:
+
+\f[
+    \int_{-\infty}^{\infty} e^{-x^2} \, dx = \sqrt{\pi}
+\f]
+
+The Cauchy-Schwarz inequality:
+
+\f[
+    \left| \sum_{k=1}^{n} a_k b_k \right|^2
+    \leq
+    \left( \sum_{k=1}^{n} a_k^2 \right)
+    \left( \sum_{k=1}^{n} b_k^2 \right)
+\f]
+
+Maxwell's equations in differential form:
+
+\f[
+\begin{aligned}
+    \nabla \cdot \mathbf{E}  &= \frac{\rho}{\varepsilon_0} \\
+    \nabla \cdot \mathbf{B}  &= 0 \\
+    \nabla \times \mathbf{E} &= -\frac{\partial \mathbf{B}}{\partial t} \\
+    \nabla \times \mathbf{B} &= \mu_0 \mathbf{J} + \mu_0 \varepsilon_0 \frac{\partial \mathbf{E}}{\partial t}
+\end{aligned}
+\f]
+
+@section ft_code Code Blocks
+
+doxyYoda renders code blocks with syntax highlighting, a copy-to-clipboard
+button (top-right corner on hover), and optional code folding.
+
+@subsection ft_code_cpp C++
+
+@code{.cpp}
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <numeric>
+
+/// Compute the mean and standard deviation of a dataset.
+template <typename T>
+std::pair<double, double> statistics(const std::vector<T>& data) {
+    double sum = std::accumulate(data.begin(), data.end(), 0.0);
+    double mean = sum / data.size();
+
+    double sq_sum = 0.0;
+    for (const auto& x : data) {
+        sq_sum += (x - mean) * (x - mean);
+    }
+    double stddev = std::sqrt(sq_sum / data.size());
+    return {mean, stddev};
+}
+@endcode
+
+@subsection ft_code_python Python
+
+@code{.py}
+import numpy as np
+from dataclasses import dataclass
+
+@dataclass
+class SolarizedColor:
+    """A color from the Solarized palette."""
+    name: str
+    hex: str
+    rgb: tuple[int, int, int]
+
+PALETTE = [
+    SolarizedColor("yellow",  "#b58900", (181, 137,  0)),
+    SolarizedColor("orange",  "#cb4b16", (203,  75, 22)),
+    SolarizedColor("red",     "#dc322f", (220,  50, 47)),
+    SolarizedColor("magenta", "#d33682", (211,  54, 130)),
+    SolarizedColor("violet",  "#6c71c4", (108, 113, 196)),
+    SolarizedColor("blue",    "#268bd2", ( 38, 139, 210)),
+    SolarizedColor("cyan",    "#2aa198", ( 42, 161, 152)),
+    SolarizedColor("green",   "#859900", (133, 153,   0)),
+]
+@endcode
+
+@subsection ft_code_shell Shell
+
+@code{.sh}
+#!/bin/bash
+# Build doxyYoda demo
+set -euo pipefail
+
+echo "Compiling SCSS..."
+sass src/styles/scss/main.scss src/styles/doxyYoda.css
+
+echo "Building documentation..."
+doxygen demo/Doxyfile
+
+echo "Done. Open demo/build/html/index.html"
+@endcode
+
+@subsection ft_code_config Configuration
+
+@code{.conf}
+# Doxyfile snippet for doxyYoda integration
+HTML_HEADER            = doxyYoda/src/html/header.html
+HTML_FOOTER            = doxyYoda/src/html/footer.html
+HTML_EXTRA_STYLESHEET  = doxyYoda/src/styles/doxyYoda.css
+LAYOUT_FILE            = doxyYoda/src/xml/doxyYoda.xml
+USE_MATHJAX            = YES
+MATHJAX_VERSION        = MathJax_3
+@endcode
+
+@section ft_tables Tables
+
+@subsection ft_tables_comparison Comparison Table
+
+| Feature         | doxyYoda | Default Doxygen | doxygen-awesome | m.css  |
+|-----------------|----------|-----------------|-----------------|--------|
+| CSS Grid        | Yes      | No              | No              | No     |
+| Dark mode       | Yes      | No              | Yes             | Yes    |
+| Foldable code   | Yes      | No              | No              | No     |
+| Copy button     | Yes      | Yes             | Yes             | No     |
+| MathJax 3       | Yes      | Yes             | Yes             | Yes    |
+| Solarized       | Yes      | No              | No              | No     |
+| Graphviz SVG    | Yes      | Yes             | Yes             | Yes    |
+| Frosted navbar  | Yes      | No              | No              | No     |
+| Pixi build      | Yes      | No              | No              | No     |
+
+@subsection ft_tables_palette Solarized Palette
+
+| Name    | Hex       | Role              |
+|---------|-----------|-------------------|
+| base03  | `#002b36` | Dark background   |
+| base02  | `#073642` | Dark highlights   |
+| base01  | `#586e75` | Emphasized text   |
+| base00  | `#657b83` | Body text (dark)  |
+| base0   | `#839496` | Body text (light) |
+| base1   | `#93a1a1` | De-emphasized     |
+| base2   | `#eee8d5` | Light highlights  |
+| base3   | `#fdf6e3` | Light background  |
+| yellow  | `#b58900` | Accent            |
+| orange  | `#cb4b16` | Accent            |
+| red     | `#dc322f` | Accent            |
+| magenta | `#d33682` | Accent            |
+| violet  | `#6c71c4` | Accent            |
+| blue    | `#268bd2` | Accent            |
+| cyan    | `#2aa198` | Accent            |
+| green   | `#859900` | Accent            |
+
+@section ft_lists Lists
+
+@subsection ft_lists_ordered Ordered
+
+1. Clone the repository
+2. Install dependencies with `pixi install`
+3. Compile the theme: `pixi run compile`
+4. Point your Doxyfile at the theme files
+5. Run Doxygen
+
+@subsection ft_lists_unordered Unordered
+
+- <b>Crimson Text</b> — body copy (Google Fonts)
+- <b>Maiden Orange</b> — headings (Google Fonts)
+- <b>Hack</b> — monospaced code (jsDelivr CDN)
+- <b>Vollkorn</b> — serif fallback (Google Fonts)
+
+@subsection ft_lists_nested Nested
+
+- Solarized palette
+  - Light mode: base3 background, base03 text
+  - Dark mode: base03 background, base3 text
+  - 8 accent colors for UI chrome
+- CSS custom properties
+  - Colors, spacing, radii, shadows, transitions
+  - Runtime-switchable for dark mode
+- Font stacks
+  - `--font-sans` for body text
+  - `--font-heading` for headings
+  - `--font-mono` for code
+
+@section ft_typography Typography Sampler
+
+@subsection ft_typo_headings Heading Levels
+
+The following heading levels are available. In doxyYoda, headings use the
+<b>Maiden Orange</b> display font:
+
+- `@section` produces an `<h2>`
+- `@subsection` produces an `<h3>`
+- `@subsubsection` produces an `<h4>`
+
+@subsection ft_typo_inline Inline Formatting
+
+- <b>Bold text</b> via `<b>` or `\\b`
+- <em>Italic text</em> via `<em>` or `\\e`
+- `Inline code` via backticks
+- @ref geometry::Shape "Internal cross-reference" via `@ref`
+- <a href="https://github.com/HaoZeke/doxyYoda">External link</a> via `<a href>`
+
+@subsection ft_typo_blockquote Blockquote
+
+> doxyYoda is a modern Doxygen theme that replaces the default table-based
+> layout with CSS Grid, a Solarized color palette, and full dark mode support.
+>
+> — Project description
+
+@section ft_graphs Graphviz Diagrams
+
+doxyYoda renders SVG diagrams generated by Doxygen + Graphviz. Visit any
+class page (e.g., @ref geometry::Shape) to see:
+
+- <b>Inheritance graphs</b> showing the class hierarchy
+- <b>Collaboration graphs</b> showing member type relationships
+- <b>Include graphs</b> showing header dependencies
+
+The SVG diagrams are interactive — click on a class name to navigate to its
+documentation page.
+
+@section ft_search Search
+
+doxyYoda styles Doxygen's built-in search. Try the search box in the top
+navigation bar — it supports:
+
+- Class names (e.g., `Vec2`, `Shape`)
+- Function names (e.g., `fibonacci`, `lerp`)
+- Page titles (e.g., `Feature Tour`)
+
+*/

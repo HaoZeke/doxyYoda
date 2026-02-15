@@ -1,0 +1,75 @@
+# doxyYoda Demo — Doxyfile
+# Build with: pixi run demo
+
+PROJECT_NAME           = "doxyYoda"
+PROJECT_NUMBER         = "0.1.0"
+PROJECT_BRIEF          = "A modern Doxygen theme — CSS Grid, Solarized, dark mode"
+
+OUTPUT_DIRECTORY       = demo/build
+INPUT                  = demo/src
+FILE_PATTERNS          = *.hpp *.cpp *.dox
+RECURSIVE              = YES
+
+# Theme
+HTML_HEADER            = src/html/header.html
+HTML_FOOTER            = src/html/footer.html
+HTML_EXTRA_STYLESHEET  = src/styles/doxyYoda.css
+LAYOUT_FILE            = src/xml/doxyYoda.xml
+
+# Output
+GENERATE_HTML          = YES
+GENERATE_LATEX         = NO
+GENERATE_XML           = NO
+
+# Content
+EXTRACT_ALL            = YES
+EXTRACT_PRIVATE        = NO
+EXTRACT_STATIC         = YES
+SHOW_INCLUDE_FILES     = YES
+INLINE_SOURCES         = YES
+SOURCE_BROWSER         = YES
+REFERENCED_BY_RELATION = YES
+REFERENCES_RELATION    = YES
+
+# Math
+USE_MATHJAX            = YES
+MATHJAX_VERSION        = MathJax_3
+
+# Search
+SEARCHENGINE           = YES
+SERVER_BASED_SEARCH    = NO
+
+# Warnings
+WARN_IF_UNDOCUMENTED   = YES
+WARN_IF_DOC_ERROR      = YES
+WARN_NO_PARAMDOC       = YES
+
+# Groups
+DISTRIBUTE_GROUP_DOC   = YES
+GROUP_NESTED_COMPOUNDS = YES
+
+# Misc
+MARKDOWN_SUPPORT       = YES
+AUTOLINK_SUPPORT       = YES
+BUILTIN_STL_SUPPORT    = YES
+DISABLE_INDEX          = NO
+GENERATE_TREEVIEW      = NO
+FULL_SIDEBAR           = NO
+SORT_BRIEF_DOCS        = YES
+SORT_MEMBERS_CTORS_1ST = YES
+SHOW_GROUPED_MEMB_INC  = YES
+
+# Graphs (Graphviz/dot)
+HAVE_DOT               = YES
+CLASS_GRAPH            = YES
+COLLABORATION_GRAPH    = YES
+INCLUDE_GRAPH          = YES
+INCLUDED_BY_GRAPH      = YES
+GRAPHICAL_HIERARCHY    = YES
+DIRECTORY_GRAPH        = YES
+DOT_IMAGE_FORMAT       = svg
+INTERACTIVE_SVG        = YES
+
+# Keep it quiet
+QUIET                  = YES
+WARNINGS               = YES

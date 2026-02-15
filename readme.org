@@ -2,7 +2,8 @@
 #+DOWNLOADED: screenshot @ 2021-03-02 01:34:09
 [[file:images/doxyYoda/2021-03-02_01-34-09_screenshot.png]]
 
-A theme for [[http://doxygen.nl/][Doxygen]]. The **only** theme to use [[https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout][CSS Grid]] and [[https://sass-lang.com/guide][Sass]]. Also uses MathJax 3. Part of my ~yoda~ series of tools.
+A theme for [[http://doxygen.nl/][Doxygen]]. The *only* theme to use [[https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout][CSS Grid]] and [[https://sass-lang.com/guide][Sass]]. Also uses MathJax 3. Part of my ~yoda~ series of tools.
+
 ** Why?
 Have you seen ~doxygen~ HTML? To go from:
 #+DOWNLOADED: screenshot @ 2021-03-02 00:51:00
@@ -15,11 +16,40 @@ To:
 - Exhale / Breathe :: Can't even display source code, inline or otherwise
 Honestly, nothing captures C++ like Doxygen. Nothing. So inspite of the weird JS cruft its best not to fight it (*cough* [[https://foonathan.net/2019/11/standardese-post-mortem/][Standardese]]). This is it.
 - m.css :: is actually very good; used it for [[https://dseams.info][d-SEAMS]]; but this is better for me, and will migrate the rest of my projects later
+
 *** Features
-- CSS Grid layout
-  - With Sass
-- MathJax 3
-- Foldable inline code
+- *CSS Grid layout* with Sass
+- *Dark mode* — toggle button + =prefers-color-scheme= support, persisted via =localStorage=
+- *Foldable inline code* — =<details>= wrapping with smooth transitions
+- *Copy to clipboard* — one-click code copying on every code block
+- *MathJax 3* — beautiful math rendering
+- *Frosted glass navbar* — sticky, translucent, always visible
+- *Modern admonitions* — color-coded notes, warnings, todos, bugs, and more
+- *Solarized palette* — warm, readable colors in both light and dark mode
+- *Pixi-managed build* — reproducible builds with =pixi run=
+
+*** Typography
+- Body: [[https://fonts.google.com/specimen/Crimson+Text][Crimson Text]] — a beautiful serif with excellent readability
+- Headings: [[https://fonts.google.com/specimen/Maiden+Orange][Maiden Orange]] — distinctive display face
+- Code: [[https://sourcefoundry.org/hack/][Hack]] — an open-source typeface designed for source code
+- Serif fallback: [[http://vollkorn-typeface.com/][Vollkorn]]
+
+** Quick Start
+
+*** With pixi (recommended)
+#+begin_src bash
+git clone https://github.com/HaoZeke/doxyYoda
+cd doxyYoda
+pixi run demo      # Build the demo site
+pixi run serve     # Serve on localhost:8000
+#+end_src
+
+*** Manual
+#+begin_src bash
+# Compile SCSS
+sass src/styles/scss/main.scss src/styles/doxyYoda.css
+#+end_src
+
 ** Usage
 Clone the project into the directory with your ~Doxyfile~.
 Inside your ~Doxyfile~:
@@ -27,47 +57,96 @@ Inside your ~Doxyfile~:
 HTML_HEADER            = "doxyYoda/src/html/header.html"
 HTML_FOOTER            = "doxyYoda/src/html/footer.html"
 HTML_EXTRA_STYLESHEET  = "doxyYoda/src/styles/doxyYoda.css"
-LAYOUT_FILE            = "doxyYoda/src/xml/layout.xml"
+LAYOUT_FILE            = "doxyYoda/src/xml/doxyYoda.xml"
 #+end_src
 Or with the release, simply download the ~.tar.gz~ into the directory with the ~Doxyfile~ and:
 #+begin_src conf
 HTML_HEADER            = "doxyYoda/html/header.html"
 HTML_FOOTER            = "doxyYoda/html/footer.html"
 HTML_EXTRA_STYLESHEET  = "doxyYoda/css/doxyYoda.min.css"
-LAYOUT_FILE            = "doxyYoda/xml/layout.xml"
+LAYOUT_FILE            = "doxyYoda/xml/doxyYoda.xml"
 #+end_src
+
+** Pixi Tasks
+All build and development tasks are managed via [[https://pixi.sh][pixi]]:
+
+| Task           | Command              | Description                      |
+|----------------+----------------------+----------------------------------|
+| Compile SCSS   | =pixi run compile=   | SCSS → CSS                       |
+| Watch mode     | =pixi run watch=     | Recompile on file changes        |
+| Build demo     | =pixi run demo=      | Generate demo documentation site |
+| Serve demo     | =pixi run serve=     | Serve demo on localhost:8000     |
+| Minify CSS     | =pixi run minify=    | Minify compiled CSS              |
+| Build release  | =pixi run release=   | Build release tarball            |
+| Clean          | =pixi run clean=     | Remove build artifacts           |
+
+** SCSS Architecture
+#+begin_example
+src/styles/scss/
+├── main.scss          # Entry point
+├── _variables.scss    # CSS custom properties (light + dark mode)
+├── _base.scss         # Reset and global styles
+├── _fonts.scss        # Font imports (CDN)
+├── _colors.scss       # Color application
+├── _layout.scss       # CSS Grid layout
+├── _typography.scss   # Headings, links, member docs
+├── _code.scss         # Code blocks, syntax, copy button
+├── _doxynav.scss      # Navbar, sidebar, breadcrumbs
+├── _directives.scss   # Admonitions (note, warning, etc.)
+└── _tooltip.scss      # PowerTip tooltips
+#+end_example
+
+** Dark Mode
+doxyYoda supports dark mode through two mechanisms:
+1. *Automatic*: respects =prefers-color-scheme: dark= from your OS settings
+2. *Manual toggle*: click the ☾ button in the navbar — preference persists via =localStorage=
+
+The entire color system uses CSS custom properties, so the switch is instant with no flash of unstyled content.
+
 ** How?
-- [[https://sass-lang.com/documentation/cli/dart-sass][Dart sass]] is needed to compile the CSS
+- [[https://sass-lang.com/documentation/cli/dart-sass][Dart Sass]] is needed to compile the CSS (managed by pixi)
 - The colors are taken from [[https://ethanschoonover.com/solarized/][Solarized Light]] and the [[https://github.com/HaoZeke/hugo-theme-hello-friend-ng-hz/branches][hello-friend-ng-hz]] Hugo theme
-- Fonts used are from Google Fonts (and Microsoft)
-  - [[https://github.com/microsoft/cascadia-code/][Cascadia]]
-  - [[http://vollkorn-typeface.com/][Vollkorn]]
-  - [[https://fonts.google.com/specimen/PT+Sans?category=Sans+Serif&preview.text_type=custom][Product Sans]]
-- Everything is minfied with [[https://github.com/tdewolff/minify][minify]]
-*** Development Workflow?
-Thanks for thinking of contributing! The workflow I use for making and tracking changes involves [[https://github.com/filewatcher/filewatcher-cli][filewatcher-cli]] and [[https://wiki.alpinelinux.org/wiki/Darkhttpd][darkhttpd]] along with an example project.
+- CSS is minified via =sass --style=compressed= (no separate minifier needed)
+- Inspired by [[https://mcss.mosra.cz/][m.css]] and [[https://shibuya.lepture.com/][Shibuya]]
+
+*** Development Workflow
 #+begin_src bash
-# One
-filewatcher -s  '**/*.scss' "sass src/styles/scss/main.scss:src/styles/doxyYoda.css"
-# Two
-filewatcher -s  '../../symengine/* ./* ../../../../doxyYoda/**/*.{css,html,xml}' "doxygen Doxyfile-prj.cfg"
+pixi run watch     # Auto-recompile SCSS on changes
+pixi run demo      # Rebuild demo docs
+pixi run serve     # Serve and preview
 #+end_src
+
+Or the manual way with [[https://github.com/filewatcher/filewatcher-cli][filewatcher-cli]] and [[https://wiki.alpinelinux.org/wiki/Darkhttpd][darkhttpd]]:
+#+begin_src bash
+filewatcher -s '**/*.scss' "sass src/styles/scss/main.scss:src/styles/doxyYoda.css"
+#+end_src
+
+** Demo
+The =demo/= directory contains a self-contained example project:
+- =demo/src/yoda.hpp= — C++ header exercising all Doxygen constructs
+- =demo/src/mainpage.dox= — Landing page showcasing every visual element
+- =demo/Doxyfile= — Pre-configured to use doxyYoda
+
+Build and preview:
+#+begin_src bash
+pixi run demo && pixi run serve
+# Open http://localhost:8000
+#+end_src
+
 ** Tree View?
 Unfortunately, as long as Doxygen keeps shipping silly ~jQuery~ based javascript scripts which write weird resizing logic into the HTML on the fly, tree view isn't very feasible.
 *** I really want it!
 There are some commented out sections relating to an attempt to work around the jQuery rubbish but it amounts to just rewriting the HTML in place (see commit 07cdb06). Might consider this later.
+
 ** Users
-- [[https://symengine.org/symengine][SymEngine C++ API documentaion]]
+- [[https://symengine.org/symengine][SymEngine C++ API documentation]]
 - [[https://docs.dseams.info][d-SEAMS API Documentation]]
 - [[https://haozeke.github.io/eigen/][Eigen v3.4.0 (git) Unofficial API Documentation]]
 - [[https://atomic-solvers.github.io/featom/][featom API Documentation]]
 - [[https://haozeke.github.io/GaussJacobiQuad/][GaussJacobiQuad API Documentation]]
-* TODO Tasks
-** Add an example in-place
-** Better documentation
-** Minification / Autoprefixer / Other Goodies
-** Over-engineer with Webpack
+
 * Acknowledgments
-This project was conceived as part of SymEngine's Google Season of Docs 2020.
+This project was conceived as part of SymEngine's Google Season of Docs 2020. Inspired by [[https://mcss.mosra.cz/][m.css]] by Vladimír Vondruš and [[https://shibuya.lepture.com/][Shibuya]] by Hsiaoming Yang.
+
 * License
 [[https://www.apache.org/licenses/LICENSE-2.0.html][Apache version 2]]

@@ -1,0 +1,202 @@
+/**
+@mainpage doxyYoda — A Modern Doxygen Theme
+
+@tableofcontents
+
+@section hero Overview
+
+<b>doxyYoda</b> is a modern <a href="https://www.doxygen.nl/">Doxygen</a> theme
+that replaces the default table-based layout with <b>CSS Grid</b>, a
+<b>Solarized</b> color palette, and full <b>dark mode</b> support.
+
+It is built with Sass, managed via <a href="https://pixi.sh">Pixi</a>, and
+draws inspiration from
+<a href="https://shibuya.lepture.com/">Shibuya</a> and
+<a href="https://mcss.mosra.cz/">m.css</a>.
+
+This site is itself the demo — every page you see is rendered by doxyYoda.
+Browse the <a href="modules.html">Modules</a> for class hierarchies and
+graphs, or read on for the feature tour.
+
+@section features Key Features
+
+| Feature | Description |
+|---------|-------------|
+| <b>Solarized palette</b> | Warm, low-contrast colors that are easy on the eyes — light and dark variants |
+| <b>Dark mode</b> | Toggle with the &#9790; button, or let your OS decide via `prefers-color-scheme` |
+| <b>CSS Grid layout</b> | Responsive layout with optimal reading width — no tables |
+| <b>Frosted glass navbar</b> | Sticky translucent navigation bar with `backdrop-filter` |
+| <b>Foldable code blocks</b> | Inline source is wrapped in `<details>` — stays out of your way until needed |
+| <b>Copy to clipboard</b> | One-click copying on every code block |
+| <b>MathJax 3</b> | Beautiful math rendering: \f$ e^{i\pi} + 1 = 0 \f$ |
+| <b>Modern admonitions</b> | Color-coded notes, warnings, todos, bugs — 10 types |
+| <b>Graphviz diagrams</b> | Inheritance graphs, collaboration diagrams, include graphs |
+| <b>Pixi build system</b> | Reproducible builds — `pixi run demo` and you're done |
+
+@section tour Live Examples
+
+The best way to see doxyYoda in action is to explore this site:
+
+@subsection tour_classes Class Hierarchies & Graphs
+
+The @ref shapes module defines a Shape base class with Circle, Rectangle,
+Square, and Triangle. Open any class page to see:
+
+- <b>Inheritance diagrams</b> — rendered via Graphviz (SVG, interactive)
+- <b>Collaboration graphs</b> — showing member relationships
+- <b>Member documentation</b> — parameters, return values, pre/post conditions
+- <b>Inline source</b> — foldable, with copy button and syntax highlighting
+
+Try it: @ref geometry::Shape, @ref geometry::Circle, @ref geometry::Square
+
+@subsection tour_templates Templates & Containers
+
+The @ref containers module demonstrates template documentation:
+
+- @ref containers::Stack — a simple LIFO with type parameter
+- @ref containers::RingBuffer — non-type template parameter (`N`)
+- @ref containers::Result — a Rust-inspired `Result<T, E>` sum type
+- <b>Exception hierarchy</b>: @ref containers::ContainerError with derived types
+
+@subsection tour_algorithms Grouped Functions
+
+The @ref algorithms module shows grouped free functions:
+
+- Sorting: @ref algorithms::bubble_sort, @ref algorithms::insertion_sort
+- Numeric: @ref algorithms::fibonacci, @ref algorithms::gcd, @ref algorithms::is_prime
+- Each with complexity formulas rendered via MathJax
+
+@subsection tour_math Mathematics
+
+The @ref yoda::Vec2 class and @ref yoda::lerp function demonstrate
+MathJax rendering. Here's the Gaussian integral:
+
+\f[
+    \int_{-\infty}^{\infty} e^{-x^2} \, dx = \sqrt{\pi}
+\f]
+
+@subsection tour_admonitions Admonitions
+
+doxyYoda styles all 10 Doxygen admonition types with distinct colors:
+
+@note This is a <b>note</b> — informational context and tips.
+
+@warning This is a <b>warning</b> — things that can go wrong.
+
+@attention Pay <b>attention</b> — critical information.
+
+@todo A <b>todo</b> item — tracked in the global Todo List.
+
+@bug A known <b>bug</b> — tracked in the global Bug List.
+
+@deprecated This API is <b>deprecated</b> — please migrate.
+
+@pre Precondition: \f$ x > 0 \f$
+
+@post Postcondition: the return value is non-negative.
+
+@invariant The container size never exceeds capacity.
+
+See the @ref features_page "Feature Tour" for the full set including `@test`.
+
+@subsection tour_code Code Blocks
+
+A C++ snippet with syntax highlighting, copy button, and folding:
+
+@code{.cpp}
+template <typename T>
+T sum(const std::vector<T>& values) {
+    T total{};
+    for (const auto& v : values) {
+        total += v;
+    }
+    return total;
+}
+@endcode
+
+A shell snippet:
+
+@code{.sh}
+git clone https://github.com/HaoZeke/doxyYoda
+cd doxyYoda
+pixi run demo
+@endcode
+
+@section quickstart Quick Start
+
+@subsection qs_try Try the Demo
+
+@code{.sh}
+git clone https://github.com/HaoZeke/doxyYoda
+cd doxyYoda
+pixi run demo
+# Open demo/build/html/index.html
+@endcode
+
+@subsection qs_integrate Integrate into Your Project
+
+Add to your Doxyfile:
+
+@code{.conf}
+HTML_HEADER            = path/to/doxyYoda/src/html/header.html
+HTML_FOOTER            = path/to/doxyYoda/src/html/footer.html
+HTML_EXTRA_STYLESHEET  = path/to/doxyYoda/src/styles/doxyYoda.css
+LAYOUT_FILE            = path/to/doxyYoda/src/xml/doxyYoda.xml
+@endcode
+
+See the @ref customization_page "Customization Guide" for detailed instructions.
+
+@section typography Typography
+
+doxyYoda uses a carefully curated font stack:
+
+| Role | Font | Source |
+|------|------|--------|
+| Body text | <b>Crimson Text</b> | Google Fonts |
+| Headings | <b>Maiden Orange</b> | Google Fonts |
+| Code | <b>Hack</b> | jsDelivr CDN |
+| Serif (optional) | <b>Vollkorn</b> | Google Fonts |
+
+All fonts are loaded via CDN — no local installation needed.
+
+@section architecture SCSS Architecture
+
+@code
+src/styles/scss/
++-- main.scss          # Entry point (@use imports)
++-- _variables.scss    # CSS custom properties (light + dark)
++-- _base.scss         # Reset and global styles
++-- _fonts.scss        # Font imports (CDN)
++-- _colors.scss       # Color application
++-- _layout.scss       # CSS Grid (rgoswami.me pattern)
++-- _typography.scss   # Headings, links, member docs
++-- _code.scss         # Code blocks, syntax, copy button
++-- _doxynav.scss      # Navbar, sidebar, breadcrumbs
++-- _directives.scss   # Admonitions (note, warning, etc.)
++-- _tooltip.scss      # PowerTip tooltips
+@endcode
+
+@section darkmode Dark Mode
+
+doxyYoda supports dark mode through two mechanisms:
+
+1. <b>Automatic</b>: respects `prefers-color-scheme: dark` from your OS
+2. <b>Manual toggle</b>: click the &#9790; button in the navbar
+
+The preference persists in `localStorage`. The entire color system uses CSS
+custom properties, so the switch is instant with no flash of unstyled content.
+
+@section license License
+
+Apache License 2.0. See the
+<a href="https://github.com/HaoZeke/doxyYoda">GitHub repository</a>
+for details.
+
+@section acknowledgments Acknowledgments
+
+Created by <a href="https://rgoswami.me">Rohit Goswami</a> as part of
+SymEngine's Google Season of Docs 2020. Inspired by
+<a href="https://mcss.mosra.cz/">m.css</a> by Vladim&iacute;r Vondru&scaron;
+and <a href="https://shibuya.lepture.com/">Shibuya</a> by Hsiaoming Yang.
+
+*/
