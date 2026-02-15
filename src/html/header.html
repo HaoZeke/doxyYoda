@@ -110,7 +110,11 @@ document.addEventListener('DOMContentLoaded', function() {
     updateIcon();
     toggle.addEventListener('click', function() {
       var isDark = document.documentElement.classList.toggle('dark');
-      document.documentElement.classList.remove('light');
+      if (isDark) {
+        document.documentElement.classList.remove('light');
+      } else {
+        document.documentElement.classList.add('light');
+      }
       localStorage.setItem('doxyYoda-theme', isDark ? 'dark' : 'light');
       updateIcon();
     });
