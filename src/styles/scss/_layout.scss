@@ -16,17 +16,21 @@ html {
 
 body {
   min-height: 100vh;
+  margin: 0;
 }
 
 // --- Grid container (rgoswami.me pattern) ---
+// On wide screens the middle column caps at 75rem; the 1fr gutters
+// absorb the remaining space equally, centering the content.
+// On narrow screens min() picks 100% so the gutters collapse to 0.
 .grid-contents {
   display: grid;
   grid-template-rows: auto 1fr auto;
-  grid-template-columns: auto 20fr 20fr 20fr var(--sidebar-width);
+  grid-template-columns: 1fr min(75rem, 100%) 1fr;
   grid-template-areas:
-    "top    top    top    top    top"
-    ".      main   main   main   sidebar"
-    "foot   foot   foot   foot   foot";
+    "top  top  top"
+    ".    main ."
+    "foot foot foot";
 }
 
 // --- Grid area assignments (direct children only) ---
@@ -55,6 +59,9 @@ body {
 .contents,
 .PageDoc {
   max-width: 75rem;
+  width: 100%;
+  margin: 0 auto;
+  overflow-x: auto;
 }
 
 // --- Summary (flex row of quick-links) ---

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <!-- doxyYoda logo: a doc/code bracket with Yoda-ear silhouettes -->
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#268bd2" />
+      <stop offset="100%" style="stop-color:#2aa198" />
+    </linearGradient>
+  </defs>
+
+  <!-- Left Yoda ear -->
+  <path d="M8 52 Q2 38 18 28 Q24 34 22 48 Z"
+        fill="url(#grad)" opacity="0.85"/>
+
+  <!-- Right Yoda ear -->
+  <path d="M120 52 Q126 38 110 28 Q104 34 106 48 Z"
+        fill="url(#grad)" opacity="0.85"/>
+
+  <!-- Document body (rounded rect) -->
+  <rect x="24" y="32" width="80" height="76" rx="8" ry="8"
+        fill="url(#grad)" />
+
+  <!-- Dog-ear fold on document -->
+  <path d="M84 32 L104 32 L104 52 Z" fill="#1a6a8a" opacity="0.4"/>
+
+  <!-- Code brackets "< />" in the document -->
+  <text x="64" y="80" text-anchor="middle"
+        font-family="monospace" font-weight="bold" font-size="30"
+        fill="#fdf6e3" letter-spacing="-1">&lt;/&gt;</text>
+</svg>

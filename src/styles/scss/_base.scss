@@ -54,6 +54,9 @@ canvas {
 
 // Smooth transitions for dark mode switching
 body {
+  margin: 0;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
   transition: background-color var(--transition-normal),
     color var(--transition-normal);
 }
