@@ -1,6 +1,6 @@
 [workspace]
 name = "doxyYoda"
-version = "0.1.2"
+version = "0.1.3"
 description = "A modern Doxygen theme — CSS Grid, Solarized, dark mode, foldable code"
 authors = ["Rohit Goswami <rog32@hi.is>"]
 license = "Apache-2.0"
