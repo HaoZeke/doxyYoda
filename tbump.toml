@@ -19,3 +19,7 @@ search = 'PROJECT_NUMBER         = "{current_version}"'
 [[file]]
 src = "demo/src/yoda.hpp"
 search = '@version {current_version}'
+
+[[file]]
+src = "action.yml"
+search = 'default: "{current_version}"'

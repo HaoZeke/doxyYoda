@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [0.1.3] - 2026-02-16
+
+### Added
+- SVG project logo (`src/images/doxyYoda_logo.svg`)
+- `PROJECT_LOGO` entry in demo Doxyfile
+
+### Changed
+- Title area uses 3-column CSS Grid for true center alignment
+- Responsive layout: simplified single-column grid on small screens
+- Navigation menu items evenly spaced
+- Body base styles (margin reset, background/text color variables)
+- Logo max-height reduced to 36 px for a tighter title bar
+- GitHub Action default version updated to latest release
+
 ## [0.1.2] - 2026-02-16
 
 ### Fixed
@@ -67,7 +81,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - MathJax 3 support in header
 - Basic project structure and README
 
-[Unreleased]: https://github.com/HaoZeke/doxyYoda/compare/v0.1.2...HEAD
+[Unreleased]: https://github.com/HaoZeke/doxyYoda/compare/v0.1.3...HEAD
+[0.1.3]: https://github.com/HaoZeke/doxyYoda/compare/v0.1.2...v0.1.3
 [0.1.2]: https://github.com/HaoZeke/doxyYoda/compare/v0.1.0...v0.1.2
 [0.1.0]: https://github.com/HaoZeke/doxyYoda/compare/0.0.2...v0.1.0
 [0.0.2]: https://github.com/HaoZeke/doxyYoda/compare/v0.0.1...0.0.2
