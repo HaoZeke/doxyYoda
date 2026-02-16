@@ -8,7 +8,7 @@ inputs:
   version:
     description: "doxyYoda version to download (without 'v' prefix)"
     required: false
-    default: "0.1.0"
+    default: "0.1.2"
   path:
     description: "Directory to extract doxyYoda into"
     required: false
