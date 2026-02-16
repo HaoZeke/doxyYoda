@@ -26,6 +26,11 @@
   gap: var(--space-4);
 }
 
+.project_logo img {
+  max-height: 40px;
+  width: auto;
+}
+
 // Dark mode toggle button
 .dark-mode-toggle {
   margin-left: auto;

@@ -2,7 +2,7 @@
 # Build with: pixi run demo
 
 PROJECT_NAME           = "doxyYoda"
-PROJECT_NUMBER         = "0.1.0"
+PROJECT_NUMBER         = "0.1.2"
 PROJECT_BRIEF          = "A modern Doxygen theme — CSS Grid, Solarized, dark mode"
 
 OUTPUT_DIRECTORY       = demo/build

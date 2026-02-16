@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [0.1.2] - 2026-02-16
+
+### Fixed
+- Logo image rendering with literal `$logosize` instead of proper height constraint
+- Logo now sized via CSS (`max-height`) to fit within the title bar
+
 ## [0.1.0] - 2025-01-01
 
 ### Added
@@ -61,7 +67,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - MathJax 3 support in header
 - Basic project structure and README
 
-[Unreleased]: https://github.com/HaoZeke/doxyYoda/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/HaoZeke/doxyYoda/compare/v0.1.2...HEAD
+[0.1.2]: https://github.com/HaoZeke/doxyYoda/compare/v0.1.0...v0.1.2
 [0.1.0]: https://github.com/HaoZeke/doxyYoda/compare/0.0.2...v0.1.0
 [0.0.2]: https://github.com/HaoZeke/doxyYoda/compare/v0.0.1...0.0.2
 [0.0.1]: https://github.com/HaoZeke/doxyYoda/releases/tag/v0.0.1
