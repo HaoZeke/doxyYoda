@@ -35,7 +35,7 @@ jobs:
 
       - name: Inject analytics script
         run: |
-          find demo/build/html -name '*.html' -exec sed -i 's|</head>|<script defer data-domain="doxyyoda.rgoswami.me" src="https://analytics.turtletech.us/js/script.outbound-links.js"></script>\n</head>|' {} +
+          find demo/build/html -name '*.html' -exec sed -i 's|</head>|<script defer src="https://analytics.turtletech.us/script.js" data-website-id="c23ea161-2b0d-4c4a-8b23-3a0f7081c911"></script>\n<script>window.umami=window.umami\|\|{track:function(){}};document.addEventListener("click",function(e){var a=e.target.closest("a");if(a\&\&a.hostname!==location.hostname)umami.track("Outbound Link",{url:a.href})});</script>\n</head>|' {} +
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
