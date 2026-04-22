@@ -33,9 +33,9 @@ jobs:
       - name: Add CNAME
         run: echo 'doxyyoda.rgoswami.me' > demo/build/html/CNAME
 
-      - name: Inject analytics script
+      - name: Inject Antics tracker
         run: |
-          find demo/build/html -name '*.html' -exec sed -i 's|</head>|<script defer src="https://analytics.turtletech.us/script.js" data-website-id="c23ea161-2b0d-4c4a-8b23-3a0f7081c911"></script>\n<script defer src="https://antics-api.turtletech.us/antics.js?v=2026-04-19-attention"></script>\n</head>|' {} +
+          find demo/build/html -name '*.html' -exec sed -i 's|</head>|<script defer src="https://antics-api.turtletech.us/antics.js?v=2026-04-19-attention"></script>\n</head>|' {} +
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
