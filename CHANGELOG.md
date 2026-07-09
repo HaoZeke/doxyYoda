@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Changed
+- Header/footer templates use HTML5 (`<!DOCTYPE html>`), drop XHTML transitional + IE meta
+- Dark-mode boot respects `prefers-color-scheme` when no localStorage preference is set; toggle keeps `aria-pressed` in sync
+- Logo link targets `$relpath^index.html`; title area marks up as a labelled `<nav>`
+- Footer attribution uses themed `.doxyyoda-attrib` classes instead of inline styles
+- SCSS coverage for modern Doxygen structures: `.textblock`, `.compoundTemplParams`, `div.dynheader` / `div.dyncontent`, `div.classindex`, `table.doxtable`, sticky-header `:target` scroll margin, `prefers-reduced-motion`
+- Consumer docs and examples pin the current release from `version.txt` (action `@v…`, tarball paths)
+
+### Added
+- Pure theme preference helpers in `src/js/theme_pref.js` with contract tests under `tests/`
+
 ## [0.1.3] - 2026-02-16
 
 ### Added

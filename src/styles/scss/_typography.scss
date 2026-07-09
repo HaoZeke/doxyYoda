@@ -735,3 +735,137 @@ p.reference {
   margin: 1rem 0;
   text-align: center;
 }
+
+// --- Prose / description blocks (Doxygen 1.12+) ---
+.textblock {
+  line-height: 1.7;
+  margin: 0.75rem 0 1.25rem;
+  max-width: 75ch;
+
+  p {
+    margin: 0.6em 0;
+  }
+
+  > p:first-child {
+    margin-top: 0;
+  }
+}
+
+.compoundTemplParams {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  color: var(--accent-violet);
+  margin: 0.5rem 0 1rem;
+  padding: 0.5rem 0.75rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  overflow-x: auto;
+}
+
+// Collapsible sections (dynsections.js)
+div.dynheader {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.75rem;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  user-select: none;
+
+  &:hover {
+    color: var(--accent-blue);
+  }
+}
+
+div.dyncontent {
+  margin: 0.25rem 0 0.75rem;
+  padding-left: 0.25rem;
+}
+
+// Class index pages
+div.classindex {
+  margin: 1rem 0;
+
+  dl {
+    margin: 0.5rem 0;
+  }
+
+  dt {
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  dd {
+    margin: 0.15rem 0 0.15rem 1rem;
+    color: var(--text-secondary);
+  }
+
+  span.ai {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    color: var(--accent-blue);
+    margin-top: 1rem;
+    display: block;
+  }
+}
+
+// Generic Doxygen tables (non-markdown)
+table.doxtable {
+  border-collapse: collapse;
+  margin: 1rem 0;
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+
+  caption {
+    font-weight: 600;
+    text-align: left;
+    padding: 0.5rem 0;
+    color: var(--text-primary);
+  }
+
+  th,
+  td {
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--border-subtle);
+    font-size: 0.875rem;
+  }
+
+  th {
+    background: var(--bg-secondary);
+    font-weight: 600;
+    text-align: left;
+  }
+
+  tr:nth-child(even) td {
+    background: var(--bg-surface);
+  }
+}
+
+// In-page anchors: leave room under sticky title bar
+:target {
+  scroll-margin-top: 4.5rem;
+}
+
+a.anchor {
+  display: block;
+  scroll-margin-top: 4.5rem;
+}
+
+// Reduced motion
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

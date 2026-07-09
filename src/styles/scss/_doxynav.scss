@@ -432,6 +432,42 @@ ul.sm-dox {
   border-color: var(--border-subtle);
 }
 
+// Theme attribution strip (footer.html)
+.doxyyoda-attrib {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem 1.25rem;
+  padding: 1rem var(--space-5);
+  color: var(--text-muted);
+  font-size: 0.85em;
+  border-top: 1px solid var(--border-subtle);
+  background: var(--bg-secondary);
+
+  a {
+    color: var(--text-secondary);
+    border-bottom: none;
+
+    &:hover {
+      color: var(--accent-blue);
+      border-bottom: 1px solid var(--accent-blue);
+    }
+  }
+}
+
+.doxyyoda-attrib__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3em;
+}
+
+.doxyyoda-attrib__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3em;
+}
+
 // --- Responsive breakpoints ---
 @media #{$media-size-tablet} {
   .title_area {
