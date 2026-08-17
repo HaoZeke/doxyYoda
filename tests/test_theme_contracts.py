@@ -103,6 +103,7 @@ def test_footer_closes_grid_and_has_attrib_class():
     text = FOOTER.read_text(encoding="utf-8")
     assert "grid-contents" in text
     assert "doxyyoda-attrib" in text
+    assert "Doxygen $doxygenversion" in text
     # Doxygen 1.17+ already closed #doc-content / #container before the footer.
     assert "close #doc-content" not in text
     assert re.search(r'id="doc-content"', text) is None

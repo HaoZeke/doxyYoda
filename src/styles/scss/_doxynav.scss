@@ -405,9 +405,9 @@ ul.sm-dox {
 }
 
 // Index pages have no breadcrumbs — only the Generated-by chip.
-// Do not keep a 30px empty flex row for that.
-.navpath ul:not(:has(.navelem)) {
-  justify-content: center;
+// That credit lives in .doxyyoda-attrib; hide the empty row.
+#nav-path.navpath:not(:has(.navelem)) {
+  display: none;
 }
 
 .navpath li {
