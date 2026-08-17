@@ -305,12 +305,21 @@ def test_pixi_doxygen_floor_is_1_17():
 
 def test_doc_content_does_not_cancel_treeview_resize_offset():
     """Doxygen resize.js sets #doc-content margin-left; do not blanket-zero it."""
-    doxynav = (ROOT / "src" / "styles" / "scss" / "_doxynav.scss").read_text(encoding="utf-8")
-    assert not re.search(
+    scss_root = ROOT / "src" / "styles" / "scss"
+    # Stock _baseDoxygen.scss print rules may zero margin; theme sheets must not.
+    skip = {"_baseDoxygen.scss"}
+    pat = re.compile(
         r"#doc-content\s*\{[^}]*margin-left\s*:\s*0\s*!important",
-        doxynav,
         flags=re.DOTALL,
-    ), "#doc-content must not force margin-left: 0 !important (cancels resize.js)"
+    )
+    for path in scss_root.rglob("*.scss"):
+        if path.name in skip:
+            continue
+        text = path.read_text(encoding="utf-8")
+        assert not pat.search(text), (
+            f"{path.relative_to(scss_root)} must not force "
+            "margin-left: 0 !important (cancels resize.js)"
+        )
 
 
 if __name__ == "__main__":
