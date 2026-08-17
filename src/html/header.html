@@ -30,9 +30,6 @@
 <!--END FULL_SIDEBAR-->
 <script type="text/javascript" src="$relpath^jquery.js"></script>
 <script type="text/javascript" src="$relpath^dynsections.js"></script>
-<!--BEGIN COPY_CLIPBOARD-->
-<script type="text/javascript" src="$relpath^clipboard.js"></script>
-<!--END COPY_CLIPBOARD-->
 $treeview
 $search
 $mathjax
@@ -107,7 +104,7 @@ document.addEventListener("DOMContentLoaded", function () {
     details.appendChild(frag);
   });
 
-  // Copy-to-clipboard on div.fragment
+  // Copy-to-clipboard on div.fragment (themed .copy-btn only)
   document.querySelectorAll("div.fragment").forEach(function (frag) {
     if (frag.querySelector(".copy-btn")) return;
     var btn = document.createElement("button");
@@ -118,10 +115,13 @@ document.addEventListener("DOMContentLoaded", function () {
     btn.addEventListener("click", function (ev) {
       ev.preventDefault();
       ev.stopPropagation();
-      var lines = frag.querySelectorAll(".line");
+      var clone = frag.cloneNode(true);
+      var extra = clone.querySelector(".copy-btn");
+      if (extra) extra.remove();
+      var lines = clone.querySelectorAll(".line");
       var text = lines.length
         ? Array.prototype.map.call(lines, function (l) { return l.textContent; }).join("\n")
-        : frag.textContent;
+        : clone.textContent;
       var done = function () {
         btn.textContent = "Copied!";
         setTimeout(function () { btn.textContent = "Copy"; }, 2000);

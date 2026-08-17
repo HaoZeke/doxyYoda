@@ -72,6 +72,25 @@ def test_header_code_folding_does_not_force_close_fragments():
     assert "Code" in block
 
 
+def test_header_drops_doxygen_clipboard_js():
+    """Stock clipboard.js injects an unstyled div.clipboard beside .copy-btn.
+
+    The theme owns one copy control. Copied text is source only: clone the
+    fragment and drop .copy-btn so the button label is not included.
+    """
+    text = HEADER.read_text(encoding="utf-8")
+    assert "COPY_CLIPBOARD" not in text
+    assert "clipboard.js" not in text
+    assert "copy-btn" in text
+
+    copy_idx = text.find('querySelectorAll("div.fragment")')
+    assert copy_idx != -1, "copy querySelectorAll(div.fragment) missing"
+    block = text[copy_idx:]
+    assert re.search(r"cloneNode\s*\(\s*true\s*\)", block), block
+    assert re.search(r'querySelector\(\s*["\']\.copy-btn["\']\s*\)', block)
+    assert re.search(r"\.remove\s*\(", block)
+
+
 def test_footer_closes_grid_and_has_attrib_class():
     text = FOOTER.read_text(encoding="utf-8")
     assert "grid-contents" in text

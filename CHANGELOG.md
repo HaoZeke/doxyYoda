@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Fixed
+- Drop Doxygen `clipboard.js` so each fragment has one themed `.copy-btn`; copy excludes the button label
+
 ### Changed
 - Header/footer templates use HTML5 (`<!DOCTYPE html>`), drop XHTML transitional + IE meta
 - Dark-mode boot respects `prefers-color-scheme` when no localStorage preference is set; toggle keeps `aria-pressed` in sync
