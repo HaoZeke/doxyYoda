@@ -1,29 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
-  <!-- doxyYoda logo: a doc/code bracket with Yoda-ear silhouettes -->
-  <defs>
-    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#268bd2" />
-      <stop offset="100%" style="stop-color:#2aa198" />
-    </linearGradient>
-  </defs>
-
-  <!-- Left Yoda ear -->
-  <path d="M8 52 Q2 38 18 28 Q24 34 22 48 Z"
-        fill="url(#grad)" opacity="0.85"/>
-
-  <!-- Right Yoda ear -->
-  <path d="M120 52 Q126 38 110 28 Q104 34 106 48 Z"
-        fill="url(#grad)" opacity="0.85"/>
-
-  <!-- Document body (rounded rect) -->
-  <rect x="24" y="32" width="80" height="76" rx="8" ry="8"
-        fill="url(#grad)" />
-
-  <!-- Dog-ear fold on document -->
-  <path d="M84 32 L104 32 L104 52 Z" fill="#1a6a8a" opacity="0.4"/>
-
-  <!-- Code brackets "< />" in the document -->
-  <text x="64" y="80" text-anchor="middle"
-        font-family="monospace" font-weight="bold" font-size="30"
-        fill="#fdf6e3" letter-spacing="-1">&lt;/&gt;</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-label="doxyYoda turtle">
+  <!-- Original doxyYoda mark: lime turtle, brown hex shell. -->
+  <path fill="#7ED321" d="M52 18c-6 0-12 6-12 16 0 6 3 11 8 14h32c5-3 8-8 8-14 0-10-6-16-12-16-4 0-7 2-10 5-3-3-6-5-10-5z"/>
+  <circle cx="50" cy="28" r="4" fill="#4A4A4A"/>
+  <circle cx="78" cy="28" r="4" fill="#4A4A4A"/>
+  <path fill="#7ED321" d="M20 58c-10 4-16 14-14 22 2 6 10 8 18 4 6-3 10-8 12-14z"/>
+  <path fill="#7ED321" d="M108 58c10 4 16 14 14 22-2 6-10 8-18 4-6-3-10-8-12-14z"/>
+  <path fill="#7ED321" d="M36 96c-8 10-8 20-2 24 6 4 14 0 20-10 4-6 6-12 6-16z"/>
+  <path fill="#7ED321" d="M92 96c8 10 8 20 2 24-6 4-14 0-20-10-4-6-6-12-6-16z"/>
+  <path fill="#7ED321" d="M58 104l6 16 6-16z"/>
+  <ellipse cx="64" cy="72" rx="34" ry="32" fill="#A0522D"/>
+  <path fill="none" stroke="#7A3E1D" stroke-width="3.2" stroke-linejoin="round"
+        d="M64 48 L80 56 L80 72 L64 80 L48 72 L48 56 Z
+           M64 48 L64 80 M48 56 L80 72 M80 56 L48 72
+           M64 48 L80 72 M64 48 L48 72"/>
 </svg>

@@ -284,8 +284,18 @@ def test_logo_svg_is_the_shipped_mark():
     logo = ROOT / "src" / "images" / "doxyYoda_logo.svg"
     text = logo.read_text(encoding="utf-8")
     assert 'viewBox="0 0 128 128"' in text
-    assert "Yoda-ear" in text or "Yoda ear" in text
-    assert "&lt;/&gt;" in text or "</>" in text
+    assert "turtle" in text.lower()
+    assert "#7ED321" in text
+    assert "#A0522D" in text
+
+
+def test_header_uses_antics_not_umami():
+    header = HEADER.read_text(encoding="utf-8")
+    footer = (ROOT / "src" / "html" / "footer.html").read_text(encoding="utf-8")
+    assert "antics-api.turtletech.us/antics.js" in header
+    assert "umami" not in header.lower()
+    assert "antics.turtletech.us" in footer
+    assert "umami.is" not in footer
 
 
 def test_fonts_are_fog_over_fen():
