@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Changed
+- README Why/Demo/Dark Mode shots are the current fog-over-fen theme, not Solarized
+
 ## [0.2.2] - 2026-08-17
 
 ### Fixed

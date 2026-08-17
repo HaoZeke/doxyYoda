@@ -9,8 +9,8 @@ Have you seen ~doxygen~ HTML? To go from:
 #+DOWNLOADED: screenshot @ 2021-03-02 00:51:00
 [[file:images/why/2021-03-02_00-51-00_screenshot.png]]
 To:
-#+DOWNLOADED: screenshot @ 2021-03-02 00:51:40
-[[file:images/why/2021-03-02_00-51-40_screenshot.png]]
+#+DOWNLOADED: screenshot @ 2026-08-17 13:20:00
+[[file:images/why/2026-08-17_fog-over-fen-members.png]]
 *** But... [x] does this
 - Doxyrest :: Does not allow embedding source inline (see above), ~doxyrest~ just doesn't capture the same level of information
 - Exhale / Breathe :: Can't even display source code, inline or otherwise
@@ -151,9 +151,12 @@ doxyYoda supports dark mode through two mechanisms:
 
 The entire color system uses CSS custom properties, so the switch is instant with no flash of unstyled content.
 
+#+DOWNLOADED: screenshot @ 2026-08-17 13:20:00
+[[file:images/why/2026-08-17_fog-over-fen-index-dark.png]]
+
 ** How?
 - [[https://sass-lang.com/documentation/cli/dart-sass][Dart Sass]] is needed to compile the CSS (managed by pixi)
-- The colors are taken from [[https://ethanschoonover.com/solarized/][Solarized Light]] and the [[https://github.com/HaoZeke/hugo-theme-hello-friend-ng-hz/branches][hello-friend-ng-hz]] Hugo theme
+- The palette is fog-over-fen: sage paper, olive ink, moss, campfire ember
 - CSS is minified via =sass --style=compressed= (no separate minifier needed)
 - Inspired by [[https://mcss.mosra.cz/][m.css]] and [[https://shibuya.lepture.com/][Shibuya]]
 
@@ -180,6 +183,11 @@ Build and preview:
 pixi run demo && pixi run serve
 # Open http://localhost:8000
 #+end_src
+
+Live: [[https://doxyyoda.rgoswami.me/][doxyyoda.rgoswami.me]]
+
+#+DOWNLOADED: screenshot @ 2026-08-17 13:20:00
+[[file:images/why/2026-08-17_fog-over-fen-index-light.png]]
 
 ** Tree View
 Set =GENERATE_TREEVIEW = YES=. The theme places =#side-nav= on a dedicated
