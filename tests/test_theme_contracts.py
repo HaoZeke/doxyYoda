@@ -146,6 +146,15 @@ def test_scss_covers_modern_doxygen_selectors():
         )
 
 
+def test_scss_attrib_strip_has_named_full_width_grid_area():
+    """footer.html emits .doxyyoda-attrib as a sibling of .footer; it needs its own row."""
+    scss_root = ROOT / "src" / "styles" / "scss"
+    blob = "\n".join(p.read_text(encoding="utf-8") for p in scss_root.rglob("*.scss"))
+    assert "grid-area: attrib" in blob
+    assert '"attrib attrib attrib"' in blob
+    assert re.search(r'^\s*"attrib"\s*;?\s*$', blob, re.M)
+
+
 if __name__ == "__main__":
     # Minimal runner without pytest dependency
     failed = 0

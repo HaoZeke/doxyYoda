@@ -3,12 +3,13 @@
 // =============================================================================
 //
 // Actual HTML structure (direct children of .grid-contents):
-//   #top          — title area + menus (header.html opens, Doxygen closes)
-//   #doc-content  — .header, .contents/.PageDoc (Doxygen opens, footer.html closes)
-//   .footer       — footer (from footer.html, now a direct grid child)
+//   #top              — title area + menus (header.html opens, Doxygen closes)
+//   #doc-content      — .header, .contents/.PageDoc (Doxygen opens, footer.html closes)
+//   .footer/#nav-path — generated-by footer (from footer.html)
+//   .doxyyoda-attrib  — theme attribution strip (from footer.html; sibling of .footer)
 //
 // With GENERATE_TREEVIEW = YES, Doxygen also creates:
-//   #side-nav     — tree view sidebar (direct child of .grid-contents)
+//   #side-nav         — tree view sidebar (direct child of .grid-contents)
 
 html {
   min-height: 100vh;
@@ -25,12 +26,13 @@ body {
 // On narrow screens min() picks 100% so the gutters collapse to 0.
 .grid-contents {
   display: grid;
-  grid-template-rows: auto 1fr auto;
+  grid-template-rows: auto 1fr auto auto;
   grid-template-columns: 1fr min(75rem, 100%) 1fr;
   grid-template-areas:
-    "top  top  top"
-    ".    main ."
-    "foot foot foot";
+    "top    top    top"
+    ".      main   ."
+    "foot   foot   foot"
+    "attrib attrib attrib";
 }
 
 // --- Grid area assignments (direct children only) ---
@@ -52,6 +54,10 @@ body {
 .footer,
 #nav-path {
   grid-area: foot;
+}
+
+.doxyyoda-attrib {
+  grid-area: attrib;
 }
 
 // --- Content inside #doc-content (normal flow, not grid items) ---
