@@ -73,7 +73,7 @@ LAYOUT_FILE            = "doxyYoda/xml/doxyYoda.xml"
 *** GitHub Action
 The easiest way to use doxyYoda in CI is with the bundled action:
 #+begin_src yaml
-- uses: HaoZeke/doxyYoda@v0.2.1
+- uses: HaoZeke/doxyYoda@v0.2.2
   with:
     cppreference-tag: true   # optional: download cppreference tag file
 #+end_src
@@ -82,7 +82,7 @@ This downloads the release tarball into =doxyYoda/= and (optionally) fetches the
 **** Inputs
 | Input              | Default   | Description                              |
 |--------------------+-----------+------------------------------------------|
-| =version=          | =0.2.1=   | doxyYoda version (without =v= prefix)    |
+| =version=          | =0.2.2=   | doxyYoda version (without =v= prefix)    |
 | =path=             | =doxyYoda= | Directory to extract into               |
 | =cppreference-tag= | =false=   | Download cppreference Doxygen tag file    |
 | =tags-path=        | =tags=    | Directory for tag files                  |
@@ -106,7 +106,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: HaoZeke/doxyYoda@v0.2.1
+      - uses: HaoZeke/doxyYoda@v0.2.2
         with:
           cppreference-tag: true
       - run: sudo apt-get install -y doxygen graphviz

@@ -7,7 +7,7 @@
  * member documentation, templates, and more.
  *
  * @author Rohit Goswami
- * @version 0.2.1
+ * @version 0.2.2
  * @date 2024
  * @copyright Apache License 2.0
  */

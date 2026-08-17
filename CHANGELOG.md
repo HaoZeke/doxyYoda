@@ -7,9 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [0.2.2] - 2026-08-17
+
 ### Fixed
 - Hide Doxygen `#page-nav` so `display: contents` on `#container` cannot open an empty footer row
-- Stop clipping tree labels (`overflow-x`) and the Generated-by chip (`#nav-path` 30px overflow)
+- Stop clipping tree labels (stock `margin-left: -5px`) and fold the Generated-by credit into the attrib strip
 
 ## [0.2.1] - 2026-08-17
 
@@ -117,7 +119,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - MathJax 3 support in header
 - Basic project structure and README
 
-[Unreleased]: https://github.com/HaoZeke/doxyYoda/compare/v0.2.1...HEAD
+[Unreleased]: https://github.com/HaoZeke/doxyYoda/compare/v0.2.2...HEAD
+[0.2.2]: https://github.com/HaoZeke/doxyYoda/compare/v0.2.1...v0.2.2
 [0.2.1]: https://github.com/HaoZeke/doxyYoda/compare/v0.2.0...v0.2.1
 [0.2.0]: https://github.com/HaoZeke/doxyYoda/compare/v0.1.3...v0.2.0
 [0.1.3]: https://github.com/HaoZeke/doxyYoda/compare/v0.1.2...v0.1.3
