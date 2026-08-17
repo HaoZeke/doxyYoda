@@ -8,7 +8,7 @@ This guide covers migrating your Doxygen project to use the doxyYoda theme.
 
 **** Via GitHub Action (recommended for CI)
 #+begin_src yaml
-- uses: HaoZeke/doxyYoda@v0.2.0
+- uses: HaoZeke/doxyYoda@v0.2.1
   with:
     cppreference-tag: true   # optional
 #+end_src
@@ -16,8 +16,8 @@ This guide covers migrating your Doxygen project to use the doxyYoda theme.
 **** Via release tarball
 Download the latest release from [[https://github.com/HaoZeke/doxyYoda/releases][GitHub Releases]] and extract it alongside your =Doxyfile=:
 #+begin_src bash
-curl -LO https://github.com/HaoZeke/doxyYoda/releases/download/v0.2.0/doxyYoda_0.2.0.tar.gz
-tar xf doxyYoda_0.2.0.tar.gz
+curl -LO https://github.com/HaoZeke/doxyYoda/releases/download/v0.2.1/doxyYoda_0.2.1.tar.gz
+tar xf doxyYoda_0.2.1.tar.gz
 #+end_src
 
 **** Via git clone (for development)

@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [0.2.1] - 2026-08-17
+
+### Fixed
+- Footer no longer emits an extra `</div>`: Doxygen 1.17+ already closed `#doc-content` and `#container`
+
 ## [0.2.0] - 2026-08-17
 
 ### Added
@@ -108,7 +113,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - MathJax 3 support in header
 - Basic project structure and README
 
-[Unreleased]: https://github.com/HaoZeke/doxyYoda/compare/v0.2.0...HEAD
+[Unreleased]: https://github.com/HaoZeke/doxyYoda/compare/v0.2.1...HEAD
+[0.2.1]: https://github.com/HaoZeke/doxyYoda/compare/v0.2.0...v0.2.1
 [0.2.0]: https://github.com/HaoZeke/doxyYoda/compare/v0.1.3...v0.2.0
 [0.1.3]: https://github.com/HaoZeke/doxyYoda/compare/v0.1.2...v0.1.3
 [0.1.2]: https://github.com/HaoZeke/doxyYoda/compare/v0.1.0...v0.1.2
