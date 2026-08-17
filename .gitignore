@@ -22,3 +22,6 @@ doxyYoda/
 *~
 .vscode/
 .idea/
+
+### Local tool state
+.grok/
