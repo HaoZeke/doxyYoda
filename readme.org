@@ -202,6 +202,8 @@ Sites that still ship the doxyYoda HTML theme (most published trees are still
 on an older tarball; the current release is the demo):
 
 - [[https://doxyyoda.rgoswami.me/][doxyYoda demo]] (this theme, =v0.2.2=)
+- [[https://eondocs.org/api-cpp/][eOn C++ API]] (sibling of the Sphinx book, =v0.2.2=)
+- [[https://gproptim.rgoswami.me/api-cpp/][gpr_optim C++ API]] (sibling of the Sphinx book, =v0.2.2=)
 - [[https://symengine.org/symengine][SymEngine C++ API documentation]]
 - [[https://haozeke.github.io/eigen/][Eigen v3.4.0 (git) unofficial API documentation]]
 - [[https://atomic-solvers.github.io/featom/][featom API documentation]]
