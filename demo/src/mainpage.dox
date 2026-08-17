@@ -7,7 +7,7 @@
 
 <b>doxyYoda</b> is a modern <a href="https://www.doxygen.nl/">Doxygen</a> theme
 that replaces the default table-based layout with <b>CSS Grid</b>, a
-<b>Solarized</b> color palette, and full <b>dark mode</b> support.
+<b>fog-over-fen</b> palette (sage, moss, ember), and full <b>dark mode</b> support.
 
 It is built with Sass, managed via <a href="https://pixi.sh">Pixi</a>, and
 draws inspiration from
@@ -22,7 +22,7 @@ graphs, or read on for the feature tour.
 
 | Feature | Description |
 |---------|-------------|
-| <b>Solarized palette</b> | Warm, low-contrast colors that are easy on the eyes — light and dark variants |
+| <b>Fog-over-fen palette</b> | Sage paper, olive ink, moss, and a campfire ember accent |
 | <b>Dark mode</b> | Toggle with the moon button, or let your OS decide via `prefers-color-scheme` |
 | <b>CSS Grid layout</b> | Responsive layout with optimal reading width — no tables |
 | <b>Frosted glass navbar</b> | Sticky translucent navigation bar with `backdrop-filter` |
@@ -31,6 +31,7 @@ graphs, or read on for the feature tour.
 | <b>MathJax 3</b> | Beautiful math rendering: \f$ e^{i\pi} + 1 = 0 \f$ |
 | <b>Modern admonitions</b> | Color-coded notes, warnings, todos, bugs — 10 types |
 | <b>Graphviz diagrams</b> | Inheritance graphs, collaboration diagrams, include graphs |
+| <b>Lantern mark</b> | Title-bar logo: swamp lantern with fern leaves |
 | <b>Pixi build system</b> | Reproducible builds — `pixi run demo` and you're done |
 
 @section tour Live Examples
@@ -152,10 +153,10 @@ doxyYoda uses a carefully curated font stack:
 
 | Role | Font | Source |
 |------|------|--------|
-| Body text | <b>Crimson Text</b> | Google Fonts |
-| Headings | <b>Maiden Orange</b> | Google Fonts |
+| Body text | <b>Source Serif 4</b> | Google Fonts |
+| Headings | <b>Fraunces</b> | Google Fonts |
+| UI | <b>Source Sans 3</b> | Google Fonts |
 | Code | <b>Hack</b> | jsDelivr CDN |
-| Serif (optional) | <b>Vollkorn</b> | Google Fonts |
 
 All fonts are loaded via CDN — no local installation needed.
 

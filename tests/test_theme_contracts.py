@@ -233,6 +233,25 @@ def test_demo_enables_generate_treeview():
     assert re.search(r"^HTML_DYNAMIC_SECTIONS\s*=\s*YES\s*$", dox, re.M)
 
 
+def test_logo_svg_is_the_lantern_mark():
+    logo = ROOT / "src" / "images" / "doxyYoda_logo.svg"
+    text = logo.read_text(encoding="utf-8")
+    assert "lantern" in text.lower()
+    assert 'viewBox="0 0 64 64"' in text
+    assert "#d4782a" in text
+    assert (ROOT / "src" / "images" / "doxyYoda_lantern.jpg").is_file()
+
+
+def test_fonts_are_fog_over_fen():
+    fonts = (ROOT / "src" / "styles" / "scss" / "_fonts.scss").read_text(encoding="utf-8")
+    assert "Fraunces" in fonts
+    assert "Source+Serif+4" in fonts
+    assert "Source+Sans+3" in fonts
+    vars_scss = (ROOT / "src" / "styles" / "scss" / "_variables.scss").read_text(encoding="utf-8")
+    assert "Fraunces" in vars_scss
+    assert "--accent-ember" in vars_scss
+
+
 def test_pixi_doxygen_floor_is_1_17():
     pixi = (ROOT / "pixi.toml").read_text(encoding="utf-8")
     assert re.search(r'^doxygen\s*=\s*">=1\.17"', pixi, re.M), pixi

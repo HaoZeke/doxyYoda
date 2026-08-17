@@ -366,14 +366,14 @@ ul.sm-dox {
 
       &:hover,
       &.selected {
-        border-left-color: var(--accent-blue);
+        border-left-color: var(--accent-ember);
       }
     }
 
     .selected .item,
     a.selected {
-      color: var(--accent-blue);
-      font-weight: 500;
+      color: var(--accent-ember);
+      font-weight: 600;
     }
   }
 }

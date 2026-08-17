@@ -27,14 +27,15 @@ Honestly, nothing captures C++ like Doxygen. Nothing. So inspite of the weird JS
 - *Doxygen 1.17 / 1.18* — header tokens match current stock templates
 - *Frosted glass navbar* — sticky, translucent, always visible
 - *Modern admonitions* — color-coded notes, warnings, todos, bugs, and more
-- *Solarized palette* — warm, readable colors in both light and dark mode
+- *Fog-over-fen palette* — sage paper, olive ink, moss, campfire ember
+- *Lantern mark* — swamp lantern with fern leaves (title-bar SVG)
 - *Pixi-managed build* — reproducible builds with =pixi run=
 
 *** Typography
-- Body: [[https://fonts.google.com/specimen/Crimson+Text][Crimson Text]] — a beautiful serif with excellent readability
-- Headings: [[https://fonts.google.com/specimen/Maiden+Orange][Maiden Orange]] — distinctive display face
-- Code: [[https://sourcefoundry.org/hack/][Hack]] — an open-source typeface designed for source code
-- Serif fallback: [[http://vollkorn-typeface.com/][Vollkorn]]
+- Body: [[https://fonts.google.com/specimen/Source+Serif+4][Source Serif 4]]
+- Headings: [[https://fonts.google.com/specimen/Fraunces][Fraunces]]
+- UI: [[https://fonts.google.com/specimen/Source+Sans+3][Source Sans 3]]
+- Code: [[https://sourcefoundry.org/hack/][Hack]]
 
 ** Quick Start
 

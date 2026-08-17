@@ -54,7 +54,7 @@ If your =Doxyfile= has any of these custom settings, remove or comment them out 
 #+begin_src conf
 # Remove these if present -- doxyYoda handles them
 # HTML_STYLESHEET        = ...          # doxyYoda uses HTML_EXTRA_STYLESHEET instead
-# HTML_COLORSTYLE_HUE    = ...          # Solarized palette via CSS custom properties
+# HTML_COLORSTYLE_HUE    = ...          # Fog-over-fen palette via CSS custom properties
 # HTML_COLORSTYLE_SAT    = ...
 # HTML_COLORSTYLE_GAMMA  = ...
 #+end_src

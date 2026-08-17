@@ -235,8 +235,9 @@ MATHJAX_VERSION        = MathJax_3
 
 @subsection ft_lists_unordered Unordered
 
-- <b>Crimson Text</b> — body copy (Google Fonts)
-- <b>Maiden Orange</b> — headings (Google Fonts)
+- <b>Source Serif 4</b> — body copy (Google Fonts)
+- <b>Fraunces</b> — headings (Google Fonts)
+- <b>Source Sans 3</b> — UI and navigation (Google Fonts)
 - <b>Hack</b> — monospaced code (jsDelivr CDN)
 - <b>Vollkorn</b> — serif fallback (Google Fonts)
 

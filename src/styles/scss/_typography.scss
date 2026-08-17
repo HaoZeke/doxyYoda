@@ -4,17 +4,23 @@
 // Typography
 // =============================================================================
 
-body,
-input,
-textarea,
-option,
-select {
-  font-family: var(--font-sans);
-  font-size: 1rem;
+body {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
   line-height: 1.7;
   color: var(--text-primary);
   text-rendering: optimizeLegibility;
-  font-feature-settings: "liga", "tnum", "case", "calt", "zero", "ss01", "locl";
+}
+
+input,
+textarea,
+option,
+select,
+.title_area,
+#main-nav,
+#side-nav,
+.sm-dox {
+  font-family: var(--font-sans);
 }
 
 p,
