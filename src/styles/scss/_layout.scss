@@ -10,6 +10,7 @@
 //
 // With GENERATE_TREEVIEW = YES, Doxygen also creates:
 //   #side-nav         — tree view sidebar (direct child of .grid-contents)
+// Doxygen 1.18 wraps #doc-content in #container; theme unwraps it.
 
 html {
   min-height: 100vh;
@@ -51,6 +52,12 @@ body {
 
 #top {
   grid-area: top;
+}
+
+// Doxygen 1.18 wraps #doc-content in #container. Unwrap so #doc-content
+// and the footer stay direct grid items of .grid-contents.
+#container {
+  display: contents;
 }
 
 #doc-content {

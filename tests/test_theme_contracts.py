@@ -280,22 +280,39 @@ def test_demo_enables_generate_treeview():
     assert re.search(r"^HTML_DYNAMIC_SECTIONS\s*=\s*YES\s*$", dox, re.M)
 
 
-def test_logo_svg_is_the_shipped_mark():
-    logo = ROOT / "src" / "images" / "doxyYoda_logo.svg"
-    text = logo.read_text(encoding="utf-8")
-    assert 'viewBox="0 0 128 128"' in text
-    assert "turtle" in text.lower()
-    assert "#7ED321" in text
-    assert "#A0522D" in text
+def test_logo_png_is_the_shipped_mark():
+    """Demo PROJECT_LOGO is the 2021 turtle raster, not a generated substitute."""
+    png = ROOT / "src" / "images" / "doxyYoda_logo.png"
+    dox = (ROOT / "demo" / "Doxyfile").read_text(encoding="utf-8")
+    assert png.is_file()
+    assert png.read_bytes()[:8] == b"\x89PNG\r\n\x1a\n"
+    assert re.search(
+        r"^PROJECT_LOGO\s*=\s*src/images/doxyYoda_logo\.png\s*$",
+        dox,
+        re.M,
+    )
 
 
 def test_header_uses_antics_not_umami():
     header = HEADER.read_text(encoding="utf-8")
     footer = (ROOT / "src" / "html" / "footer.html").read_text(encoding="utf-8")
-    assert "antics-api.turtletech.us/antics.js" in header
+    pages = (ROOT / ".github" / "workflows" / "pages.yml").read_text(encoding="utf-8")
+    assert 'src="https://antics-api.turtletech.us/antics.js"' in header
+    assert "antics.event" in header
     assert "umami" not in header.lower()
+    assert "analytics.turtletech.us" not in header
     assert "antics.turtletech.us" in footer
     assert "umami.is" not in footer
+    assert "umami" not in pages.lower()
+    assert "antics" not in pages.lower()
+
+
+def test_layout_unwraps_doxygen_container():
+    """Doxygen 1.18 wraps #doc-content in #container; unwrap for the grid."""
+    layout = (ROOT / "src" / "styles" / "scss" / "_layout.scss").read_text(
+        encoding="utf-8"
+    )
+    assert re.search(r"#container\s*\{\s*display:\s*contents\s*;", layout)
 
 
 def test_fonts_are_fog_over_fen():

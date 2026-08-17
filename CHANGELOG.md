@@ -9,8 +9,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Fixed
 - Drop Doxygen `clipboard.js` so each fragment has one themed `.copy-btn`; copy excludes the button label
+- Unwrap Doxygen 1.18 `#container` (`display: contents`) so the leftover sage strip is gone
 
 ### Changed
+- Analytics is Antics (`antics-api.turtletech.us/antics.js` plus outbound-link helper); footer credits Antics
+- Demo `PROJECT_LOGO` is the 2021 turtle PNG (`src/images/doxyYoda_logo.png`)
 - Header/footer templates use HTML5 (`<!DOCTYPE html>`), drop XHTML transitional + IE meta
 - Dark-mode boot respects `prefers-color-scheme` when no localStorage preference is set; toggle keeps `aria-pressed` in sync
 - Logo link targets `$relpath^index.html`; title area marks up as a labelled `<nav>`
@@ -19,7 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - Consumer docs and examples pin the current release from `version.txt` (action `@v…`, tarball paths)
 
 ### Added
-- Fog-over-fen visual identity: sage/moss/ember tokens, Fraunces + Source Serif 4 + Source Sans 3. Title bar keeps the existing ear-and-bracket logo.
+- Fog-over-fen visual identity: sage/moss/ember tokens, Fraunces + Source Serif 4 + Source Sans 3. Title bar uses the original lime-and-shell turtle.
 - Pure theme preference helpers in `src/js/theme_pref.js` with contract tests under `tests/`
 - CI push/PR job and `pixi run test` run `python tests/test_theme_contracts.py`
 

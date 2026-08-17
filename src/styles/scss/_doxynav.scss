@@ -44,7 +44,7 @@
 }
 
 .project_logo img {
-  max-height: 36px;
+  max-height: 44px;
   width: auto;
 }
 
@@ -343,12 +343,6 @@ ul.sm-dox {
   // Grid track owns the width; ignore resize.js inline width.
   width: auto !important;
 
-  #splitbar,
-  .ui-resizable-handle,
-  #nav-sync {
-    display: none !important;
-  }
-
   #nav-tree {
     background-image: none;
     background-color: inherit;
@@ -376,6 +370,12 @@ ul.sm-dox {
       font-weight: 600;
     }
   }
+}
+
+#splitbar,
+.ui-resizable-handle,
+#nav-sync {
+  display: none !important;
 }
 
 // --- Breadcrumb path ---
