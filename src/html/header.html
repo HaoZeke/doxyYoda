@@ -92,11 +92,14 @@ document.addEventListener("DOMContentLoaded", function () {
     return prefersDark();
   }
 
-  // Code folding: wrap .fragment elements in <details class="code-details">
+  // Optional folding: wrap .fragment in open <details class="code-details">.
+  // Skip fragments already inside details and native Doxygen .foldopen listings.
   document.querySelectorAll(".fragment").forEach(function (frag) {
     if (frag.closest("details.code-details")) return;
+    if (frag.querySelector(".foldopen")) return;
     var details = document.createElement("details");
     details.className = "code-details";
+    details.open = true;
     var summary = document.createElement("summary");
     summary.textContent = "Code";
     frag.parentNode.insertBefore(details, frag);
