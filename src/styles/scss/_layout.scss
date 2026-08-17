@@ -30,9 +30,21 @@ body {
   grid-template-columns: 1fr min(75rem, 100%) 1fr;
   grid-template-areas:
     "top     top  top"
-    "sidebar main ."
+    ".       main ."
     "foot    foot foot"
     "attrib attrib attrib";
+}
+
+// GENERATE_TREEVIEW emits #side-nav as a .grid-contents child. A named
+// 1fr gutter collapses at <=75rem, so switch to a rem-width sidebar
+// column only when the tree is present.
+.grid-contents:has(> #side-nav) {
+  grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
+  grid-template-areas:
+    "top     top"
+    "sidebar main"
+    "foot    foot"
+    "attrib  attrib";
 }
 
 // --- Grid area assignments (direct children only) ---

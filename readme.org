@@ -177,10 +177,13 @@ pixi run demo && pixi run serve
 # Open http://localhost:8000
 #+end_src
 
-** Tree View?
-Unfortunately, as long as Doxygen keeps shipping silly ~jQuery~ based javascript scripts which write weird resizing logic into the HTML on the fly, tree view isn't very feasible.
-*** I really want it!
-There are some commented out sections relating to an attempt to work around the jQuery rubbish but it amounts to just rewriting the HTML in place (see commit 07cdb06). Might consider this later.
+** Tree View
+Set =GENERATE_TREEVIEW = YES=. The theme places =#side-nav= on a dedicated
+CSS Grid column (=--sidebar-width=, default 16rem) when that node is a
+direct child of =.grid-contents=. Leave =FULL_SIDEBAR = NO=: that option
+nests =#top= inside =#side-nav= (Doxygen's contract) and is a poor fit
+for the title-row grid. Doxygen's =resize.js= splitbar is hidden; the
+grid track owns the sidebar width.
 
 ** Users
 - [[https://symengine.org/symengine][SymEngine C++ API documentation]]

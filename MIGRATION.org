@@ -64,7 +64,7 @@ If your =Doxyfile= has any of these custom settings, remove or comment them out 
 These settings work well with doxyYoda but are not strictly required:
 
 #+begin_src conf
-GENERATE_TREEVIEW      = NO            # Tree view has limited support (see readme)
+GENERATE_TREEVIEW      = YES           # CSS Grid sidebar; keep FULL_SIDEBAR = NO
 DISABLE_INDEX          = NO
 SEARCHENGINE           = YES
 HTML_DYNAMIC_SECTIONS  = YES

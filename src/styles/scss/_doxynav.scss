@@ -4,8 +4,8 @@
 // Navigation — Navbar, Tabs/Menu, Search, Side Nav, Breadcrumbs, Footer
 // =============================================================================
 
-// Override Doxygen initResizable height/overflow; leave margin-left so
-// resize.js can offset #doc-content next to GENERATE_TREEVIEW #side-nav.
+// Override Doxygen initResizable height/overflow. Sidebar width is the
+// grid track (--sidebar-width), not resize.js margin-left.
 #doc-content {
   height: auto !important;
   overflow: visible !important;
@@ -333,6 +333,14 @@ ul.sm-dox {
   top: 56px; // below the frosted navbar
   max-height: calc(100vh - 56px);
   overflow-y: auto;
+  min-width: 0;
+  // Grid track owns the width; ignore resize.js inline width.
+  width: auto !important;
+
+  #splitbar,
+  .ui-resizable-handle {
+    display: none;
+  }
 
   #nav-tree {
     background-image: none;

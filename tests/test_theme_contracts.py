@@ -158,6 +158,9 @@ def test_scss_attrib_strip_has_named_full_width_grid_area():
 def test_scss_names_sidebar_grid_area_for_treeview():
     """GENERATE_TREEVIEW #side-nav must land on an explicit sidebar track."""
     layout = (ROOT / "src" / "styles" / "scss" / "_layout.scss").read_text(encoding="utf-8")
+    variables = (ROOT / "src" / "styles" / "scss" / "_variables.scss").read_text(
+        encoding="utf-8"
+    )
     areas = re.findall(
         r"grid-template-areas\s*:\s*([^;]+);",
         layout,
@@ -172,6 +175,27 @@ def test_scss_names_sidebar_grid_area_for_treeview():
         layout,
         flags=re.DOTALL,
     ), "#side-nav { grid-area: sidebar } must remain"
+    # Left 1fr gutter collapses at <=75rem; treeview needs a length column.
+    assert re.search(
+        r"--sidebar-width\s*:\s*\d+(?:\.\d+)?rem\s*;",
+        variables,
+    ), "--sidebar-width must be a rem length, not 1fr"
+    assert ":has(> #side-nav)" in layout or ":has(>#side-nav)" in layout
+    assert "var(--sidebar-width)" in layout
+
+
+def test_header_treeview_sidenav_is_grid_child():
+    """FULL_SIDEBAR must open #side-nav inside .grid-contents, not before it."""
+    text = HEADER.read_text(encoding="utf-8")
+    grid = text.find('class="grid-contents"')
+    side = text.find('id="side-nav"')
+    assert grid != -1 and side != -1
+    assert grid < side, "open #side-nav inside .grid-contents so grid-area: sidebar applies"
+
+
+def test_demo_enables_generate_treeview():
+    dox = (ROOT / "demo" / "Doxyfile").read_text(encoding="utf-8")
+    assert re.search(r"^GENERATE_TREEVIEW\s*=\s*YES\s*$", dox, re.M)
 
 
 def test_doc_content_does_not_cancel_treeview_resize_offset():
