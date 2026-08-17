@@ -43,6 +43,35 @@ def test_header_has_theme_behaviors():
     assert "$projectname" in text
 
 
+def test_header_code_folding_does_not_force_close_fragments():
+    """Contract: do not wrap every .fragment in a forced-closed details.
+
+    Page-sized *_source.html listings and INLINE_SOURCES use .fragment; a
+    closed <details> hides them after first paint. Folding stays optional.
+    """
+    text = HEADER.read_text(encoding="utf-8")
+    fold_idx = text.find('querySelectorAll(".fragment")')
+    copy_idx = text.find('querySelectorAll("div.fragment")')
+    assert fold_idx != -1, "folding querySelectorAll(.fragment) missing"
+    assert copy_idx != -1, "copy querySelectorAll(div.fragment) missing"
+    assert fold_idx < copy_idx, "folding loop must precede copy-button loop"
+    block = text[fold_idx:copy_idx]
+
+    # Skip a fragment already inside details.code-details
+    assert "details.code-details" in block
+    assert "closest" in block
+
+    # Skip native Doxygen listings: .foldopen sits inside the fragment
+    assert ".foldopen" in block
+
+    # Wrapped details start open so listings stay visible; user can collapse
+    assert re.search(r"details\.open\s*=\s*true", block), block
+    assert not re.search(r"details\.open\s*=\s*false", block)
+    assert 'createElement("details")' in block
+    assert "summary" in block
+    assert "Code" in block
+
+
 def test_footer_closes_grid_and_has_attrib_class():
     text = FOOTER.read_text(encoding="utf-8")
     assert "grid-contents" in text
