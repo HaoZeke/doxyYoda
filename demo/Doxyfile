@@ -3,7 +3,7 @@
 
 PROJECT_NAME           = "doxyYoda"
 PROJECT_NUMBER         = "0.1.3"
-PROJECT_BRIEF          = "A modern Doxygen theme — CSS Grid, Solarized, dark mode"
+PROJECT_BRIEF          = "A modern Doxygen theme — CSS Grid, fog-over-fen, dark mode"
 PROJECT_LOGO           = src/images/doxyYoda_logo.svg
 
 OUTPUT_DIRECTORY       = demo/build
