@@ -143,6 +143,53 @@ console.log('theme_pref ok');
     assert "theme_pref ok" in r.stdout
 
 
+def test_scss_dark_tokens_key_html_dark_and_dark_mode():
+    """Doxygen TOGGLE JS sets html.dark-mode; theme toggle sets html.dark.
+
+    Both class names must apply the same dark token block. Keep the
+    prefers-color-scheme path so AUTO / OS preference still works.
+    """
+    variables = (ROOT / "src" / "styles" / "scss" / "_variables.scss").read_text(
+        encoding="utf-8"
+    )
+    assert re.search(r"@media\s*\(\s*prefers-color-scheme\s*:\s*dark\s*\)", variables)
+    assert re.search(r":root:not\(\s*\.light\s*\)", variables)
+    assert re.search(
+        r"html\.dark\s*,\s*html\.dark-mode\s*\{|html\.dark-mode\s*,\s*html\.dark\s*\{",
+        variables,
+    ), "dark tokens must key both html.dark and html.dark-mode in one rule"
+    # Bare html.dark without -mode still present as a class key, not only a comment
+    assert re.search(r"html\.dark(?!-mode)", variables)
+    assert "html.dark-mode" in variables
+
+
+def test_header_toggle_keeps_html_dark_and_dark_mode_in_sync():
+    """Header boot and toggle keep html.dark and html.dark-mode together."""
+    text = HEADER.read_text(encoding="utf-8")
+    assert "$darkmode" in text
+    assert re.search(r'classList\.contains\(\s*["\']dark-mode["\']\s*\)', text)
+    assert re.search(
+        r'classList\.(?:add|toggle)\(\s*["\']dark-mode["\']',
+        text,
+    ), "boot or toggle must apply html.dark-mode"
+    assert re.search(
+        r'classList\.(?:add|toggle)\(\s*["\']dark["\']',
+        text,
+    ), "boot or toggle must apply html.dark"
+    # Toggle click sets both class names from the same nextDark flag
+    toggle_idx = text.find('getElementById("darkModeToggle")')
+    assert toggle_idx != -1
+    toggle_block = text[toggle_idx:]
+    assert re.search(
+        r'classList\.toggle\(\s*["\']dark["\']\s*,\s*nextDark\s*\)',
+        toggle_block,
+    )
+    assert re.search(
+        r'classList\.toggle\(\s*["\']dark-mode["\']\s*,\s*nextDark\s*\)',
+        toggle_block,
+    )
+
+
 def test_scss_covers_modern_doxygen_selectors():
     scss_root = ROOT / "src" / "styles" / "scss"
     blob = "\n".join(p.read_text(encoding="utf-8") for p in scss_root.rglob("*.scss"))

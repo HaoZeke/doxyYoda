@@ -318,8 +318,9 @@ $dox-search-mag-sel-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.or
   }
 }
 
-// Dark mode via class toggle
-html.dark {
+// Dark mode via class toggle. Theme boot uses html.dark; Doxygen TOGGLE JS uses html.dark-mode.
+html.dark,
+html.dark-mode {
   --bg-primary: #121a16;
   --bg-secondary: #1a2620;
   --bg-surface: #223028;

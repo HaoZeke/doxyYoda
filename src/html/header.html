@@ -50,10 +50,12 @@ $extrastylesheet
     var root = document.documentElement;
     if (stored === "dark") {
       root.classList.add("dark");
+      root.classList.add("dark-mode");
     } else if (stored === "light") {
       root.classList.add("light");
     } else if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
       root.classList.add("dark");
+      root.classList.add("dark-mode");
     }
   } catch (e) { /* private mode */ }
 })();
@@ -92,7 +94,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   function isDarkMode() {
     var root = document.documentElement;
-    if (root.classList.contains("dark")) return true;
+    if (root.classList.contains("dark") || root.classList.contains("dark-mode")) return true;
     if (root.classList.contains("light")) return false;
     return prefersDark();
   }
@@ -156,6 +158,7 @@ document.addEventListener("DOMContentLoaded", function () {
       var root = document.documentElement;
       var nextDark = !isDarkMode();
       root.classList.toggle("dark", nextDark);
+      root.classList.toggle("dark-mode", nextDark);
       root.classList.toggle("light", !nextDark);
       try {
         localStorage.setItem("doxyYoda-theme", nextDark ? "dark" : "light");
