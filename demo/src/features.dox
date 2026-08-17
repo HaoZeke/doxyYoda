@@ -18,6 +18,18 @@ dark mode. The theme supports two mechanisms:
 All colors use CSS custom properties. The switch is instant — no page reload,
 no flash of unstyled content.
 
+@section ft_mermaid Mermaid
+
+Doxygen 1.17+ can render Mermaid in HTML via `$mermaidjs`.
+
+@mermaid
+flowchart LR
+  SCSS[scss] --> CSS[doxyYoda.css]
+  HDR[header.html] --> DOX[doxygen]
+  CSS --> DOX
+  DOX --> HTML[HTML]
+@endmermaid
+
 @section ft_admonitions Admonitions
 
 doxyYoda styles all 10 Doxygen admonition types. Each has a distinct left

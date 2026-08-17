@@ -23,6 +23,8 @@ Honestly, nothing captures C++ like Doxygen. Nothing. So inspite of the weird JS
 - *Foldable inline code* — =<details>= wrapping with smooth transitions
 - *Copy to clipboard* — one-click code copying on every code block
 - *MathJax 3* — beautiful math rendering
+- *Mermaid* — Doxygen 1.17+ =$mermaidjs= client-side diagrams
+- *Doxygen 1.17 / 1.18* — header tokens match current stock templates
 - *Frosted glass navbar* — sticky, translucent, always visible
 - *Modern admonitions* — color-coded notes, warnings, todos, bugs, and more
 - *Solarized palette* — warm, readable colors in both light and dark mode

@@ -99,6 +99,6 @@ If you are migrating from [[https://github.com/jothepro/doxygen-awesome-css][dox
 ** Common Pitfalls
 
 - *=HTML_STYLESHEET= vs =HTML_EXTRA_STYLESHEET=*: doxyYoda uses =HTML_EXTRA_STYLESHEET=. Setting =HTML_STYLESHEET= will replace Doxygen's default CSS entirely, which doxyYoda builds upon. Make sure you use =HTML_EXTRA_STYLESHEET=.
-- *Doxygen version*: doxyYoda requires Doxygen >= 1.12. Check with =doxygen --version=.
+- *Doxygen version*: doxyYoda requires Doxygen >= 1.17 (templates tested with 1.18.0). Check with =doxygen --version=.
 - *Tree view*: =GENERATE_TREEVIEW = YES= uses a CSS Grid sidebar. Keep =FULL_SIDEBAR = NO=.
 - *Font loading*: doxyYoda loads fonts from Google Fonts and Hack via CDN. If your documentation is served in an environment without internet access, fonts will fall back to system defaults.

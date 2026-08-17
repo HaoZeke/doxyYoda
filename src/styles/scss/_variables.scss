@@ -124,7 +124,7 @@ $dox-search-mag-sel-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.or
   --toc-border: #e0d8c8;
   --toc-active: #268bd2;
 
-  // Doxygen 1.13 names read by tabs.css, navtree.css, and search.css
+  // Doxygen 1.13+ names; 1.18 also reads nav-border / sync-icon / scrollbar
   --font-family-nav: var(--font-sans);
   --font-family-search: var(--font-sans);
   --font-family-monospace: var(--font-mono);
@@ -162,6 +162,25 @@ $dox-search-mag-sel-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.or
   --search-results-background-color: var(--bg-primary);
   --search-results-border-color: var(--border-primary);
   --search-box-shadow: none;
+  --nav-border-color: var(--menu-border);
+  --nav-breadcrumb-active-bg: var(--menu-hover-bg);
+  --nav-breadcrumb-separator-color: var(--menu-border);
+  --nav-menu-active-bg: var(--menu-hover-bg);
+  --nav-splitbar-bg-color: var(--border-primary);
+  --nav-splitbar-handle-color: var(--text-muted);
+  --page-link-color: var(--accent-blue);
+  --sync-icon-background-color: var(--bg-surface);
+  --sync-icon-border-color: var(--border-primary);
+  --sync-icon-color: var(--text-muted);
+  --sync-icon-selected-background-color: var(--accent-blue);
+  --sync-icon-selected-color: var(--bg-primary);
+  --search-box-border-color: var(--search-border);
+  --search-close-icon-bg-color: var(--bg-surface);
+  --search-close-icon-fg-color: var(--text-muted);
+  --search-filter-backdrop-filter: none;
+  --search-results-backdrop-filter: none;
+  --scrollbar-background-color: var(--bg-secondary);
+  --scrollbar-thumb-color: var(--border-primary);
   --search-magnification-image: #{$dox-search-mag-light};
   --search-magnification-select-image: #{$dox-search-mag-sel-light};
 }
@@ -236,7 +255,7 @@ $dox-search-mag-sel-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.or
     --toc-border: #1a4f5e;
     --toc-active: #5eaae8;
 
-    // Doxygen 1.13 names read by tabs.css, navtree.css, and search.css
+    // Doxygen 1.13+ names; 1.18 also reads nav-border / sync-icon / scrollbar
     --font-family-nav: var(--font-sans);
     --font-family-search: var(--font-sans);
     --font-family-monospace: var(--font-mono);
@@ -274,6 +293,25 @@ $dox-search-mag-sel-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.or
     --search-results-background-color: var(--bg-primary);
     --search-results-border-color: var(--border-primary);
     --search-box-shadow: none;
+  --nav-border-color: var(--menu-border);
+  --nav-breadcrumb-active-bg: var(--menu-hover-bg);
+  --nav-breadcrumb-separator-color: var(--menu-border);
+  --nav-menu-active-bg: var(--menu-hover-bg);
+  --nav-splitbar-bg-color: var(--border-primary);
+  --nav-splitbar-handle-color: var(--text-muted);
+  --page-link-color: var(--accent-blue);
+  --sync-icon-background-color: var(--bg-surface);
+  --sync-icon-border-color: var(--border-primary);
+  --sync-icon-color: var(--text-muted);
+  --sync-icon-selected-background-color: var(--accent-blue);
+  --sync-icon-selected-color: var(--bg-primary);
+  --search-box-border-color: var(--search-border);
+  --search-close-icon-bg-color: var(--bg-surface);
+  --search-close-icon-fg-color: var(--text-muted);
+  --search-filter-backdrop-filter: none;
+  --search-results-backdrop-filter: none;
+  --scrollbar-background-color: var(--bg-secondary);
+  --scrollbar-thumb-color: var(--border-primary);
     --search-magnification-image: #{$dox-search-mag-dark};
     --search-magnification-select-image: #{$dox-search-mag-sel-dark};
   }
@@ -348,7 +386,7 @@ html.dark {
   --toc-border: #1a4f5e;
   --toc-active: #5eaae8;
 
-  // Doxygen 1.13 names read by tabs.css, navtree.css, and search.css
+  // Doxygen 1.13+ names; 1.18 also reads nav-border / sync-icon / scrollbar
   --font-family-nav: var(--font-sans);
   --font-family-search: var(--font-sans);
   --font-family-monospace: var(--font-mono);
@@ -386,6 +424,25 @@ html.dark {
   --search-results-background-color: var(--bg-primary);
   --search-results-border-color: var(--border-primary);
   --search-box-shadow: none;
+  --nav-border-color: var(--menu-border);
+  --nav-breadcrumb-active-bg: var(--menu-hover-bg);
+  --nav-breadcrumb-separator-color: var(--menu-border);
+  --nav-menu-active-bg: var(--menu-hover-bg);
+  --nav-splitbar-bg-color: var(--border-primary);
+  --nav-splitbar-handle-color: var(--text-muted);
+  --page-link-color: var(--accent-blue);
+  --sync-icon-background-color: var(--bg-surface);
+  --sync-icon-border-color: var(--border-primary);
+  --sync-icon-color: var(--text-muted);
+  --sync-icon-selected-background-color: var(--accent-blue);
+  --sync-icon-selected-color: var(--bg-primary);
+  --search-box-border-color: var(--search-border);
+  --search-close-icon-bg-color: var(--bg-surface);
+  --search-close-icon-fg-color: var(--text-muted);
+  --search-filter-backdrop-filter: none;
+  --search-results-backdrop-filter: none;
+  --scrollbar-background-color: var(--bg-secondary);
+  --scrollbar-thumb-color: var(--border-primary);
   --search-magnification-image: #{$dox-search-mag-dark};
   --search-magnification-select-image: #{$dox-search-mag-sel-dark};
 }
