@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Changed
 - README Why/Demo/Dark Mode shots are the current fog-over-fen theme, not Solarized
+- README Users list matches live sites; d-SEAMS docs are no longer doxyYoda
 
 ## [0.2.2] - 2026-08-17
 

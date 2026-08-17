@@ -198,11 +198,17 @@ for the title-row grid. Doxygen's =resize.js= splitbar is hidden; the
 grid track owns the sidebar width.
 
 ** Users
+Sites that still ship the doxyYoda HTML theme (most published trees are still
+on an older tarball; the current release is the demo):
+
+- [[https://doxyyoda.rgoswami.me/][doxyYoda demo]] (this theme, =v0.2.2=)
 - [[https://symengine.org/symengine][SymEngine C++ API documentation]]
-- [[https://docs.dseams.info][d-SEAMS API Documentation]]
-- [[https://haozeke.github.io/eigen/][Eigen v3.4.0 (git) Unofficial API Documentation]]
-- [[https://atomic-solvers.github.io/featom/][featom API Documentation]]
-- [[https://haozeke.github.io/GaussJacobiQuad/][GaussJacobiQuad API Documentation]]
+- [[https://haozeke.github.io/eigen/][Eigen v3.4.0 (git) unofficial API documentation]]
+- [[https://atomic-solvers.github.io/featom/][featom API documentation]]
+- [[https://haozeke.github.io/GaussJacobiQuad/][GaussJacobiQuad API documentation]]
+
+d-SEAMS developer docs are Sphinx / Shibuya / doxyrest now
+([[https://docs.dseams.info][docs.dseams.info]]), not this theme.
 
 * Acknowledgments
 This project was conceived as part of SymEngine's Google Season of Docs 2020. Inspired by [[https://mcss.mosra.cz/][m.css]] by Vladimír Vondruš and [[https://shibuya.lepture.com/][Shibuya]] by Hsiaoming Yang.
