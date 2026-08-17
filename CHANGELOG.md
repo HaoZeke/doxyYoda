@@ -7,27 +7,32 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-08-17
+
+### Added
+- Fog-over-fen visual identity: sage/moss/ember tokens, Fraunces + Source Serif 4 + Source Sans 3. Title bar uses the original lime-and-shell turtle.
+- Doxygen 1.17 / 1.18 header tokens (`$mermaidjs`, `$darkmode`, `HTML_DYNAMIC_SECTIONS`, `HTML_CODE_FOLDING`, `doxygen-page-layout`)
+- CSS Grid sidebar track for `GENERATE_TREEVIEW` (`:has(> #side-nav)`)
+- Pure theme preference helpers in `src/js/theme_pref.js` with contract tests under `tests/`
+- CI push/PR job and `pixi run test` run `python tests/test_theme_contracts.py`
+
+### Changed
+- Analytics is Antics (`antics-api.turtletech.us/antics.js` plus outbound-link helper); footer credits Antics
+- Demo `PROJECT_LOGO` is the 2021 turtle PNG (`src/images/doxyYoda_logo.png`)
+- Header/footer templates use HTML5 (`<!DOCTYPE html>`), drop XHTML transitional + IE meta
+- Dark-mode boot respects `prefers-color-scheme` when no localStorage preference is set; toggle keeps `aria-pressed` in sync and keys `html.dark` plus `html.dark-mode`
+- Logo link targets `$relpath^index.html`; title area marks up as a labelled `<nav>`
+- Footer attribution uses themed `.doxyyoda-attrib` classes instead of inline styles
+- SCSS coverage for modern Doxygen structures: `.textblock`, `.compoundTemplParams`, `div.dynheader` / `div.dyncontent`, `div.classindex`, `table.doxtable`, sticky-header `:target` scroll margin, `prefers-reduced-motion`
+- pixi Doxygen floor is `>=1.17`
+- Consumer docs and examples pin the current release from `version.txt` (action `@v…`, tarball paths)
+
 ### Fixed
 - Drop Doxygen `clipboard.js` so each fragment has one themed `.copy-btn`; copy excludes the button label
 - Unwrap Doxygen 1.18 `#container` (`display: contents`) so the leftover sage strip is gone
 - Collapse the treeview sidebar track on tablet/phone (`:has(> #side-nav)` override)
 - CSS Grid owns the treeview column; `navtree.js` / `resize.js` inline margin and height lose (`!important`)
 - Tag release fails when the tag does not match `version.txt` or the tarball is missing; the setup action `curl`s with `-fS`
-
-### Changed
-- Analytics is Antics (`antics-api.turtletech.us/antics.js` plus outbound-link helper); footer credits Antics
-- Demo `PROJECT_LOGO` is the 2021 turtle PNG (`src/images/doxyYoda_logo.png`)
-- Header/footer templates use HTML5 (`<!DOCTYPE html>`), drop XHTML transitional + IE meta
-- Dark-mode boot respects `prefers-color-scheme` when no localStorage preference is set; toggle keeps `aria-pressed` in sync
-- Logo link targets `$relpath^index.html`; title area marks up as a labelled `<nav>`
-- Footer attribution uses themed `.doxyyoda-attrib` classes instead of inline styles
-- SCSS coverage for modern Doxygen structures: `.textblock`, `.compoundTemplParams`, `div.dynheader` / `div.dyncontent`, `div.classindex`, `table.doxtable`, sticky-header `:target` scroll margin, `prefers-reduced-motion`
-- Consumer docs and examples pin the current release from `version.txt` (action `@v…`, tarball paths)
-
-### Added
-- Fog-over-fen visual identity: sage/moss/ember tokens, Fraunces + Source Serif 4 + Source Sans 3. Title bar uses the original lime-and-shell turtle.
-- Pure theme preference helpers in `src/js/theme_pref.js` with contract tests under `tests/`
-- CI push/PR job and `pixi run test` run `python tests/test_theme_contracts.py`
 
 ## [0.1.3] - 2026-02-16
 
@@ -103,7 +108,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - MathJax 3 support in header
 - Basic project structure and README
 
-[Unreleased]: https://github.com/HaoZeke/doxyYoda/compare/v0.1.3...HEAD
+[Unreleased]: https://github.com/HaoZeke/doxyYoda/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/HaoZeke/doxyYoda/compare/v0.1.3...v0.2.0
 [0.1.3]: https://github.com/HaoZeke/doxyYoda/compare/v0.1.2...v0.1.3
 [0.1.2]: https://github.com/HaoZeke/doxyYoda/compare/v0.1.0...v0.1.2
 [0.1.0]: https://github.com/HaoZeke/doxyYoda/compare/0.0.2...v0.1.0

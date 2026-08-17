@@ -1,5 +1,5 @@
 [version]
-current = "0.1.3"
+current = "0.2.0"
 regex = '''(?P<major>\d+)\.(?P<minor>\d+)\.(?P<patch>\d+)'''
 
 [git]
@@ -23,3 +23,19 @@ search = '@version {current_version}'
 [[file]]
 src = "action.yml"
 search = 'default: "{current_version}"'
+
+[[file]]
+src = "readme.org"
+search = "HaoZeke/doxyYoda@v{current_version}"
+
+[[file]]
+src = "readme.org"
+search = "=version=          | ={current_version}="
+
+[[file]]
+src = "MIGRATION.org"
+search = "HaoZeke/doxyYoda@v{current_version}"
+
+[[file]]
+src = "MIGRATION.org"
+search = "doxyYoda_{current_version}.tar.gz"
