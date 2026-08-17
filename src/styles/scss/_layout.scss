@@ -54,20 +54,32 @@ body {
   grid-area: top;
 }
 
-// Doxygen 1.18 wraps #doc-content in #container. Unwrap so #doc-content
-// and the footer stay direct grid items of .grid-contents.
+// Doxygen 1.18 wraps #doc-content in #container and then lets
+// navtree.js treat #container as its own grid. Unwrap so our
+// .grid-contents tracks stay the only layout.
 #container {
-  display: contents;
+  display: contents !important;
 }
 
 #doc-content {
   grid-area: main;
   min-width: 0;
   padding: var(--space-4) var(--space-5);
+  // navtree.js / resize.js write inline margin-left + height to
+  // sit next to a float sidebar. Grid already has that column.
+  margin-left: 0 !important;
+  width: auto !important;
+  height: auto !important;
+  overflow: visible !important;
 }
 
 #side-nav {
   grid-area: sidebar;
+}
+
+#nav-path,
+#main-nav {
+  margin-left: 0 !important;
 }
 
 .footer,

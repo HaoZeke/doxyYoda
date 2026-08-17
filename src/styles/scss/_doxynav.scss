@@ -4,12 +4,7 @@
 // Navigation — Navbar, Tabs/Menu, Search, Side Nav, Breadcrumbs, Footer
 // =============================================================================
 
-// Override Doxygen initResizable height/overflow; leave margin-left so
-// resize.js can offset #doc-content next to GENERATE_TREEVIEW #side-nav.
-#doc-content {
-  height: auto !important;
-  overflow: visible !important;
-}
+// Geometry for #doc-content lives in _layout.scss (grid, not resize.js).
 
 // --- Title area navbar — frosted glass, 3-column grid for true centering ---
 .title_area {
@@ -332,21 +327,29 @@ ul.sm-dox {
 
 // --- Side nav (GENERATE_TREEVIEW = YES) ---
 #side-nav {
-  overflow: visible;
   padding: var(--space-4);
   border-right: 1px solid var(--border-subtle);
   position: sticky;
   top: 56px; // below the frosted navbar
   max-height: calc(100vh - 56px);
+  overflow-x: hidden;
   overflow-y: auto;
   min-width: 0;
-  // Grid track owns the width; ignore resize.js inline width.
+  // Grid track owns the box; ignore navtree.js inline width/height.
   width: auto !important;
+  height: auto !important;
 
-  #nav-tree {
+  #nav-tree,
+  #nav-tree-contents {
     background-image: none;
     background-color: inherit;
     font-size: inherit;
+    height: auto !important;
+    overflow: visible !important;
+    width: auto !important;
+  }
+
+  #nav-tree {
 
     .item {
       line-height: 1.7;

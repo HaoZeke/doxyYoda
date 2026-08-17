@@ -325,7 +325,10 @@ def test_layout_unwraps_doxygen_container():
     layout = (ROOT / "src" / "styles" / "scss" / "_layout.scss").read_text(
         encoding="utf-8"
     )
-    assert re.search(r"#container\s*\{\s*display:\s*contents\s*;", layout)
+    assert re.search(
+        r"#container\s*\{\s*display:\s*contents\s*!important\s*;",
+        layout,
+    )
 
 
 def test_fonts_are_fog_over_fen():
@@ -398,23 +401,34 @@ def test_action_curl_fails_closed_on_http_errors():
     assert "L" in flags, f"curl must follow redirects (-L): {flags}"
 
 
-def test_doc_content_does_not_cancel_treeview_resize_offset():
-    """Doxygen resize.js sets #doc-content margin-left; do not blanket-zero it."""
-    scss_root = ROOT / "src" / "styles" / "scss"
-    # Stock _baseDoxygen.scss print rules may zero margin; theme sheets must not.
-    skip = {"_baseDoxygen.scss"}
-    pat = re.compile(
+def test_grid_cancels_doxygen_resize_offsets():
+    """CSS Grid owns the sidebar column; navtree.js inline offsets must lose."""
+    layout = (ROOT / "src" / "styles" / "scss" / "_layout.scss").read_text(
+        encoding="utf-8"
+    )
+    nav = (ROOT / "src" / "styles" / "scss" / "_doxynav.scss").read_text(
+        encoding="utf-8"
+    )
+    assert re.search(
         r"#doc-content\s*\{[^}]*margin-left\s*:\s*0\s*!important",
+        layout,
         flags=re.DOTALL,
     )
-    for path in scss_root.rglob("*.scss"):
-        if path.name in skip:
-            continue
-        text = path.read_text(encoding="utf-8")
-        assert not pat.search(text), (
-            f"{path.relative_to(scss_root)} must not force "
-            "margin-left: 0 !important (cancels resize.js)"
-        )
+    assert re.search(
+        r"#container\s*\{[^}]*display\s*:\s*contents\s*!important",
+        layout,
+        flags=re.DOTALL,
+    )
+    assert re.search(
+        r"#side-nav\s*\{[^}]*width\s*:\s*auto\s*!important",
+        nav,
+        flags=re.DOTALL,
+    )
+    assert re.search(
+        r"#splitbar,\s*\.ui-resizable-handle,\s*#nav-sync\s*\{[^}]*display\s*:\s*none\s*!important",
+        nav,
+        flags=re.DOTALL,
+    )
 
 
 if __name__ == "__main__":

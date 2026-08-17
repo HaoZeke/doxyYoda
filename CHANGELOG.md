@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - Drop Doxygen `clipboard.js` so each fragment has one themed `.copy-btn`; copy excludes the button label
 - Unwrap Doxygen 1.18 `#container` (`display: contents`) so the leftover sage strip is gone
 - Collapse the treeview sidebar track on tablet/phone (`:has(> #side-nav)` override)
+- CSS Grid owns the treeview column; `navtree.js` / `resize.js` inline margin and height lose (`!important`)
 - Tag release fails when the tag does not match `version.txt` or the tarball is missing; the setup action `curl`s with `-fS`
 
 ### Changed
