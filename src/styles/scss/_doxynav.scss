@@ -494,7 +494,9 @@ ul.sm-dox {
     height: 48px;
   }
 
-  .grid-contents {
+  // :has(> #side-nav) is more specific than .grid-contents alone.
+  .grid-contents,
+  .grid-contents:has(> #side-nav) {
     grid-template-columns: 1fr;
     grid-template-areas:
       "top"

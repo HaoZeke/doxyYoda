@@ -307,6 +307,19 @@ def test_header_uses_antics_not_umami():
     assert "antics" not in pages.lower()
 
 
+def test_tablet_grid_overrides_treeview_has_selector():
+    """Phone/tablet must collapse the sidebar track; :has is more specific."""
+    nav = (ROOT / "src" / "styles" / "scss" / "_doxynav.scss").read_text(
+        encoding="utf-8"
+    )
+    assert ".grid-contents:has(> #side-nav)" in nav
+    assert re.search(
+        r"@media\s+#\{\$media-size-tablet\}.*?\.grid-contents:has\(>\s*#side-nav\).*?grid-template-columns:\s*1fr",
+        nav,
+        flags=re.DOTALL,
+    )
+
+
 def test_layout_unwraps_doxygen_container():
     """Doxygen 1.18 wraps #doc-content in #container; unwrap for the grid."""
     layout = (ROOT / "src" / "styles" / "scss" / "_layout.scss").read_text(
