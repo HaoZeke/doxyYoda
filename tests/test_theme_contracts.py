@@ -41,6 +41,14 @@ def test_header_has_theme_behaviors():
     assert "darkModeToggle" in text
     assert "$extrastylesheet" in text
     assert "$projectname" in text
+    assert "$mermaidjs" in text
+    assert "HTML_DYNAMIC_SECTIONS" in text
+    assert "HTML_CODE_FOLDING" in text
+    assert "codefolding.js" in text
+    assert 'name="doxygen-page-layout"' in text
+    assert "<!--END TITLEAREA-->" in text
+    assert "<!--BEGIN PROJECT_BRIEF-->" in text
+    assert "clipboard.js" not in text
 
 
 def test_header_code_folding_does_not_force_close_fragments():
@@ -150,16 +158,23 @@ def test_scss_covers_modern_doxygen_selectors():
         ".doxyyoda-attrib",
         "div.dynheader",
         "#MSearchSelect",
+        "div.mermaid",
+        ".project_brief",
     ):
         assert sel in blob, f"missing SCSS coverage for {sel}"
-    # Doxygen 1.13 tabs.css / navtree.css / search.css read these; doxygen.css is not linked
+    # Doxygen 1.13-1.18 tabs/navtree/search sheets; doxygen.css is not linked
     for token in (
         "--nav-text-active-color",
         "--search-magnification-select-image",
         "--search-background-color",
         "--font-family-nav",
+        "--nav-border-color",
+        "--nav-menu-active-bg",
+        "--sync-icon-color",
+        "--scrollbar-thumb-color",
+        "--search-box-border-color",
     ):
-        assert token in blob, f"missing Doxygen 1.13 token {token}"
+        assert token in blob, f"missing Doxygen 1.18 token {token}"
         assert blob.count(token) >= 3, (
             f"{token} must be defined in light and both dark token blocks"
         )
@@ -215,6 +230,12 @@ def test_header_treeview_sidenav_is_grid_child():
 def test_demo_enables_generate_treeview():
     dox = (ROOT / "demo" / "Doxyfile").read_text(encoding="utf-8")
     assert re.search(r"^GENERATE_TREEVIEW\s*=\s*YES\s*$", dox, re.M)
+    assert re.search(r"^HTML_DYNAMIC_SECTIONS\s*=\s*YES\s*$", dox, re.M)
+
+
+def test_pixi_doxygen_floor_is_1_17():
+    pixi = (ROOT / "pixi.toml").read_text(encoding="utf-8")
+    assert re.search(r'^doxygen\s*=\s*">=1\.17"', pixi, re.M), pixi
 
 
 def test_doc_content_does_not_cancel_treeview_resize_offset():
