@@ -4,11 +4,11 @@
 // Navigation — Navbar, Tabs/Menu, Search, Side Nav, Breadcrumbs, Footer
 // =============================================================================
 
-// Override Doxygen's inline height on #doc-content (set by initResizable JS)
+// Override Doxygen initResizable height/overflow; leave margin-left so
+// resize.js can offset #doc-content next to GENERATE_TREEVIEW #side-nav.
 #doc-content {
   height: auto !important;
   overflow: visible !important;
-  margin-left: 0 !important;
 }
 
 // --- Title area navbar — frosted glass, 3-column grid for true centering ---

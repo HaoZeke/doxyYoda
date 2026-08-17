@@ -28,9 +28,9 @@ body {
   grid-template-rows: auto 1fr auto;
   grid-template-columns: 1fr min(75rem, 100%) 1fr;
   grid-template-areas:
-    "top  top  top"
-    ".    main ."
-    "foot foot foot";
+    "top     top  top"
+    "sidebar main ."
+    "foot    foot foot";
 }
 
 // --- Grid area assignments (direct children only) ---

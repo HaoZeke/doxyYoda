@@ -105,6 +105,35 @@ def test_scss_covers_modern_doxygen_selectors():
         assert sel in blob, f"missing SCSS coverage for {sel}"
 
 
+def test_scss_names_sidebar_grid_area_for_treeview():
+    """GENERATE_TREEVIEW #side-nav must land on an explicit sidebar track."""
+    layout = (ROOT / "src" / "styles" / "scss" / "_layout.scss").read_text(encoding="utf-8")
+    areas = re.findall(
+        r"grid-template-areas\s*:\s*([^;]+);",
+        layout,
+        flags=re.DOTALL,
+    )
+    assert areas, "grid-template-areas missing in _layout.scss"
+    assert any("sidebar" in block for block in areas), (
+        "desktop grid-template-areas must name a sidebar track"
+    )
+    assert re.search(
+        r"#side-nav\s*\{[^}]*grid-area\s*:\s*sidebar\s*;",
+        layout,
+        flags=re.DOTALL,
+    ), "#side-nav { grid-area: sidebar } must remain"
+
+
+def test_doc_content_does_not_cancel_treeview_resize_offset():
+    """Doxygen resize.js sets #doc-content margin-left; do not blanket-zero it."""
+    doxynav = (ROOT / "src" / "styles" / "scss" / "_doxynav.scss").read_text(encoding="utf-8")
+    assert not re.search(
+        r"#doc-content\s*\{[^}]*margin-left\s*:\s*0\s*!important",
+        doxynav,
+        flags=re.DOTALL,
+    ), "#doc-content must not force margin-left: 0 !important (cancels resize.js)"
+
+
 if __name__ == "__main__":
     # Minimal runner without pytest dependency
     failed = 0
