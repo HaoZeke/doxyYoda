@@ -357,6 +357,8 @@ ul.sm-dox {
       font-family: var(--font-sans);
       font-size: 0.9rem;
       font-feature-settings: "liga", "tnum", "case", "calt", "zero", "ss01", "locl";
+      margin-left: 0;
+      height: auto;
       padding: 0.125rem 0.25rem;
       border-left: 2px solid transparent;
       white-space: normal;
