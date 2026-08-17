@@ -47,6 +47,12 @@ body {
     "attrib  attrib";
 }
 
+// Grid already reserved the sidebar column; kill resize.js inline offset.
+.grid-contents:has(> #side-nav) #doc-content {
+  margin-left: 0 !important;
+  width: auto !important;
+}
+
 // --- Grid area assignments (direct children only) ---
 
 #top {

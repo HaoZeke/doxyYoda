@@ -9,7 +9,7 @@ when making modifications.
 
 @section ft_darkmode Dark Mode
 
-Click the <b>&#9790;</b> button in the top-right of the navbar to toggle
+Click the moon button in the top-right of the navbar to toggle
 dark mode. The theme supports two mechanisms:
 
 1. <b>OS preference</b>: `prefers-color-scheme: dark` is respected automatically.
@@ -20,7 +20,7 @@ no flash of unstyled content.
 
 @section ft_mermaid Mermaid
 
-Doxygen 1.17+ can render Mermaid in HTML via `$mermaidjs`.
+Doxygen 1.17+ can render Mermaid diagrams in the HTML output.
 
 @mermaid
 flowchart LR

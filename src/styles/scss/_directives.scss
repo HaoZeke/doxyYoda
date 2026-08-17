@@ -56,7 +56,9 @@ dl.section dd {
   margin-bottom: 6px;
 }
 
-// Doxygen 1.17+ client-side Mermaid (div.mermaid from $mermaidjs)
+// Doxygen 1.17+ emits div.mermaidgraph > pre.mermaid
+div.mermaidgraph,
+pre.mermaid,
 div.mermaid {
   overflow-x: auto;
   margin: var(--space-4) 0;

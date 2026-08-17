@@ -344,8 +344,9 @@ ul.sm-dox {
   width: auto !important;
 
   #splitbar,
-  .ui-resizable-handle {
-    display: none;
+  .ui-resizable-handle,
+  #nav-sync {
+    display: none !important;
   }
 
   #nav-tree {
@@ -515,6 +516,11 @@ ul.sm-dox {
 
   .title_area__center {
     gap: var(--space-1);
+  }
+
+  .project_brief,
+  .project_logo {
+    display: none;
   }
 
   #doc-content {

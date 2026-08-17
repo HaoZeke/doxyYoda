@@ -23,7 +23,7 @@ graphs, or read on for the feature tour.
 | Feature | Description |
 |---------|-------------|
 | <b>Solarized palette</b> | Warm, low-contrast colors that are easy on the eyes — light and dark variants |
-| <b>Dark mode</b> | Toggle with the &#9790; button, or let your OS decide via `prefers-color-scheme` |
+| <b>Dark mode</b> | Toggle with the moon button, or let your OS decide via `prefers-color-scheme` |
 | <b>CSS Grid layout</b> | Responsive layout with optimal reading width — no tables |
 | <b>Frosted glass navbar</b> | Sticky translucent navigation bar with `backdrop-filter` |
 | <b>Foldable code blocks</b> | Inline source is wrapped in `<details>` — stays out of your way until needed |
@@ -181,7 +181,7 @@ src/styles/scss/
 doxyYoda supports dark mode through two mechanisms:
 
 1. <b>Automatic</b>: respects `prefers-color-scheme: dark` from your OS
-2. <b>Manual toggle</b>: click the &#9790; button in the navbar
+2. <b>Manual toggle</b>: click the moon button in the navbar
 
 The preference persists in `localStorage`. The entire color system uses CSS
 custom properties, so the switch is instant with no flash of unstyled content.
