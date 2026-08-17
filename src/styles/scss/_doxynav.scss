@@ -327,12 +327,12 @@ ul.sm-dox {
 
 // --- Side nav (GENERATE_TREEVIEW = YES) ---
 #side-nav {
-  padding: var(--space-4);
+  padding: var(--space-4) var(--space-3);
   border-right: 1px solid var(--border-subtle);
   position: sticky;
   top: 56px; // below the frosted navbar
   max-height: calc(100vh - 56px);
-  overflow-x: hidden;
+  overflow-x: auto;
   overflow-y: auto;
   min-width: 0;
   // Grid track owns the box; ignore navtree.js inline width/height.
@@ -357,8 +357,10 @@ ul.sm-dox {
       font-family: var(--font-sans);
       font-size: 0.9rem;
       font-feature-settings: "liga", "tnum", "case", "calt", "zero", "ss01", "locl";
-      padding: 0.125rem 0;
+      padding: 0.125rem 0.25rem;
       border-left: 2px solid transparent;
+      white-space: normal;
+      overflow-wrap: anywhere;
       transition: border-color var(--transition-fast);
 
       &:hover,
@@ -382,16 +384,30 @@ ul.sm-dox {
 }
 
 // --- Breadcrumb path ---
+#nav-path.navpath {
+  border-top: 1px solid var(--border-subtle);
+}
+
 .navpath ul {
   background-image: none;
-  height: 30px;
-  line-height: 30px;
+  height: auto;
+  min-height: 0;
+  line-height: 1.4;
   color: var(--text-primary);
-  overflow: hidden;
+  overflow: visible;
   margin: 0;
-  padding: 0;
+  padding: 0.4rem var(--space-5);
   display: flex;
   align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.75rem;
+}
+
+// Index pages have no breadcrumbs — only the Generated-by chip.
+// Do not keep a 30px empty flex row for that.
+.navpath ul:not(:has(.navelem)) {
+  justify-content: center;
 }
 
 .navpath li {
@@ -431,15 +447,24 @@ ul.sm-dox {
 // --- Footer ---
 .navpath li.footer {
   list-style-type: none;
-  float: right;
-  padding-left: 10px;
-  padding-right: 15px;
+  float: none;
+  margin-left: auto;
+  padding-left: 0;
+  padding-right: 0;
   background-image: none;
   color: var(--text-muted);
   font-size: 0.84rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
 
   &::before {
     content: none;
+  }
+
+  img.footer {
+    height: 1.1rem;
+    width: auto;
   }
 }
 

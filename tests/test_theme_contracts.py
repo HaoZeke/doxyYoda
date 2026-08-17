@@ -332,6 +332,11 @@ def test_layout_unwraps_doxygen_container():
         r"#container\s*\{\s*display:\s*contents\s*!important\s*;",
         layout,
     )
+    assert re.search(
+        r"#page-nav,\s*#page-nav-resize-handle\s*\{[^}]*display\s*:\s*none\s*!important",
+        layout,
+        flags=re.DOTALL,
+    )
 
 
 def test_fonts_are_fog_over_fen():

@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Fixed
+- Hide Doxygen `#page-nav` so `display: contents` on `#container` cannot open an empty footer row
+- Stop clipping tree labels (`overflow-x`) and the Generated-by chip (`#nav-path` 30px overflow)
+
 ## [0.2.1] - 2026-08-17
 
 ### Fixed

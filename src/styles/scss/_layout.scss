@@ -61,6 +61,13 @@ body {
   display: contents !important;
 }
 
+// display:contents promotes Doxygen's in-page TOC to a grid child
+// with no area; it becomes an implicit empty row under the footer.
+#page-nav,
+#page-nav-resize-handle {
+  display: none !important;
+}
+
 #doc-content {
   grid-area: main;
   min-width: 0;
