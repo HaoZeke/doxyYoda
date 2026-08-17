@@ -19,7 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - Consumer docs and examples pin the current release from `version.txt` (action `@v…`, tarball paths)
 
 ### Added
-- Fog-over-fen visual identity: sage/moss/ember tokens, Fraunces + Source Serif 4 + Source Sans 3, lantern logo (`src/images/doxyYoda_logo.svg` and illustrated `doxyYoda_lantern.jpg`)
+- Fog-over-fen visual identity: sage/moss/ember tokens, Fraunces + Source Serif 4 + Source Sans 3. Title bar keeps the existing ear-and-bracket logo.
 - Pure theme preference helpers in `src/js/theme_pref.js` with contract tests under `tests/`
 
 ## [0.1.3] - 2026-02-16

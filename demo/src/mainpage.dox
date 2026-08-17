@@ -31,7 +31,6 @@ graphs, or read on for the feature tour.
 | <b>MathJax 3</b> | Beautiful math rendering: \f$ e^{i\pi} + 1 = 0 \f$ |
 | <b>Modern admonitions</b> | Color-coded notes, warnings, todos, bugs — 10 types |
 | <b>Graphviz diagrams</b> | Inheritance graphs, collaboration diagrams, include graphs |
-| <b>Lantern mark</b> | Title-bar logo: swamp lantern with fern leaves |
 | <b>Pixi build system</b> | Reproducible builds — `pixi run demo` and you're done |
 
 @section tour Live Examples

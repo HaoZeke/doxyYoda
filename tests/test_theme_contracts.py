@@ -280,13 +280,12 @@ def test_demo_enables_generate_treeview():
     assert re.search(r"^HTML_DYNAMIC_SECTIONS\s*=\s*YES\s*$", dox, re.M)
 
 
-def test_logo_svg_is_the_lantern_mark():
+def test_logo_svg_is_the_shipped_mark():
     logo = ROOT / "src" / "images" / "doxyYoda_logo.svg"
     text = logo.read_text(encoding="utf-8")
-    assert "lantern" in text.lower()
-    assert 'viewBox="0 0 64 64"' in text
-    assert "#d4782a" in text
-    assert (ROOT / "src" / "images" / "doxyYoda_lantern.jpg").is_file()
+    assert 'viewBox="0 0 128 128"' in text
+    assert "Yoda-ear" in text or "Yoda ear" in text
+    assert "&lt;/&gt;" in text or "</>" in text
 
 
 def test_fonts_are_fog_over_fen():

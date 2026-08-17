@@ -28,7 +28,6 @@ Honestly, nothing captures C++ like Doxygen. Nothing. So inspite of the weird JS
 - *Frosted glass navbar* — sticky, translucent, always visible
 - *Modern admonitions* — color-coded notes, warnings, todos, bugs, and more
 - *Fog-over-fen palette* — sage paper, olive ink, moss, campfire ember
-- *Lantern mark* — swamp lantern with fern leaves (title-bar SVG)
 - *Pixi-managed build* — reproducible builds with =pixi run=
 
 *** Typography
