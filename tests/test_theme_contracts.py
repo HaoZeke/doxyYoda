@@ -101,8 +101,20 @@ def test_scss_covers_modern_doxygen_selectors():
         "table.doxtable",
         ".doxyyoda-attrib",
         "div.dynheader",
+        "#MSearchSelect",
     ):
         assert sel in blob, f"missing SCSS coverage for {sel}"
+    # Doxygen 1.13 tabs.css / navtree.css / search.css read these; doxygen.css is not linked
+    for token in (
+        "--nav-text-active-color",
+        "--search-magnification-select-image",
+        "--search-background-color",
+        "--font-family-nav",
+    ):
+        assert token in blob, f"missing Doxygen 1.13 token {token}"
+        assert blob.count(token) >= 3, (
+            f"{token} must be defined in light and both dark token blocks"
+        )
 
 
 if __name__ == "__main__":
