@@ -313,6 +313,26 @@ def test_pixi_doxygen_floor_is_1_17():
     assert re.search(r'^doxygen\s*=\s*">=1\.17"', pixi, re.M), pixi
 
 
+def test_ci_runs_theme_contract_suite():
+    """Push/PR CI must invoke this file so a broken header fails the job."""
+    ci = (ROOT / ".github" / "workflows" / "ci.yml").read_text(encoding="utf-8")
+    assert re.search(r"(?m)^\s+push:", ci)
+    assert re.search(r"(?m)^\s+pull_request:", ci)
+    assert re.search(
+        r"(?m)^\s+run:\s+python(?:3)?\s+tests/test_theme_contracts\.py\s*$",
+        ci,
+    ), "ci.yml must run python tests/test_theme_contracts.py"
+
+
+def test_pixi_has_test_task():
+    """pixi run test must execute the same contract suite as CI."""
+    pixi = (ROOT / "pixi.toml").read_text(encoding="utf-8")
+    assert re.search(
+        r'(?m)^test\s*=\s*\{[^}\n]*cmd\s*=\s*"python(?:3)? tests/test_theme_contracts\.py"',
+        pixi,
+    ), "pixi.toml must define a test task that runs the contract suite"
+
+
 def test_doc_content_does_not_cancel_treeview_resize_offset():
     """Doxygen resize.js sets #doc-content margin-left; do not blanket-zero it."""
     scss_root = ROOT / "src" / "styles" / "scss"

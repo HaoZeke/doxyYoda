@@ -21,6 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 ### Added
 - Fog-over-fen visual identity: sage/moss/ember tokens, Fraunces + Source Serif 4 + Source Sans 3. Title bar keeps the existing ear-and-bracket logo.
 - Pure theme preference helpers in `src/js/theme_pref.js` with contract tests under `tests/`
+- CI push/PR job and `pixi run test` run `python tests/test_theme_contracts.py`
 
 ## [0.1.3] - 2026-02-16
 

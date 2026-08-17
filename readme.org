@@ -118,6 +118,7 @@ All build and development tasks are managed via [[https://pixi.sh][pixi]]:
 | Task           | Command              | Description                      |
 |----------------+----------------------+----------------------------------|
 | Compile SCSS   | =pixi run compile=   | SCSS → CSS                       |
+| Contract tests | =pixi run test=      | Run theme contract tests         |
 | Watch mode     | =pixi run watch=     | Recompile on file changes        |
 | Build demo     | =pixi run demo=      | Generate demo documentation site |
 | Serve demo     | =pixi run serve=     | Serve demo on localhost:8000     |

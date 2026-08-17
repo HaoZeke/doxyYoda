@@ -20,6 +20,9 @@ compile = { cmd = "sass src/styles/scss/main.scss src/styles/doxyYoda.css", desc
 minify = { cmd = "sass --style=compressed --no-source-map src/styles/scss/main.scss src/styles/doxyYoda.min.css", description = "Compile and minify CSS" }
 build = { depends-on = ["compile"], description = "Build everything" }
 
+# ---------- Test ----------
+test = { cmd = "python tests/test_theme_contracts.py", description = "Run theme contract tests" }
+
 # ---------- Development ----------
 watch = { cmd = "sass --watch src/styles/scss/main.scss:src/styles/doxyYoda.css", description = "Watch SCSS and recompile on change" }
 

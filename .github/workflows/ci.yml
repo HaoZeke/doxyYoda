@@ -16,6 +16,9 @@ jobs:
         with:
           cache: true
 
+      - name: Run theme contract tests
+        run: python tests/test_theme_contracts.py
+
       - name: Compile SCSS
         run: pixi run compile
 
