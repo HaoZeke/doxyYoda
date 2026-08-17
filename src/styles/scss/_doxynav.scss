@@ -222,7 +222,11 @@ ul.sm-dox {
   #MSearchSelect {
     display: inline-block;
     width: 20px;
+    height: 19px;
     cursor: pointer;
+    background-image: var(--search-magnification-select-image);
+    background-repeat: no-repeat;
+    background-position: left center;
   }
 
   #MSearchField {
