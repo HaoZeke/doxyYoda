@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 ### Fixed
 - Drop Doxygen `clipboard.js` so each fragment has one themed `.copy-btn`; copy excludes the button label
 - Unwrap Doxygen 1.18 `#container` (`display: contents`) so the leftover sage strip is gone
+- Tag release fails when the tag does not match `version.txt` or the tarball is missing; the setup action `curl`s with `-fS`
 
 ### Changed
 - Analytics is Antics (`antics-api.turtletech.us/antics.js` plus outbound-link helper); footer credits Antics

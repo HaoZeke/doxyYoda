@@ -350,6 +350,41 @@ def test_pixi_has_test_task():
     ), "pixi.toml must define a test task that runs the contract suite"
 
 
+def test_release_fails_closed_without_version_matched_tarball():
+    """A tag that does not match version.txt must fail; unmatched files too.
+
+    pixi run release names the archive from version.txt. The upload path
+    uses GITHUB_REF_NAME#v. Without an equality check and
+    fail_on_unmatched_files, a mismatch still publishes a green release
+    with no asset.
+    """
+    text = (ROOT / ".github" / "workflows" / "release.yml").read_text(encoding="utf-8")
+    assert re.search(r"fail_on_unmatched_files:\s*true", text), (
+        "softprops/action-gh-release must set fail_on_unmatched_files: true"
+    )
+    assert re.search(
+        r"doxyYoda_\$\{\{\s*steps\.version\.outputs\.version\s*\}\}\.tar\.gz",
+        text,
+    ), "release must upload doxyYoda_<tag-version>.tar.gz"
+    assert "version.txt" in text
+    assert "GITHUB_REF_NAME" in text
+    assert re.search(
+        r"(?:cat\s+version\.txt|<\s*version\.txt)",
+        text,
+    ), "release job must read version.txt to compare against the tag"
+
+
+def test_action_curl_fails_closed_on_http_errors():
+    """Missing release assets must fail the action, not extract an error page."""
+    action = (ROOT / "action.yml").read_text(encoding="utf-8")
+    curl = re.search(r"curl\s+(\S+)\s+\"\$\{url\}\"", action)
+    assert curl, "tarball download must curl ${url}"
+    flags = curl.group(1)
+    assert "f" in flags, f"curl must fail on HTTP errors (-f): {flags}"
+    assert "S" in flags, f"curl must show errors (-S): {flags}"
+    assert "L" in flags, f"curl must follow redirects (-L): {flags}"
+
+
 def test_doc_content_does_not_cancel_treeview_resize_offset():
     """Doxygen resize.js sets #doc-content margin-left; do not blanket-zero it."""
     scss_root = ROOT / "src" / "styles" / "scss"

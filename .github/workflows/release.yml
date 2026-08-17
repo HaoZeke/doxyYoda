@@ -21,6 +21,15 @@ jobs:
         id: version
         run: echo "version=${GITHUB_REF_NAME#v}" >> "$GITHUB_OUTPUT"
 
+      - name: Assert tag matches version.txt
+        run: |
+          tag_version="${GITHUB_REF_NAME#v}"
+          file_version=$(tr -d '[:space:]' < version.txt)
+          if [ "$tag_version" != "$file_version" ]; then
+            echo "Tag v${tag_version} does not match version.txt (${file_version})"
+            exit 1
+          fi
+
       - name: Build release tarball
         run: pixi run release
 
@@ -38,3 +47,4 @@ jobs:
         with:
           body_path: release_notes.md
           files: doxyYoda_${{ steps.version.outputs.version }}.tar.gz
+          fail_on_unmatched_files: true

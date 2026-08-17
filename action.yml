@@ -53,7 +53,7 @@ runs:
         dest="${{ inputs.path }}"
         url="https://github.com/HaoZeke/doxyYoda/releases/download/v${version}/doxyYoda_${version}.tar.gz"
         echo "Downloading doxyYoda v${version} from ${url}"
-        curl -sL "${url}" -o doxyYoda.tar.gz
+        curl -fSL "${url}" -o doxyYoda.tar.gz
         tar xf doxyYoda.tar.gz
         if [ "$dest" != "doxyYoda" ]; then
           mv doxyYoda "$dest"
