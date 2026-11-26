@@ -50,11 +50,12 @@ pixi run serve     # Serve on localhost:8000
 *** Requirements
 Doxygen 1.9.1 is unsupported. doxyYoda needs *Doxygen 1.17 or newer*
 (=pixi.lock= pins =1.17.0=). On 1.9.1 the demo Doxyfile's
-=HTML_CODE_FOLDING=, =FULL_SIDEBAR=, and =MATHJAX_VERSION= are ignored,
-header markers =$darkmode=, =$mermaidjs=, =$langISO=, and =$projecticon=
-are left as literal text, =codefolding.js= is not generated, =<!--BEGIN-->=
-/ =<!--END-->= blocks are not applied (so the =FULL_SIDEBAR= block is
-emitted even when that tag is NO), and =src/xml/doxyYoda.xml= is rejected
+=HTML_CODE_FOLDING=, =FULL_SIDEBAR=, and =MATHJAX_VERSION= are ignored.
+Only options added after 1.9.1 are ignored; =<!--BEGIN-->= / =<!--END-->=
+blocks for options that exist in 1.9.1 are still applied. Header markers
+=$darkmode=, =$mermaidjs=, =$langISO=, and =$projecticon= are left as
+literal text, =codefolding.js= is not generated, and =src/xml/doxyYoda.xml=
+is rejected
 (concepts, modules, =$SHOW_HEADERFILE=). The header and footer match the
 1.17 skeleton, which wraps =#doc-content= in =#container= and adds
 =#page-nav=. Doxygen 1.17.0 completes the same Doxyfile with no warnings.
@@ -66,11 +67,11 @@ Hack from jsDelivr. Those =@import= rules exist only after
 =sass src/styles/scss/main.scss src/styles/doxyYoda.css=. The CSS is
 gitignored. =pixi run demo= compiles it because =demo= depends on
 =compile=, and =pixi run serve= depends on =demo=. A bare
-=doxygen demo/Doxyfile= stops at
-"Style sheet 'src/styles/doxyYoda.css' specified by HTML_EXTRA_STYLESHEET does not exist"
-and the pages have neither the theme layout nor those fonts. Compiling the
-sheet and running Doxygen 1.17 is enough; pixi is not required to fetch font
-files.
+=doxygen demo/Doxyfile= logs
+"error: Style sheet 'src/styles/doxyYoda.css' specified by HTML_EXTRA_STYLESHEET does not exist!"
+and keeps writing HTML without that sheet, so the pages have neither the
+theme layout nor those fonts. Compiling the sheet and running Doxygen 1.17
+is enough; pixi is not required to fetch font files.
 
 The dark/light choice is stored only in =localStorage= under
 =doxyYoda-theme= (see the boot script in =src/html/header.html=). That key
