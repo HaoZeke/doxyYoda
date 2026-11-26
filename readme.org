@@ -47,10 +47,45 @@ pixi run demo      # Build the demo site
 pixi run serve     # Serve on localhost:8000
 #+end_src
 
+*** Requirements
+Doxygen 1.9.1 is unsupported. doxyYoda needs *Doxygen 1.17 or newer*
+(=pixi.lock= pins =1.17.0=). On 1.9.1 the demo Doxyfile's
+=HTML_CODE_FOLDING=, =FULL_SIDEBAR=, and =MATHJAX_VERSION= are ignored,
+header markers =$darkmode=, =$mermaidjs=, =$langISO=, and =$projecticon=
+are left as literal text, =codefolding.js= is not generated, =<!--BEGIN-->=
+/ =<!--END-->= blocks are not applied (so the =FULL_SIDEBAR= block is
+emitted even when that tag is NO), and =src/xml/doxyYoda.xml= is rejected
+(concepts, modules, =$SHOW_HEADERFILE=). The header and footer match the
+1.17 skeleton, which wraps =#doc-content= in =#container= and adds
+=#page-nav=. Doxygen 1.17.0 completes the same Doxyfile with no warnings.
+=HTML_DYNAMIC_SECTIONS= itself is older and is not the break.
+
+Fonts are not a pixi copy step. =src/styles/scss/_fonts.scss= is two remote
+imports: Fraunces, Source Sans 3, and Source Serif 4 from Google Fonts, and
+Hack from jsDelivr. Those =@import= rules exist only after
+=sass src/styles/scss/main.scss src/styles/doxyYoda.css=. The CSS is
+gitignored. =pixi run demo= compiles it because =demo= depends on
+=compile=, and =pixi run serve= depends on =demo=. A bare
+=doxygen demo/Doxyfile= stops at
+"Style sheet 'src/styles/doxyYoda.css' specified by HTML_EXTRA_STYLESHEET does not exist"
+and the pages have neither the theme layout nor those fonts. Compiling the
+sheet and running Doxygen 1.17 is enough; pixi is not required to fetch font
+files.
+
+The dark/light choice is stored only in =localStorage= under
+=doxyYoda-theme= (see the boot script in =src/html/header.html=). That key
+is per origin. =file://= is not a reliable origin: if =getItem= throws, the
+boot =try= also skips the =prefers-color-scheme= class, and the next page
+is painted by =:root:not(.light)= inside =@media (prefers-color-scheme: dark)=,
+so a dark OS theme comes back on every navigation. Serve the HTML over http.
+
 *** Manual
 #+begin_src bash
-# Compile SCSS
+# Doxygen >= 1.17. Doxygen 1.9.1 is unsupported.
 sass src/styles/scss/main.scss src/styles/doxyYoda.css
+doxygen demo/Doxyfile
+python -m http.server 8000 -d demo/build/html
+# Open http://127.0.0.1:8000 — not file://index.html
 #+end_src
 
 ** Usage
@@ -112,6 +147,8 @@ jobs:
       - run: sudo apt-get install -y doxygen graphviz
       - run: doxygen Doxyfile
 #+end_src
+That =doxygen= package must be 1.17 or newer. Doxygen 1.9.1 is unsupported,
+including copies that still ship in older distribution releases.
 
 ** Pixi Tasks
 All build and development tasks are managed via [[https://pixi.sh][pixi]]:

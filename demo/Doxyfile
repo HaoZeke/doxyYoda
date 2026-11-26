@@ -1,5 +1,15 @@
 # doxyYoda Demo — Doxyfile
 # Build with: pixi run demo
+#
+# Doxygen 1.9.1 is unsupported. Requires Doxygen 1.17 or newer.
+# 1.9.1 ignores HTML_CODE_FOLDING, FULL_SIDEBAR, and MATHJAX_VERSION,
+# leaves $darkmode $mermaidjs $langISO $projecticon literal, does not
+# emit codefolding.js, and does not honor this header's BEGIN/END blocks
+# or the current LAYOUT_FILE.
+# Compile src/styles/doxyYoda.css (sass) before doxygen. Fonts are @import
+# rules inside that sheet, not files copied by pixi.
+# Preview with: python -m http.server 8000 -d demo/build/html
+# Do not open the HTML via file://. The toggle is localStorage only.
 
 PROJECT_NAME           = "doxyYoda"
 PROJECT_NUMBER         = "0.2.2"

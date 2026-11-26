@@ -440,6 +440,21 @@ def test_grid_cancels_doxygen_resize_offsets():
     )
 
 
+def test_readme_and_doxyfile_reject_doxygen_1_9_1_and_file_urls():
+    """Issue #2: 1.9.1 and file:// previews are unsupported.
+
+    The theme CSS is produced by sass, then the HTML has to be served over
+    http so localStorage can keep the dark/light choice.
+    """
+    readme = (ROOT / "readme.org").read_text(encoding="utf-8")
+    assert "Doxygen 1.9.1 is unsupported" in readme, "readme missing 1.9.1 note"
+    assert "file://" in readme, "readme missing file:// note"
+    assert "python -m http.server 8000 -d demo/build/html" in readme, "readme missing http preview"
+    doxy = (ROOT / "demo" / "Doxyfile").read_text(encoding="utf-8")
+    assert "Doxygen 1.9.1 is unsupported" in doxy, "Doxyfile missing 1.9.1 note"
+    assert "1.17" in doxy, "Doxyfile missing 1.17 floor"
+
+
 if __name__ == "__main__":
     # Minimal runner without pytest dependency
     failed = 0
